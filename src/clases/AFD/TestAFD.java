@@ -1,5 +1,7 @@
 package AFD;
 
+import AL.Analizer;
+
 public class TestAFD {
 
 	
@@ -33,6 +35,11 @@ public class TestAFD {
 		
 		
 		System.out.println("\nTransita al estado: " + afd.transit(a, 'q'));
+		
+		Analizer an = new Analizer(afd, "/Users/dani/Documents/workspace/PDL/src/clases/text");
+		
+		an.step();
+	
 				
 		
 	}
