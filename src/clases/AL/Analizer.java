@@ -12,6 +12,10 @@ public class Analizer {
 		this.source.open();
 	}
 	
+	public Token getNewToken() {
+		return null;
+	}
+	
 	public void step() throws Exception{
 		
 		int c;

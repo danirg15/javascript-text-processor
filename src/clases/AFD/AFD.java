@@ -26,6 +26,9 @@ public class AFD {
 		return null;
 	}
 
+	public boolean isInFinalState(){
+		return (this.currentState instanceof FinalState); 
+	}
 
 	@Override
 	public String toString() {
