@@ -1,5 +1,5 @@
 package DFA;
 
-public class SemanticAction {
-
+public enum SemanticAction {
+	A,B,C,D,E,F,G,H
 }

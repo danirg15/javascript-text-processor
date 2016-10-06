@@ -13,17 +13,18 @@ public class TestAFD {
 		NonFinalState[] nofinales = {a};
 		FinalState[] finales = {b};
 		
-		Symbol s1 = new Symbol('*', Match.DIGIT);
-	    Symbol s2 =	new Symbol('*', Match.LETTER);
+		//Symbol s1 = new Symbol('*', Match.DIGIT);
+	    //Symbol s2 =	new Symbol('*', Match.LETTER);
 		Symbol s3 = new Symbol('a', Match.STD);
+		Symbol s4 = new Symbol('b', Match.STD);
 		
-		Symbol[] alph = { s1, s2, s3 };
+		Symbol[] alph = { s3, s4 };
 		
 		TransitionMatrix matrix = new TransitionMatrix(nofinales, finales, alph);
 		
-		matrix.addTransition(new Transition(a, s1, b));
-		matrix.addTransition(new Transition(a, s3, a));
-		matrix.addTransition(new Transition(a, s2, b));
+		matrix.addTransition(new Transition(a, s4, b, SemanticAction.B));
+		matrix.addTransition(new Transition(a, s3, a, SemanticAction.A));
+		//matrix.addTransition(new Transition(a, s2, b, SemanticAction.B));
 		
 		
 		
@@ -35,8 +36,8 @@ public class TestAFD {
 		
 		////////////////////TEST////////////////////////////
 		
+			
 		
-		System.out.println("\nTransita al estado: " + afd.transit(a, 'q'));
 		
 		SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/text");
 		
@@ -44,7 +45,10 @@ public class TestAFD {
 		
 		ExampleLexicalAnalizer an = new ExampleLexicalAnalizer(sf, afd);
 		
-		System.out.println(an.getNewToken());
+		an.getNewToken();
+		an.getNewToken();
+		//an.getNewToken();
+		
 		
 		
 		sf.close();

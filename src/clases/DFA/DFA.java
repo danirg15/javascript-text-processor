@@ -13,7 +13,7 @@ public class DFA {
 	}
 	
 	
-	public State transit(NonFinalState fromState, char c){
+	public State transit(State fromState, char c){
 		Transition t;
 		
 		if((t = getTransitionWithSymbol(fromState, c)) != null){
@@ -36,6 +36,10 @@ public class DFA {
 		return null;
 	}
 
+	public State getCurrentState(){
+		return this.currentState;
+	}
+	
 	public boolean isInFinalState(){
 		return (this.currentState instanceof FinalState); 
 	}
