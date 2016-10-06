@@ -2,15 +2,15 @@ package AL;
 
 
 public class Token {
-	private TOKEN_TYPE type;
+	private TokenType type;
 	private String attr;
 	
-	public Token(TOKEN_TYPE type, String attr) {
+	public Token(TokenType type, String attr) {
 		this.type = type;
 		this.attr = attr;
 	}
 
-	public TOKEN_TYPE getType() {
+	public TokenType getType() {
 		return type;
 	}
 

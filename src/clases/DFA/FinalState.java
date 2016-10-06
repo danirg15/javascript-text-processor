@@ -1,4 +1,4 @@
-package AFD;
+package DFA;
 
 public class FinalState implements State {
 	private String name;

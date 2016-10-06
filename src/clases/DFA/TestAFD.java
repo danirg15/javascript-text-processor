@@ -1,6 +1,8 @@
-package AFD;
+package DFA;
 
-import AL.Analizer;
+import AL.ExampleLexicalAnalizer;
+import AL.SourceFile;
+
 
 public class TestAFD {
 
@@ -11,9 +13,9 @@ public class TestAFD {
 		NonFinalState[] nofinales = {a};
 		FinalState[] finales = {b};
 		
-		Symbol s1 = new Symbol('*', MATCH_TYPE.DIGIT);
-	    Symbol s2 =	new Symbol('*', MATCH_TYPE.LETTER);
-		Symbol s3 = new Symbol('a', MATCH_TYPE.STD);
+		Symbol s1 = new Symbol('*', Match.DIGIT);
+	    Symbol s2 =	new Symbol('*', Match.LETTER);
+		Symbol s3 = new Symbol('a', Match.STD);
 		
 		Symbol[] alph = { s1, s2, s3 };
 		
@@ -25,7 +27,7 @@ public class TestAFD {
 		
 		
 		
-		AFD afd = new AFD(a, matrix);
+		DFA afd = new DFA(a, matrix);
 
 	
 		System.out.println(afd.toString());
@@ -36,9 +38,16 @@ public class TestAFD {
 		
 		System.out.println("\nTransita al estado: " + afd.transit(a, 'q'));
 		
-		Analizer an = new Analizer(afd, "/Users/dani/Documents/workspace/PDL/src/clases/text");
+		SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/text");
 		
-		an.step();
+		sf.open();
+		
+		ExampleLexicalAnalizer an = new ExampleLexicalAnalizer(sf, afd);
+		
+		System.out.println(an.getNewToken());
+		
+		
+		sf.close();
 	
 				
 		

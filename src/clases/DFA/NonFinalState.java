@@ -1,4 +1,4 @@
-package AFD;
+package DFA;
 
 public class NonFinalState implements State {
 	private String name;

@@ -15,9 +15,9 @@ public class SymbolTable {
 	}
 	
 	public void add(Entry e){
-		if(this.table.containsKey(e.name)){
-			
-		}
+//		if(this.table.containsKey(e.name)){
+//			
+//		}
 		
 	}
 	

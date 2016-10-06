@@ -1,11 +1,11 @@
-package AFD;
+package DFA;
 
 public class Symbol {
 	private char character;
-	private MATCH_TYPE match_type;
+	private Match match_type;
 	
 		
-	public Symbol(char character, MATCH_TYPE match_type){
+	public Symbol(char character, Match match_type){
 		this.character = character;
 		this.match_type = match_type;
 	}

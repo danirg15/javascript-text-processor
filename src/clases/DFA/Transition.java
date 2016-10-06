@@ -1,4 +1,4 @@
-package AFD;
+package DFA;
 
 public class Transition {
 	private State initialState;

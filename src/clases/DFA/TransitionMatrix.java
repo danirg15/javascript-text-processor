@@ -1,4 +1,4 @@
-package AFD;
+package DFA;
 
 import java.util.ArrayList;
 import java.util.Arrays;
