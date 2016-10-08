@@ -1,4 +1,4 @@
-package EG;
+package ErrorModule;
 
 public class ErrorGen {
 

@@ -70,7 +70,7 @@ public class TransitionMatrix {
 		
 		
 		for(int i = 0; i < this.transitions.values().size(); i++){
-			s += "\t " +this.transitions.values().toArray()[i].toString();			
+			s += this.transitions.values().toArray()[i].toString();			
 		}
 		
 		return s;

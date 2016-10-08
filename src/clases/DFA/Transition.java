@@ -4,13 +4,13 @@ public class Transition {
 	private State initialState;
 	private Symbol symbol;
 	private State targetState;
-	private SemanticAction action;
+	private SemanticAction semanticAction;
 	
-	public Transition(State input, Symbol symbol, State output, SemanticAction action) {
+	public Transition(State input, Symbol symbol, State output, SemanticAction semanticAction) {
 		this.initialState = input;
 		this.symbol = symbol;
 		this.targetState = output;
-		this.action = action;
+		this.semanticAction = semanticAction;
 	}
 
 	public State getInitialState() {
@@ -25,13 +25,13 @@ public class Transition {
 		return targetState;
 	}
 	
-	public SemanticAction getAction(){
-		return action;
+	public SemanticAction getSemanticAction(){
+		return semanticAction;
 	}
 
 	@Override
 	public String toString() {
-		return "\t\t" + initialState.getName() + " -- " + symbol + " Action:" +action+ " -->  " + targetState.getName() + "\n\t";
+		return "\t\t" + initialState.getName() + " -- " + symbol + " Action:" +semanticAction+ " -->  " + targetState.getName() + "\n\t";
 	} 
 	
 

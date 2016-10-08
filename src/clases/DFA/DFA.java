@@ -3,20 +3,21 @@ package DFA;
 import java.util.ArrayList;
 
 public class DFA {
-	
+	private NonFinalState initialState;
 	private State currentState;
 	private TransitionMatrix transitionMatrix;
 
 	public DFA(NonFinalState initialState, TransitionMatrix transitionMatrix) {
+		this.initialState = initialState;
 		this.currentState = initialState;
 		this.transitionMatrix = transitionMatrix;
 	}
 	
 	
-	public State transit(State fromState, char c){
+	public State transit(char c){
 		Transition t;
 		
-		if((t = getTransitionWithSymbol(fromState, c)) != null){
+		if((t = getTransitionWithSymbol(this.currentState, c)) != null){
 			this.currentState = t.getTargetState();
 			return this.currentState;
 		}
@@ -36,6 +37,10 @@ public class DFA {
 		return null;
 	}
 
+	public void restart(){
+		this.currentState = this.initialState;
+	}
+	
 	public State getCurrentState(){
 		return this.currentState;
 	}

@@ -24,7 +24,11 @@ public class Symbol {
 				
 			case LETTER:
 				result = isLetter(c);
-				break;			
+				break;	
+			
+			case DELIM:
+				result = (isBlank(c) || isBreakLine(c) || isTab(c));
+				break;	
 		}
 		
 		return result;
@@ -54,7 +58,19 @@ public class Symbol {
 		String regex = "[a-zA-Z]";
 		return s.matches(regex);
 	}
+	
+	private boolean isBlank(char c){
+		return (int)c == 32;
+	}
+	
+	private boolean isBreakLine(char c){
+		return (int)c == 10;
+	}
 
+	private boolean isTab(char c){
+		return (int)c == 9;
+	}
+	
 	
 	@Override
 	public String toString() {
