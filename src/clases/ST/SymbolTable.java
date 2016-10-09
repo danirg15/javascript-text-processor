@@ -10,15 +10,14 @@ public class SymbolTable {
 		this.table = new HashMap<String, Entry>();
 	}
 	
-	public Entry search(String lex){
-		return this.table.get(lex);
+	public void add(Entry e){
+		if(!this.table.containsKey(e.getName())){
+			this.table.put(e.getName(), e);
+		}
 	}
 	
-	public void add(Entry e){
-//		if(this.table.containsKey(e.name)){
-//			
-//		}
-		
+	public Entry search(String name){
+		return this.table.get(name);
 	}
 	
 }

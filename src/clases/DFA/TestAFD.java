@@ -8,7 +8,7 @@ public class TestAFD {
 
 	
 	public static void main(String[] args) throws Exception{
-		
+
 		//Estados
 		NonFinalState E1 = new NonFinalState("E1");
 		NonFinalState E2 = new NonFinalState("E2");
