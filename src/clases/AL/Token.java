@@ -20,7 +20,7 @@ public class Token {
 
 	@Override
 	public String toString() {
-		return "Token [type=" + type + ", attr=" + attr + "]";
+		return "Token <" + type + ", " + attr + ">";
 	}
 	
 }

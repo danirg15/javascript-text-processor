@@ -29,6 +29,19 @@ public class Symbol {
 			case DELIM:
 				result = (isBlank(c) || isBreakLine(c) || isTab(c));
 				break;	
+				
+			case CR:
+				result = isBreakLine(c);
+				break;
+			
+			//TODO
+			case OTHER_CHAR:
+				result = true;
+				break;
+							
+			case CHAR_EXCEPT_QUOTE:
+				result = !(c == '"');
+				break;
 		}
 		
 		return result;

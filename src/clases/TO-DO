@@ -1,0 +1,4 @@
+1. Arreglar el orden de O.C
+2. Crear tabla de atributos
+3. Gestor de errores
+4. Si no hay transicion, debe haber error porque no se reconoce el caracters en el AFD

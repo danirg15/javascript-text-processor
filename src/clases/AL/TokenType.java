@@ -1,5 +1,11 @@
 package AL;
 
 public enum TokenType {
-	ID
+	ID, CR, 
+	
+	CAD,
+	MUNICIPIO,
+	KM,
+	CARRETERA,
+	INCIDENCIA,
 }

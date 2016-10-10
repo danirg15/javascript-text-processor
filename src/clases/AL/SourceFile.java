@@ -28,8 +28,11 @@ public class SourceFile {
 	public int read() throws Exception {
 		if(!this.fileOpened)
 			throw new Exception("El fichero fuente no esta abierto!");
-
-		return fileInput.read();
+		
+		int c = fileInput.read();
+	
+		//System.out.println("Read: "+(char)c +"("+c+")");
+		return c;
 	}
 	
 	public void close() {
