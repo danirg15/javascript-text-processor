@@ -9,6 +9,7 @@ import DFA.SemanticAction;
 import DFA.Symbol;
 import DFA.Transition;
 import DFA.TransitionMatrix;
+import ST.AttrTable;
 
 public class TestCarreteras {
 
@@ -75,6 +76,15 @@ public class TestCarreteras {
 			matrix.addTransition(new Transition(E3, OC, E9, SemanticAction.G));
 			matrix.addTransition(new Transition(E1, OC, E8, SemanticAction.H));
 			
+			
+		
+		AttrTable.add("Amarillo");
+		AttrTable.add("Negro");
+		AttrTable.add("Rojo");
+		
+		AttrTable.add("Madrid");
+		AttrTable.add("Barcelona");
+			
 		
 		//Automata AFD
 		DFA afd = new DFA(E0, matrix);
@@ -97,6 +107,7 @@ public class TestCarreteras {
 		System.out.println(analizer.getNewToken());
 		System.out.println(analizer.getNewToken());
 		System.out.println(analizer.getNewToken());
+		
 		
 		
 		sf.close();

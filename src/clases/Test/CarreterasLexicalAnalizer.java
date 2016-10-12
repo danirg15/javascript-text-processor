@@ -8,8 +8,11 @@ import DFA.DFA;
 import DFA.FinalState;
 import DFA.State;
 import DFA.Transition;
+import ErrorModule.ErrorGen;
+import ST.AttrTable;
 
 public class CarreterasLexicalAnalizer extends LexicalAnalizer{
+	
 
 	public CarreterasLexicalAnalizer(SourceFile source, DFA automaton) {
 		super(source, automaton);
@@ -17,7 +20,7 @@ public class CarreterasLexicalAnalizer extends LexicalAnalizer{
 	}
 
 	@Override
-	public Token getNewToken() throws Exception {	
+	public Token getNewToken() throws Exception {			
 		getAutomaton().restart();
 		String concat = "";
 		Token token = null;
@@ -67,11 +70,24 @@ public class CarreterasLexicalAnalizer extends LexicalAnalizer{
 					break;
 				
 				case G:
-					token = new Token(TokenType.CARRETERA, concat);
+					int i = concat.indexOf("-");
+					int num = Integer.valueOf(concat.charAt(i+1)+"");//Primer numero de la carretera
+										
+					if(num >= 1 && num <= 6)		
+						token = new Token(TokenType.CARRETERA, concat);
+					else
+						ErrorGen.throwError("El primer digito de la carretera debe estar entre 1 y 6");
+					
 					break;
 					
 				case H:
-					token = new Token(null, concat);
+					int pos = AttrTable.find(concat);
+					
+					if(pos != -1)
+						token = new Token(null, "tabAttr("+pos+")");
+					else
+						ErrorGen.throwError("No se encuentra "+concat+" en la tabla de atributos");
+					
 					break;
 			}
 		}
