@@ -1,13 +1,13 @@
 package Test;
 
-import AL.LexicalAnalizer;
-import AL.SourceFile;
-import AL.Token;
-import AL.TokenType;
-import DFA.DFA;
-import DFA.FinalState;
-import DFA.State;
-import DFA.Transition;
+import extra.SourceFile;
+import analizer.LexicalAnalizer;
+import analizer.Token;
+import analizer.TokenType;
+import automata.DFA;
+import automata.FinalState;
+import automata.State;
+import automata.Transition;
 import ErrorModule.ErrorGen;
 import ST.AttrTable;
 
@@ -35,9 +35,11 @@ public class CarreterasLexicalAnalizer extends LexicalAnalizer{
 			Transition tran = getAutomaton().getTransitionWithSymbol(currentState, c);
 			
 			//Si no hay ninguna transicion es porque el automatca no reconoce el simbolo
-			if(tran == null)
+			if(tran == null){
+				System.err.println("Error in : " + concat);
 				break;//generar error
-			
+			}
+				
 			getAutomaton().transit(c);
 			currentState = getAutomaton().getCurrentState();
 			

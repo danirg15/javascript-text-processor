@@ -1,6 +1,7 @@
-package AL;
+package analizer;
 
-import DFA.DFA;
+import extra.SourceFile;
+import automata.DFA;
 
 public abstract class LexicalAnalizer {
 	private SourceFile source;

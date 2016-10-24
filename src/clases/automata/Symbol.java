@@ -1,4 +1,4 @@
-package DFA;
+package automata;
 
 public class Symbol {
 	private char character;
@@ -34,7 +34,6 @@ public class Symbol {
 				result = isBreakLine(c);
 				break;
 			
-			//TODO
 			case OTHER_CHAR:
 				result = true;
 				break;
@@ -49,12 +48,17 @@ public class Symbol {
 	
 	
 	public char getCharacter() {
-		return character;
+		return character;//.getCharValue();
 	}
-
+	
+	public Match getMatchType(){
+		return this.match_type;
+	}
 	
 	public boolean equals(Symbol s){
-		if(this.character == s.getCharacter() && this.match_type == s.match_type){
+		if(this.character == s.getCharacter() && 
+		   this.match_type == s.match_type){
+			
 			return true;
 		}
 		return false;
@@ -87,7 +91,13 @@ public class Symbol {
 	
 	@Override
 	public String toString() {
-		return "(char: '" + character +  "' match_type=" + match_type+")";
+		
+		if(this.match_type == Match.STD){
+			return "(char: '" + character +  "')";
+		}
+		else{
+			return "(" + match_type +")";
+		}
 	}
 	
 	

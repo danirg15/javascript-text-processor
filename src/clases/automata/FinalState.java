@@ -1,4 +1,4 @@
-package DFA;
+package automata;
 
 public class FinalState implements State {
 	private String name;

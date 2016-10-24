@@ -1,4 +1,4 @@
-package DFA;
+package automata;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class DFA {
 				return t;
 			}
 		}
-
+		
 		return null;
 	}
 
@@ -45,9 +45,9 @@ public class DFA {
 		return this.currentState;
 	}
 	
-	public boolean isInFinalState(){
-		return (this.currentState instanceof FinalState); 
-	}
+//	public boolean isInFinalState(){
+//		return (this.currentState instanceof FinalState); 
+//	}
 
 	@Override
 	public String toString() {

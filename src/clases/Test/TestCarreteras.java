@@ -1,14 +1,14 @@
 package Test;
 
-import AL.SourceFile;
-import DFA.DFA;
-import DFA.FinalState;
-import DFA.Match;
-import DFA.NonFinalState;
-import DFA.SemanticAction;
-import DFA.Symbol;
-import DFA.Transition;
-import DFA.TransitionMatrix;
+import extra.SourceFile;
+import automata.DFA;
+import automata.FinalState;
+import automata.Match;
+import automata.NonFinalState;
+import automata.SemanticAction;
+import automata.Symbol;
+import automata.Transition;
+import automata.TransitionMatrix;
 import ST.AttrTable;
 
 public class TestCarreteras {

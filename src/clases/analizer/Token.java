@@ -1,4 +1,4 @@
-package AL;
+package analizer;
 
 
 public class Token {

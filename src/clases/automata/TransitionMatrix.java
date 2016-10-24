@@ -1,4 +1,4 @@
-package DFA;
+package automata;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +29,12 @@ public class TransitionMatrix {
 		
 		if(!alphabetHasSymbol(transition.getSymbol()))
 			throw new Exception("No existe el simbolo '"+transition.getSymbol()+"' en el alfabeto");
+		
+		for(Transition t : this.transitions.get(transition.getInitialState())){
+			if(t.getSymbol().equals(transition.getSymbol())){
+				throw new Exception("Ya existe una transicion con el simbolo '"+transition.getSymbol()+"' para el estado "+transition.getInitialState());
+			}
+		}
 		
 		this.transitions.get(transition.getInitialState()).add(transition);
 	}

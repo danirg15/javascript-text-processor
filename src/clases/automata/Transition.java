@@ -1,4 +1,4 @@
-package DFA;
+package automata;
 
 public class Transition {
 	private State initialState;
@@ -33,6 +33,4 @@ public class Transition {
 	public String toString() {
 		return "\t\t" + initialState.getName() + " -- " + symbol + " Action:" +semanticAction+ " -->  " + targetState.getName() + "\n\t";
 	} 
-	
-
 }
