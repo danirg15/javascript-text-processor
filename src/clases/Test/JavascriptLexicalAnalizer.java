@@ -3,6 +3,9 @@ package Test;
 import java.util.HashMap;
 
 import tables.AttrTable;
+import tables.Entry;
+import tables.SymbolTable;
+import extra.HexadecimalValues;
 import extra.SourceFile;
 import analizer.LexicalAnalizer;
 import analizer.Token;
@@ -14,32 +17,15 @@ import automata.Transition;
 import ErrorModule.ErrorGen;
 
 public class JavascriptLexicalAnalizer extends LexicalAnalizer{
+	private AttrTable tablePR;
+	private SymbolTable symbolTable;
+	private HashMap<String, Integer> hex;
 	
-	private AttrTable attrTable;
-	private HashMap<String, Integer> hex = new HashMap<String, Integer>();
-	
-
-	public JavascriptLexicalAnalizer(SourceFile source, DFA automaton, AttrTable attrTable) {
+	public JavascriptLexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR, SymbolTable symbolTable) {
 		super(source, automaton);
-		// TODO Auto-generated constructor stub
-		this.attrTable = attrTable;
-		
-		hex.put("0", 0);
-		hex.put("1", 1);
-		hex.put("2", 2);
-		hex.put("3", 3);
-		hex.put("4", 4);
-		hex.put("5", 5);
-		hex.put("6", 6);
-		hex.put("7", 7);
-		hex.put("8", 8);
-		hex.put("9", 9);
-		hex.put("A", 10);
-		hex.put("B", 11);
-		hex.put("C", 12);
-		hex.put("D", 13);
-		hex.put("E", 14);
-		hex.put("F", 15);
+		this.tablePR = tablePR;
+		this.symbolTable = symbolTable;
+		this.hex = HexadecimalValues.get();
 	}
 
 	@Override
@@ -50,7 +36,12 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 		Token token = null;
 		State currentState;
 		
-		char c = (char) getSource().read();
+		int ascii = getSource().read();
+		if(ascii == -1)
+			return new Token(TokenType.$, null);
+		
+		char c = (char)ascii;
+		
 		currentState = getAutomaton().getCurrentState();
 		
 		while(!(currentState instanceof FinalState)){			
@@ -151,15 +142,18 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 				case T:
 					//comprueba tabla de atributos y simbolo
 					//Falta completar
-					
-					if(this.attrTable.find(concat) != -1){
-						token = new Token(TokenType.PR, concat);
+					int index;
+					if((index = this.tablePR.find(concat)) != -1){
+						token = new Token(TokenType.PR, "TS("+index+") "+ concat);
+					}
+					else if(this.symbolTable.search(concat) != null){
+						//locallizar identificadores
+						token = new Token(TokenType.ID, concat);
 					}
 					else{
-						//locallizar identificadores
-						token = new Token(null, concat);
+						this.symbolTable.add(new Entry(concat));
+						token = new Token(TokenType.ID, concat);
 					}
-					
 					
 					break;
 					
@@ -200,10 +194,7 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 				case AB:
 					token = new Token(TokenType.STRING, concat);
 					break;
-					
-				case Z:
-					break;
-					
+									
 			}
 		}
 	

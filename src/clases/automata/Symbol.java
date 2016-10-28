@@ -38,8 +38,8 @@ public class Symbol {
 				result = true;
 				break;
 							
-			case CHAR:
-				result = true;
+			case CHAR_EXCEPT_QUOTE:
+				result = (c != '"');
 				break;
 				
 			case HEX_CHAR:

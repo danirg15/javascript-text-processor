@@ -1,4 +1,9 @@
-//Programa ejemplo
-function int suma ( int a , int b ){ //problema cuando parentesis o coma estan pegados a una palabra
-	return a + b - 0x12DA + 0xA
+//Programa principal
+
+function int suma (int a , int b ) { //Hay problemas cuando el parentesis o la coma viene despues de una palabra
+	return a + b
+} 
+
+function int getNumbers ( ) {
+	return 0xA15 + 031 + 56
 }

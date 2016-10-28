@@ -1,8 +1,10 @@
 package Test;
 
 import tables.AttrTable;
+import tables.SymbolTable;
 import extra.SourceFile;
 import analizer.Token;
+import analizer.TokenType;
 import automata.DFA;
 import automata.FinalState;
 import automata.Match;
@@ -76,7 +78,7 @@ public class Test {
 		Symbol OC = 		new Symbol('*', Match.OTHER_CHAR);
 		Symbol CR = 		new Symbol('*', Match.CR);
 		Symbol carHex = 	new Symbol('*', Match.HEX_CHAR);
-		Symbol caracter = 	new Symbol('*', Match.CHAR);
+		Symbol caracter = 	new Symbol('*', Match.CHAR_EXCEPT_QUOTE);
 		Symbol digitNotZero = new Symbol('*', Match.DIGIT_EXCEPT_ZERO);
 		
 		Symbol[] alphabet = {
@@ -153,21 +155,20 @@ public class Test {
 			
 			
 			
-			
-		AttrTable tablaAtt = new AttrTable();
+		//Tabla palabras reservadas
+		AttrTable tablaPR = new AttrTable();
+		tablaPR.add("int");
+		tablaPR.add("function");
+		tablaPR.add("var");
+		tablaPR.add("return");
 		
-		tablaAtt.add("int");
-		tablaAtt.add("function");
-		tablaAtt.add("var");
-		tablaAtt.add("return");
-		
-			
+		//Tabla de simbolos
+		SymbolTable TS = new SymbolTable();
 		
 		//Automata AFD
 		DFA afd = new DFA(E0, matrix);
 		System.out.println(afd.toString() + "\n--------------------------------------------------------------");
 	
-		
 		////////////////////TEST////////////////////////////
 		
 		//Fichero Fuente
@@ -175,12 +176,14 @@ public class Test {
 		sf.open();
 				
 		//Analizador del lenguaje, cada lenguaje debe implementar su propia clase usando la interfaz LexicalAnalizer
-		JavascriptLexicalAnalizer analizer = new JavascriptLexicalAnalizer(sf, afd, tablaAtt);
+		JavascriptLexicalAnalizer analizer = new JavascriptLexicalAnalizer(sf, afd, tablaPR, TS);
 	
-		//Cada llamada devuelve un token o null si no hay token
+		//Cada llamada devuelve un token
 		Token t = null;
 		while((t = analizer.getNewToken()) != null){
 			System.out.println(t);
+			
+			if(t.getType() == TokenType.$) break;//EOF		
 		}
 		
 		sf.close();

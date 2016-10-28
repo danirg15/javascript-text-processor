@@ -15,5 +15,6 @@ public enum TokenType {
 	MENOR,
 	COMA,
 	EXCLA,
-	STRING
+	STRING,
+	$
 }
