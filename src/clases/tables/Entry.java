@@ -1,4 +1,4 @@
-package ST;
+package tables;
 
 public class Entry {
 	private String name;

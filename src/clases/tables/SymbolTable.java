@@ -1,4 +1,4 @@
-package ST;
+package tables;
 
 import java.util.HashMap;
 

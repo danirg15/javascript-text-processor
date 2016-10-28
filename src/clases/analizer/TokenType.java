@@ -1,11 +1,19 @@
 package analizer;
 
 public enum TokenType {
-	ID, CR, 
-	
-	CAD,
-	MUNICIPIO,
-	KM,
-	CARRETERA,
-	INCIDENCIA,
+	ID,
+	ENT,
+	PR,
+	LLAVE,
+	PARENT,
+	MAS,
+	MENOS,
+	ASIGN,
+	DOS_PUNTOS,
+	INTERR,
+	MAYOR,
+	MENOR,
+	COMA,
+	EXCLA,
+	STRING
 }

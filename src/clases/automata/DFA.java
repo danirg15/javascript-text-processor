@@ -27,8 +27,8 @@ public class DFA {
 	
 	public Transition getTransitionWithSymbol(State fromState, char c){
 		ArrayList<Transition> transitions = this.transitionMatrix.getTransitions(fromState);
-		
-		for(Transition t : transitions){
+				
+		for(Transition t : transitions){			
 			if(t.getSymbol().match(c)){
 				return t;
 			}

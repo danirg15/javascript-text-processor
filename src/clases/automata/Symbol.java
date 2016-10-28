@@ -38,8 +38,16 @@ public class Symbol {
 				result = true;
 				break;
 							
-			case CHAR_EXCEPT_QUOTE:
-				result = !(c == '"');
+			case CHAR:
+				result = true;
+				break;
+				
+			case HEX_CHAR:
+				result = isAnHexChar(c);
+				break;
+				
+			case DIGIT_EXCEPT_ZERO:
+				result =  c!='0' && isDigit(c);
 				break;
 		}
 		
@@ -86,6 +94,12 @@ public class Symbol {
 
 	private boolean isTab(char c){
 		return (int)c == 9;
+	}
+	
+	private boolean isAnHexChar(char c){
+		String s = String.valueOf(c);
+		String regex = "^[0-9A-F]$";
+		return s.matches(regex);
 	}
 	
 	
