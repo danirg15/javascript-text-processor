@@ -16,6 +16,8 @@ import automata.State;
 import automata.Transition;
 import ErrorModule.ErrorGen;
 
+
+
 public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 	private AttrTable tablePR;
 	private SymbolTable symbolTable;
@@ -36,7 +38,7 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 		Token token = null;
 		State currentState;
 		
-		int ascii = getSource().read();
+		int ascii = getSource().getCurrentChar();
 		if(ascii == -1)
 			return new Token(TokenType.$, null);
 		
@@ -64,54 +66,67 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 					break;
 					
 				case B: 
+					c = (char) getSource().read();
 					token = new Token(TokenType.LLAVE, "1");
 					break;
 			
 				case C:
+					c = (char) getSource().read();
 					token = new Token(TokenType.LLAVE, "2");
 					break;
 					
 				case D:
+					c = (char) getSource().read();
 					token = new Token(TokenType.PARENT, "1");
 					break;
 				
 				case E:
+					c = (char) getSource().read();
 					token = new Token(TokenType.PARENT, "2");
 					break;
 					
 				case F:
+					c = (char) getSource().read();
 					token = new Token(TokenType.COMA, null);
 					break;
 					
 				case G:
+					c = (char) getSource().read();
 					token = new Token(TokenType.EXCLA, null);
 					break;
 					
 				case H:
+					c = (char) getSource().read();
 					token = new Token(TokenType.MAYOR, null);
 					break;
 					
 				case I:
+					c = (char) getSource().read();
 					token = new Token(TokenType.MENOR, null);
 					break;
 					
 				case J:
+					c = (char) getSource().read();
 					token = new Token(TokenType.INTERR, null);
 					break;
 				
 				case K:
+					c = (char) getSource().read();
 					token = new Token(TokenType.DOS_PUNTOS, null);
 					break;
 					
 				case L:
+					c = (char) getSource().read();
 					token = new Token(TokenType.ASIGN, null);
 					break;
 					
 				case M:
+					c = (char) getSource().read();
 					token = new Token(TokenType.MENOS, null);
 					break;
 					
 				case N:
+					c = (char) getSource().read();
 					token = new Token(TokenType.MAS, null);
 					break;
 					
@@ -126,6 +141,7 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 					break;
 				
 				case Q:
+					c = (char) getSource().read();
 					token = new Token(TokenType.ENT, number+"");
 					break;
 				

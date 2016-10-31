@@ -174,6 +174,7 @@ public class Test {
 		//Fichero Fuente
 		SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/programa.js");
 		sf.open();
+		sf.read();
 				
 		//Analizador del lenguaje, cada lenguaje debe implementar su propia clase usando la interfaz LexicalAnalizer
 		JavascriptLexicalAnalizer analizer = new JavascriptLexicalAnalizer(sf, afd, tablaPR, TS);

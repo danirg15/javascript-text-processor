@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SourceFile {
-
+	private int currentChar;
 	private boolean fileOpened;
 	private String path;
 	private FileInputStream fileInput;
@@ -29,12 +29,17 @@ public class SourceFile {
 		if(!this.fileOpened)
 			throw new Exception("El fichero fuente no esta abierto!");
 		
-		int c = fileInput.read();
-	
+		this.currentChar = fileInput.read();
+
 		//System.out.println("Read: "+(char)c +"("+c+")");
-		return c;
+		return currentChar;
 	}
 	
+	
+	public int getCurrentChar() {
+		return currentChar;
+	}
+
 	public void close() {
 		try {
 			this.fileInput.close();
