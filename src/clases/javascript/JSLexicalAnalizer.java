@@ -1,4 +1,4 @@
-package Test;
+package javascript;
 
 import java.util.HashMap;
 
@@ -17,16 +17,15 @@ import automata.Transition;
 import ErrorModule.ErrorGen;
 
 
-
-public class JavascriptLexicalAnalizer extends LexicalAnalizer{
+public class JSLexicalAnalizer extends LexicalAnalizer{
 	private AttrTable tablePR;
-	private SymbolTable symbolTable;
+	private SymbolTable symbolsTable;
 	private HashMap<String, Integer> hex;
 	
-	public JavascriptLexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR, SymbolTable symbolTable) {
+	public JSLexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR, SymbolTable symbolsTable) {
 		super(source, automaton);
 		this.tablePR = tablePR;
-		this.symbolTable = symbolTable;
+		this.symbolsTable = symbolsTable;
 		this.hex = HexadecimalValues.get();
 	}
 
@@ -36,16 +35,14 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 		String concat = "";
 		int number = 0;
 		Token token = null;
-		State currentState;
+		State currentState = getAutomaton().getCurrentState();
 		
 		int ascii = getSource().getCurrentChar();
 		if(ascii == -1)
 			return new Token(TokenType.$, null);
 		
 		char c = (char)ascii;
-		
-		currentState = getAutomaton().getCurrentState();
-		
+				
 		while(!(currentState instanceof FinalState)){			
 			//Obtiene la que seria la proxima transicion desde el estado actual
 			Transition tran = getAutomaton().getTransitionWithSymbol(currentState, c);
@@ -66,68 +63,79 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 					break;
 					
 				case B: 
+					concat += c;
 					c = (char) getSource().read();
-					token = new Token(TokenType.LLAVE, "1");
 					break;
 			
 				case C:
+					token = new Token(TokenType.AND, null);
 					c = (char) getSource().read();
-					token = new Token(TokenType.LLAVE, "2");
 					break;
 					
 				case D:
+					concat = c + "";
 					c = (char) getSource().read();
-					token = new Token(TokenType.PARENT, "1");
 					break;
 				
 				case E:
+					concat += c;
 					c = (char) getSource().read();
-					token = new Token(TokenType.PARENT, "2");
 					break;
 					
-				case F:
-					c = (char) getSource().read();
-					token = new Token(TokenType.COMA, null);
+				case F:					
+					//comprueba tabla de atributos y simbolo
+					//Falta completar
+					int index;
+					if((index = this.tablePR.find(concat)) != -1){
+						token = new Token(TokenType.PR, "TS("+index+") "+ concat);
+					}
+					else if(this.symbolsTable.search(concat) != null){
+						//locallizar identificadores
+						token = new Token(TokenType.ID, concat);
+					}
+					else{
+						this.symbolsTable.add(new Entry(concat));
+						token = new Token(TokenType.ID, concat);
+					}
+					
+					
 					break;
 					
 				case G:
+					number = Integer.valueOf(c+"");
 					c = (char) getSource().read();
-					token = new Token(TokenType.EXCLA, null);
 					break;
 					
 				case H:
+					number = number * 10 + Integer.valueOf(c + "");		
 					c = (char) getSource().read();
-					token = new Token(TokenType.MAYOR, null);
 					break;
 					
 				case I:
-					c = (char) getSource().read();
-					token = new Token(TokenType.MENOR, null);
+					token = new Token(TokenType.ENT, number+"");
 					break;
 					
 				case J:
+					number = 0;
 					c = (char) getSource().read();
-					token = new Token(TokenType.INTERR, null);
 					break;
 				
 				case K:
-					c = (char) getSource().read();
-					token = new Token(TokenType.DOS_PUNTOS, null);
+					token = new Token(TokenType.ENT, 0 + "");
 					break;
 					
 				case L:
+					number = Integer.valueOf(hex.get(c+""));
 					c = (char) getSource().read();
-					token = new Token(TokenType.ASIGN, null);
 					break;
 					
 				case M:
+					number = number * 16 + Integer.valueOf(hex.get(c+""));
 					c = (char) getSource().read();
-					token = new Token(TokenType.MENOS, null);
 					break;
 					
 				case N:
-					c = (char) getSource().read();
-					token = new Token(TokenType.MAS, null);
+					token = new Token(TokenType.ENT, number + "");
 					break;
 					
 				case O:
@@ -136,79 +144,87 @@ public class JavascriptLexicalAnalizer extends LexicalAnalizer{
 					break;
 				
 				case P:
-					number = number * 10 + Integer.valueOf(c+"");
-					c = (char) getSource().read();
-					break;
-				
-				case Q:
-					c = (char) getSource().read();
-					token = new Token(TokenType.ENT, number+"");
-					break;
-				
-				case R:
-					concat = String.valueOf(c);  
-					c = (char) getSource().read();
-					break;
-				
-				case S:
-					concat += c;
-					c = (char) getSource().read();
-					break;
-					
-				case T:
-					//comprueba tabla de atributos y simbolo
-					//Falta completar
-					int index;
-					if((index = this.tablePR.find(concat)) != -1){
-						token = new Token(TokenType.PR, "TS("+index+") "+ concat);
-					}
-					else if(this.symbolTable.search(concat) != null){
-						//locallizar identificadores
-						token = new Token(TokenType.ID, concat);
-					}
-					else{
-						this.symbolTable.add(new Entry(concat));
-						token = new Token(TokenType.ID, concat);
-					}
-					
-					break;
-					
-				case U: 
-					number = Integer.valueOf(c+"");
-					c = (char) getSource().read();
-					break;
-				
-				case UU:
 					number = number * 8 + Integer.valueOf(c+"");
 					c = (char) getSource().read();
 					break;
 				
-				case V:
-					token = new Token(TokenType.ENT, number+"");
+				case Q:
+					token = new Token(TokenType.ENT, number + "");
+					break;
+				
+				case R:
+					token = new Token(TokenType.LLAVE, "1");
+					c = (char) getSource().read();
+					break;
+				
+				case S:
+					token = new Token(TokenType.LLAVE, "2");
 					c = (char) getSource().read();
 					break;
 					
-				case XX:
-					number = Integer.valueOf(hex.get(c+""));
+				case T:
+					token = new Token(TokenType.PARENT, "1");
+					c = (char) getSource().read();
+					break;
+					
+				case U: 
+					token = new Token(TokenType.PARENT, "2");
+					c = (char) getSource().read();
+					break;
+					
+				case V:
+					token = new Token(TokenType.MAS, null);
 					c = (char) getSource().read();
 					break;
 					
 				case W:
-					number = number * 16 + Integer.valueOf(hex.get(c+""));
+					token = new Token(TokenType.MENOS, null);
 					c = (char) getSource().read();
 					break;
 					
 				case X:
-					token = new Token(TokenType.ENT, number+"");
-					break;
-					
-				case AA:
-					concat += String.valueOf(c);
+					token = new Token(TokenType.ASIGN, null);
 					c = (char) getSource().read();
 					break;
 					
-				case AB:
+				case Y:
+					token = new Token(TokenType.DOS_PUNTOS, null);
+					c = (char) getSource().read();
+					break;
+					
+				case Z:
+					token = new Token(TokenType.INTERR, null);
+					c = (char) getSource().read();
+					break;
+					
+				case AA:
+					token = new Token(TokenType.MAYOR, null);
+					c = (char) getSource().read();
+					break;
+					
+				case BB:
+					token = new Token(TokenType.MENOR, null);
+					c = (char) getSource().read();
+					break;
+					
+				case CC:
+					token = new Token(TokenType.COMA, null);
+					c = (char) getSource().read();
+					break;
+					
+				case DD:
+					token = new Token(TokenType.EXCLA, null);
+					c = (char) getSource().read();
+					break;
+					
+				case EE:
+					token = new Token(TokenType.CR, null);
+					c = (char) getSource().read();
+					break;
+					
+				case FF:
 					token = new Token(TokenType.STRING, concat);
+					c = (char) getSource().read();
 					break;
 									
 			}

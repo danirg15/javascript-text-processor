@@ -16,5 +16,7 @@ public enum TokenType {
 	COMA,
 	EXCLA,
 	STRING,
+	AND,
+	CR,
 	$
 }

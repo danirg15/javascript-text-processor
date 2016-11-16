@@ -27,7 +27,7 @@ public class Symbol {
 				break;	
 			
 			case DELIM:
-				result = (isBlank(c) || isBreakLine(c) || isTab(c));
+				result = (isBlank(c) || isTab(c));
 				break;	
 				
 			case CR:
