@@ -1,4 +1,4 @@
-package analizer;
+package lexicalAnalizer;
 
 import tables.AttrTable;
 import tables.SymbolTable;

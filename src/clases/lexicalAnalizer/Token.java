@@ -1,4 +1,4 @@
-package analizer;
+package lexicalAnalizer;
 
 
 public class Token {
@@ -16,6 +16,13 @@ public class Token {
 
 	public String getAttr() {
 		return attr;
+	}
+	
+	public boolean equals(Token token){
+		if(this.type == token.type && this.attr == token.attr){
+			return true;
+		}
+		return false;
 	}
 
 	@Override

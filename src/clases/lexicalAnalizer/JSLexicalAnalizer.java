@@ -1,4 +1,4 @@
-package javascript;
+package lexicalAnalizer;
 
 import java.util.HashMap;
 
@@ -7,9 +7,6 @@ import tables.Entry;
 import tables.SymbolTable;
 import extra.HexadecimalValues;
 import extra.SourceFile;
-import analizer.LexicalAnalizer;
-import analizer.Token;
-import analizer.TokenType;
 import automata.DFA;
 import automata.FinalState;
 import automata.State;
