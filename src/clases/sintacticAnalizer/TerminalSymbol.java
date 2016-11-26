@@ -3,7 +3,7 @@ package sintacticAnalizer;
 import lexicalAnalizer.Token;
 
 
-public class TerminalSymbol implements RuleSymbol {
+public class TerminalSymbol implements GrammaticalSymbol {
 	private Token token;
 	
 	public TerminalSymbol(Token token){
@@ -16,9 +16,27 @@ public class TerminalSymbol implements RuleSymbol {
 	
 	public boolean equals(Object o){
 		if((o instanceof TerminalSymbol)  &&
-			this.token.equals(((TerminalSymbol)o).getToken())){
+				this.token.equals(((TerminalSymbol)o).getToken())){
 			return true;
 		}
 		return false;
 	}
+	
+	public boolean match(Object o){
+		if((o instanceof TerminalSymbol)  &&
+				this.token.match(((TerminalSymbol)o).getToken())){
+			return true;
+		}
+		return false;
+	}
+	
+
+	
+
+	@Override
+	public String toString() {
+		return token.getType().name();
+	}
+	
+	
 }

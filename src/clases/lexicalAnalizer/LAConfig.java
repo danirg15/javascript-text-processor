@@ -1,7 +1,5 @@
 package lexicalAnalizer;
 
-import tables.AttrTable;
-import tables.SymbolTable;
 import automata.DFA;
 import automata.FinalState;
 import automata.Match;

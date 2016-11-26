@@ -1,6 +1,6 @@
 package sintacticAnalizer;
 
-public class NonTerminalSymbol implements RuleSymbol {
+public class NonTerminalSymbol implements GrammaticalSymbol {
 	private String symbol;
 
 	public NonTerminalSymbol(String symbol) {
@@ -11,4 +11,20 @@ public class NonTerminalSymbol implements RuleSymbol {
 		return this.symbol;
 	}
 
+	public String getHash(){
+		return symbol;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return symbol;
+	}
+
+	@Override
+	public boolean match(Object object) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

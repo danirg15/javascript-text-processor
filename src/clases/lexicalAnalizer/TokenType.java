@@ -18,5 +18,6 @@ public enum TokenType {
 	STRING,
 	AND,
 	CR,
-	$
+	$,
+	LAMBDA
 }

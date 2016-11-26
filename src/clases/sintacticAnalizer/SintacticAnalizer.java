@@ -2,68 +2,86 @@ package sintacticAnalizer;
 
 import java.util.Stack;
 
+import lexicalAnalizer.LexicalAnalizer;
 import lexicalAnalizer.Token;
 import lexicalAnalizer.TokenType;
 
 public class SintacticAnalizer {
-	private Stack<RuleSymbol> stack;
-	private LL1Table table;
-	private Token tokens[];
+	private Stack<GrammaticalSymbol> stack;
+	private LL1Table tableLL1;
+	private LexicalAnalizer LexA;
 	private Token EOFToken;
+	private String parse = "";
 	
-	public SintacticAnalizer(LL1Table table, Token tokens[]){//? Nos pasan todos los tokens juntos. No deberia el analizador
-															//ir pidiendo uno a uno
-		this.table = table;
-		this.tokens = tokens;
+	public SintacticAnalizer(NonTerminalSymbol axiom, LL1Table tableLL1, LexicalAnalizer LexA){
+		this.tableLL1 = tableLL1;
+		this.LexA = LexA;
 		this.EOFToken = new Token(TokenType.$, null);
 		
-		this.stack = new Stack<RuleSymbol>();
+		this.stack = new Stack<GrammaticalSymbol>();
 		this.stack.push(new TerminalSymbol(EOFToken));
+		this.stack.push(axiom);
 	}
 	
-	public void analize(){
-		int tokensInx = 0;
-		RuleSymbol a;
-		RuleSymbol p = new TerminalSymbol(this.tokens[tokensInx]);
-		RuleSymbol X = null;
-		RuleSymbol EOF = new TerminalSymbol(EOFToken);
+	public void analize() throws Exception{
+		GrammaticalSymbol a = null;
+		GrammaticalSymbol p = new TerminalSymbol(this.LexA.getNewToken());
+		GrammaticalSymbol X = this.stack.lastElement();
+		GrammaticalSymbol EOF = new TerminalSymbol(EOFToken); //$
 		
+		//Algoritmo http://www-lt.ls.fi.upm.es/compiladores/procesadores/Documentos/ll.pdf
 		while(!X.equals(EOF)) {
-			X = this.stack.lastElement();
 			a = p;
 			
 			if(X instanceof TerminalSymbol){
-				if(X.equals(a)){
+				if(((TerminalSymbol) X).match(a)){
 					this.stack.pop();
-					tokensInx++;
-					p = new TerminalSymbol(this.tokens[tokensInx]);
+					p = new TerminalSymbol(this.LexA.getNewToken());//Next Token
 				}
 				else{
 					System.err.println("Error semantico 1");
+					System.exit(-1);
 				}
 			}
 			else{
-				Rule rule = this.table.getRule((NonTerminalSymbol) X, a);
+				SintacticRule rule = this.tableLL1.getRule((NonTerminalSymbol) X, (TerminalSymbol) a);
+				
 				
 				if(rule != null){
+					System.out.print(rule);
+					this.parse += " " + rule.getId();
+					
 					this.stack.pop();
-					RuleSymbol derivations[] = rule.getDerivation();
-					for(int i = derivations.length-1; i>=0; i++){
-						this.stack.push(derivations[i]);
+					
+					//Mete en la pila los simbolos reversamente
+					GrammaticalSymbol derivations[] = rule.getDerivation();
+					for(int i = derivations.length-1; i>=0; i--){	
+						GrammaticalSymbol s = derivations[i];
+						
+						if(s instanceof TerminalSymbol &&
+						  ((TerminalSymbol)s).getToken().getType() == TokenType.LAMBDA) {
+							continue;
+						}
+						
+						this.stack.push(s);
 					}
 				
 				}
 				else{
 					System.err.println("Error semantico 2");
+					System.exit(-1);
 				}
 			}
+			
+			X = this.stack.lastElement();
 		}//while
 		
-		if(X.equals(EOF)){
-			System.out.println("Acepta");
+		if(a.equals(EOF)){
+			System.out.println("Acepta, Parse: "+parse);
 		}
 		else{
 			System.out.println("Error, No Acepta");
+			System.exit(-1);
 		}
 	}
 	

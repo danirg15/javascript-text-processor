@@ -1,7 +1,6 @@
 package lexicalAnalizer;
 
-import tables.AttrTable;
-import tables.SymbolTable;
+
 import extra.SourceFile;
 import automata.DFA;
 

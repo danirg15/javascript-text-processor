@@ -11,7 +11,6 @@ import automata.DFA;
 import automata.FinalState;
 import automata.State;
 import automata.Transition;
-import ErrorModule.ErrorGen;
 
 
 public class JSLexicalAnalizer extends LexicalAnalizer{

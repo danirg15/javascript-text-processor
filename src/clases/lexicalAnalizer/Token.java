@@ -19,12 +19,35 @@ public class Token {
 	}
 	
 	public boolean equals(Token token){
-		if(this.type == token.type && this.attr == token.attr){
+	    if(this.type == token.type && this.attr == token.attr){
 			return true;
 		}
 		return false;
 	}
-
+	
+	public boolean match(Token token){
+		if(type == TokenType.ID){
+			return true;
+		}
+		else if(this.type == token.type && this.attr == token.attr){
+			return true;
+		}
+		return false;
+	}
+	
+	public String getHash(){	
+		if(type == TokenType.ID){
+			return type + "";
+		}
+		else if(attr != null){
+			return type+attr;
+		}
+		else{
+			return type  +"";
+		}	
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "Token <" + type + ", " + attr + ">";
