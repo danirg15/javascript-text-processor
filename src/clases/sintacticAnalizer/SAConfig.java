@@ -20,6 +20,9 @@ public class SAConfig {
 		TerminalSymbol id = new TerminalSymbol(new Token(TokenType.ID, null));
 		TerminalSymbol mas = new TerminalSymbol(new Token(TokenType.MAS, null));
 		TerminalSymbol eof = new TerminalSymbol(new Token(TokenType.$, null));
+		TerminalSymbol par0 = new TerminalSymbol(new Token(TokenType.PARENT, "1"));
+		TerminalSymbol par1 = new TerminalSymbol(new Token(TokenType.PARENT, "2"));
+		
 		
 		GrammaticalSymbol r1der[] = {T,Eprima}; 
 		SintacticRule r1 = new SintacticRule(1, E, r1der); //E -> TE'
@@ -42,6 +45,21 @@ public class SAConfig {
 		GrammaticalSymbol r7der[] = {lambda}; 
 		SintacticRule r7 = new SintacticRule(7, Tprima, r7der);//T' -> lambda
 		
+		GrammaticalSymbol r8der[] = {T,Eprima}; 
+		SintacticRule r8 = new SintacticRule(8, E, r8der);//E -> TE'
+		
+		GrammaticalSymbol r9der[] = {F,Tprima}; 
+		SintacticRule r9 = new SintacticRule(9, T, r9der);//T -> FT'
+		
+		GrammaticalSymbol r10der[] = {par0,E,par1}; 
+		SintacticRule r10 = new SintacticRule(10, F, r10der);//F -> (E)
+		
+		GrammaticalSymbol r11der[] = {lambda}; 
+		SintacticRule r11 = new SintacticRule(11, Eprima, r11der);//E' -> lambda
+		
+		GrammaticalSymbol r12der[] = {lambda}; 
+		SintacticRule r12 = new SintacticRule(12, Tprima, r12der);//T' -> lambda
+		
 		table.addRule(E, id, r1);
 		
 		
@@ -53,6 +71,12 @@ public class SAConfig {
 		
 		table.addRule(Eprima, eof, r6);
 		table.addRule(Tprima, eof, r7);
+		
+		table.addRule(E, par0, r8);
+		table.addRule(T, par0, r9);
+		table.addRule(F, par0, r10);
+		table.addRule(Eprima, par1, r11);
+		table.addRule(Tprima, par1, r12);
 		
 		
 		return table;

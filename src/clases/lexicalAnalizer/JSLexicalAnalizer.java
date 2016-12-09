@@ -83,7 +83,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					//Falta completar
 					int index;
 					if((index = this.tablePR.find(concat)) != -1){
-						token = new Token(TokenType.PR, "TS("+index+") "+ concat);
+						token = new Token(TokenType.PR, index+"");
 					}
 					else if(this.symbolsTable.search(concat) != null){
 						//locallizar identificadores

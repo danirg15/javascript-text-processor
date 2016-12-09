@@ -44,16 +44,17 @@ public class SintacticAnalizer {
 				}
 			}
 			else{
+				
 				SintacticRule rule = this.tableLL1.getRule((NonTerminalSymbol) X, (TerminalSymbol) a);
 				
-				
+			
 				if(rule != null){
 					System.out.print(rule);
 					this.parse += " " + rule.getId();
 					
 					this.stack.pop();
 					
-					//Mete en la pila los simbolos reversamente
+					//Mete en la pila los simbolos inversamente
 					GrammaticalSymbol derivations[] = rule.getDerivation();
 					for(int i = derivations.length-1; i>=0; i--){	
 						GrammaticalSymbol s = derivations[i];

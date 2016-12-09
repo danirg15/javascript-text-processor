@@ -35,7 +35,11 @@ public class TerminalSymbol implements GrammaticalSymbol {
 
 	@Override
 	public String toString() {
-		return token.getType().name();
+		if(token.getAttr() == null) {
+			return token.getType().name();
+		}
+		
+		return token.getType().name() +"("+ token.getAttr()+")";
 	}
 	
 	

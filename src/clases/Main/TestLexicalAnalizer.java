@@ -14,16 +14,18 @@ public class TestLexicalAnalizer {
 	public static void main(String args[]) throws Exception{
 		//TablaAtributos -> palabras reservadas
 				AttrTable tablaPR = new AttrTable();
-				tablaPR.add("int");
-				tablaPR.add("function");
-				tablaPR.add("var");
-				tablaPR.add("return");
-				tablaPR.add("bool");
-				tablaPR.add("char");
-				tablaPR.add("write");
-				tablaPR.add("prompt");
-				tablaPR.add("switch");
-				tablaPR.add("case");
+				tablaPR.add("int");//0
+				tablaPR.add("function");//1
+				tablaPR.add("var");//2
+				tablaPR.add("return");//3
+				tablaPR.add("char");//4
+				tablaPR.add("write");//5
+				tablaPR.add("prompt");//6
+				tablaPR.add("switch");//7
+				tablaPR.add("case");//8
+				tablaPR.add("bool");//9
+				tablaPR.add("default");//10
+				tablaPR.add("if");//11
 				
 				//Tabla de simbolos
 				SymbolTable TS = new SymbolTable();

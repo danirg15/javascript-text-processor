@@ -1,1 +1,4 @@
-num1 + num2
+function min()
+{
+	retusrn "hello"
+}

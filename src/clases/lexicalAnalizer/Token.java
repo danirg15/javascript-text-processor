@@ -26,17 +26,21 @@ public class Token {
 	}
 	
 	public boolean match(Token token){
-		if(type == TokenType.ID){
+		if(type == TokenType.ID || type == TokenType.STRING || type == TokenType.ENT){
 			return true;
 		}
-		else if(this.type == token.type && this.attr == token.attr){
-			return true;
+		
+		else if( (this.type == token.type && this.attr == null && token.attr == null) ||
+				 (this.type == token.type && this.attr.equals(token.attr)) ){
+			
+			return true;	
 		}
+		
 		return false;
 	}
 	
 	public String getHash(){	
-		if(type == TokenType.ID){
+		if(type == TokenType.ID || type == TokenType.STRING || type == TokenType.ENT){
 			return type + "";
 		}
 		else if(attr != null){
