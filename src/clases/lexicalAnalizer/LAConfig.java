@@ -46,10 +46,11 @@ public class LAConfig {
 		FinalState 	  E29 = new FinalState("E29");
 		FinalState 	  E30 = new FinalState("E30");
 		FinalState 	  E31 = new FinalState("E31");
+		FinalState 	  E32 = new FinalState("E32");
 		
 		NonFinalState[] estadosNoFinales = {E0, E1, E2, E3, E4, E5, E6, E7, E8, E9, E10};
 		FinalState[] estadosFinales = {
-			E11,E12,E13,E14,E15,E16,E17,E18,E19,E20,E21,E22,E23,E24,E25,E26,E27,E28,E29,E30,E31
+			E11,E12,E13,E14,E15,E16,E17,E18,E19,E20,E21,E22,E23,E24,E25,E26,E27,E28,E29,E30,E31,E32
 		};
 		
 		//Alfabeto
@@ -72,6 +73,7 @@ public class LAConfig {
 		Symbol cero = 		new Symbol('0', Match.STD);
 		Symbol x = 			new Symbol('x', Match.STD);
 		Symbol ampersand = 	new Symbol('&', Match.STD);
+		Symbol punto_coma = new Symbol(';', Match.STD);
 
 		Symbol del = 		new Symbol('*', Match.DELIM);
 		Symbol l = 			new Symbol('*', Match.LETTER); 
@@ -79,14 +81,17 @@ public class LAConfig {
 		Symbol OC = 		new Symbol('*', Match.OTHER_CHAR);
 		Symbol CR = 		new Symbol('*', Match.CR);
 		Symbol carHex = 	new Symbol('*', Match.HEX_CHAR);
-		Symbol caracter = 	new Symbol('*', Match.CHAR_EXCEPT_QUOTE);
+		Symbol caracter_excepto_comilla = 	new Symbol('*', Match.CHAR_EXCEPT_QUOTE);
+		Symbol caracter = 	new Symbol('*', Match.ALL_CHARS);
 		Symbol digitNotZero = new Symbol('*', Match.DIGIT_EXCEPT_ZERO);
+		
+		
 		
 		Symbol[] alphabet = {
 				llave1,llave2,parent1,parent2,coma,exclam,mayor,menor,
 				interr,dos_puntos,asign,mas,menos,barra,comilla,
 				underscore, del, l, d, OC, CR, cero, x, carHex, caracter,
-				digitNotZero, ampersand
+				caracter_excepto_comilla, digitNotZero, ampersand, punto_coma
 		};
 		
 		//Matriz de transiciones
@@ -122,6 +127,8 @@ public class LAConfig {
 			matrix.addTransition(new Transition(E0, exclam, E23, SemanticAction.DD));
 			//salto de linea
 			matrix.addTransition(new Transition(E0, CR, E24, SemanticAction.EE));
+			//punto y coma
+			matrix.addTransition(new Transition(E0, punto_coma, E32, SemanticAction.GG));
 			
 			//and
 			matrix.addTransition(new Transition(E0, ampersand, E10, SemanticAction.A));
@@ -156,12 +163,13 @@ public class LAConfig {
 			//Comentario
 			matrix.addTransition(new Transition(E0, barra, E7, SemanticAction.A));
 			matrix.addTransition(new Transition(E7, barra, E8, SemanticAction.A));
-			matrix.addTransition(new Transition(E8, CR, E0, SemanticAction.A));
+			matrix.addTransition(new Transition(E8, CR, E24, SemanticAction.EE));
+			//matrix.addTransition(new Transition(E8, CR, E0, SemanticAction.EE));
 			matrix.addTransition(new Transition(E8, caracter, E8, SemanticAction.A));
 			
 			//String
 			matrix.addTransition(new Transition(E0, comilla, E9, SemanticAction.A));
-			matrix.addTransition(new Transition(E9, caracter, E9, SemanticAction.B));
+			matrix.addTransition(new Transition(E9, caracter_excepto_comilla, E9, SemanticAction.B));
 			matrix.addTransition(new Transition(E9, comilla, E25, SemanticAction.FF));
 			
 			

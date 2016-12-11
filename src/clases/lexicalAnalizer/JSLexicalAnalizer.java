@@ -24,6 +24,8 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 		this.symbolsTable = symbolsTable;
 		this.hex = HexadecimalValues.get();
 	}
+	
+
 
 	@Override
 	public Token getNewToken() throws Exception {			
@@ -55,7 +57,13 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 			//Ejecuta Accion Semantica
 			switch(tran.getSemanticAction()){
 				case A:
-					c = (char) getSource().read();
+					int tmp =  getSource().read();
+					
+					if(tmp == -1)
+						return new Token(TokenType.$, null);
+					
+					c = (char) tmp;
+					
 					break;
 					
 				case B: 
@@ -108,6 +116,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					break;
 					
 				case I:
+					checkNumberOverflow(number);
 					token = new Token(TokenType.ENT, number+"");
 					break;
 					
@@ -131,6 +140,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					break;
 					
 				case N:
+					checkNumberOverflow(number);
 					token = new Token(TokenType.ENT, number + "");
 					break;
 					
@@ -145,6 +155,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					break;
 				
 				case Q:
+					checkNumberOverflow(number);
 					token = new Token(TokenType.ENT, number + "");
 					break;
 				
@@ -222,11 +233,22 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					token = new Token(TokenType.STRING, concat);
 					c = (char) getSource().read();
 					break;
-									
+				
+				case GG: 
+					token = new Token(TokenType.PUNTO_COMA, null);
+					c = (char) getSource().read();
+					break;				
 			}
 		}
 	
 		return token;
+	}
+	
+	private void checkNumberOverflow(int number){
+		if(number > 32767){
+			System.err.println("El numero "+ number + " no se puede representar con 2 bytes");
+			System.exit(-1);
+		}
 	}
 	
 

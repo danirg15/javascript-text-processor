@@ -23,7 +23,7 @@ public class TestSintacticAnalizer {
 		tablaPR.add("function");//1
 		tablaPR.add("var");//2
 		tablaPR.add("return");//3
-		tablaPR.add("char");//4
+		tablaPR.add("chars");//4
 		tablaPR.add("write");//5
 		tablaPR.add("prompt");//6
 		tablaPR.add("switch");//7
@@ -31,6 +31,7 @@ public class TestSintacticAnalizer {
 		tablaPR.add("bool");//9
 		tablaPR.add("default");//10
 		tablaPR.add("if");//11
+		tablaPR.add("break");//12
 		
 		//Tabla de simbolos
 		SymbolTable TS = new SymbolTable();

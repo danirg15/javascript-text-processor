@@ -36,6 +36,7 @@ public class SAConfig2 {
 		NonTerminalSymbol W = 		new NonTerminalSymbol("W");
 		NonTerminalSymbol N = 		new NonTerminalSymbol("N");
 		NonTerminalSymbol Nprima = 	new NonTerminalSymbol("N'");
+		NonTerminalSymbol I = 		new NonTerminalSymbol("I");
 		
 	
 		TerminalSymbol lambda = 	new TerminalSymbol(new Token(TokenType.LAMBDA, null));
@@ -56,6 +57,7 @@ public class SAConfig2 {
 		TerminalSymbol and = 		new TerminalSymbol(new Token(TokenType.AND, null));
 		TerminalSymbol dos_puntos = new TerminalSymbol(new Token(TokenType.DOS_PUNTOS, null));
 		TerminalSymbol interr = 	new TerminalSymbol(new Token(TokenType.INTERR, null));
+		TerminalSymbol punto_coma = new TerminalSymbol(new Token(TokenType.PUNTO_COMA, null));
 		
 		TerminalSymbol int_ = 		new TerminalSymbol(new Token(TokenType.PR, "0"));
 		TerminalSymbol function_ = 	new TerminalSymbol(new Token(TokenType.PR, "1"));
@@ -69,6 +71,7 @@ public class SAConfig2 {
 		TerminalSymbol bool_ = 		new TerminalSymbol(new Token(TokenType.PR, "9"));
 		TerminalSymbol default_ = 	new TerminalSymbol(new Token(TokenType.PR, "10"));
 		TerminalSymbol if_ = 		new TerminalSymbol(new Token(TokenType.PR, "11"));
+		TerminalSymbol break_ = 	new TerminalSymbol(new Token(TokenType.PR, "12"));
 		
 		
 		
@@ -76,7 +79,6 @@ public class SAConfig2 {
 		
 		
 		
-	
 		//P
 		GrammaticalSymbol r4der[] = {lambda}; 
 		SintacticRule r4 = new SintacticRule(4, P, r4der); //P -> lambda
@@ -217,6 +219,7 @@ public class SAConfig2 {
 		table.addRule(Eprima, and, r24);
 		table.addRule(Eprima, CR_, r25);
 		table.addRule(Eprima, coma, r25);
+		table.addRule(Eprima, punto_coma, r25);
 		
 		//R
 		GrammaticalSymbol r26der[] = {U, Rprima}; 
@@ -239,6 +242,7 @@ public class SAConfig2 {
 		table.addRule(Rprima, coma, r27);
 		table.addRule(Rprima, and, r27);
 		table.addRule(Rprima, CR_, r27);
+		table.addRule(Rprima, punto_coma, r27);
 		
 		
 		//U
@@ -269,6 +273,7 @@ public class SAConfig2 {
 		table.addRule(Uprima, and, r32);
 		table.addRule(Uprima, mayor, r32);
 		table.addRule(Uprima, coma, r32);
+		table.addRule(Uprima, punto_coma, r32);
 		
 		
 		//V
@@ -430,8 +435,8 @@ public class SAConfig2 {
 		table.addRule(W, case_, r41);
 		
 		//N 
-		GrammaticalSymbol r42der[] = {case_, entero, dos_puntos, S, Z, Nprima}; 
-		SintacticRule r42 = new SintacticRule(42, N, r42der); //N -> case entero : S Z N’
+		GrammaticalSymbol r42der[] = {case_, entero, dos_puntos, S, I, Z, Nprima}; 
+		SintacticRule r42 = new SintacticRule(42, N, r42der); //N -> case entero : S I Z N’
 
 		table.addRule(N, case_, r42);
 	
@@ -444,7 +449,16 @@ public class SAConfig2 {
 		
 		table.addRule(Nprima, case_, r43);
 		table.addRule(Nprima, default_, r44);
-
+		
+		//I
+		GrammaticalSymbol r58der[] = {punto_coma, break_}; 
+		SintacticRule r58 = new SintacticRule(58, I, r58der); //I -> ; break 
+		
+		GrammaticalSymbol r59der[] = {lambda}; 
+		SintacticRule r59 = new SintacticRule(59, I, r59der); //I -> lambda		
+		
+		table.addRule(I, CR_, r59);
+		table.addRule(I, punto_coma, r58);
 		
 		
 		

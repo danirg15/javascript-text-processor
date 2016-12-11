@@ -19,5 +19,6 @@ public enum TokenType {
 	AND,
 	CR,
 	$,
-	LAMBDA
+	LAMBDA,
+	PUNTO_COMA
 }

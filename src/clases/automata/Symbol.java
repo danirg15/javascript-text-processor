@@ -42,6 +42,10 @@ public class Symbol {
 				result = (c != '"');
 				break;
 				
+			case ALL_CHARS:
+				result = true;
+				break;
+				
 			case HEX_CHAR:
 				result = isAnHexChar(c);
 				break;
