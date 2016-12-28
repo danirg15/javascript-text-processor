@@ -24,9 +24,8 @@ public class TestLexicalAnalizer {
 				tablaPR.add("switch");//7
 				tablaPR.add("case");//8
 				tablaPR.add("bool");//9
-				tablaPR.add("default");//10
-				tablaPR.add("if");//11
-				tablaPR.add("break");//12
+				tablaPR.add("if");//10
+				tablaPR.add("break");//11
 				
 				//Tabla de simbolos
 				SymbolTable TS = new SymbolTable();
@@ -35,9 +34,6 @@ public class TestLexicalAnalizer {
 				DFA afd = LAConfig.get();
 				
 				
-				//sSystem.out.println(afd.toString() + "\n--------------------------------------------------------------");
-			
-				////////////////////TEST////////////////////////////
 				
 				//Fichero Fuente
 				SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/programa.js");

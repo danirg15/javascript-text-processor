@@ -1,0 +1,2906 @@
+<ID, a>
+<ASIGN, >
+<ID, fun>
+<PARENT, 1>
+<ID, a>
+<COMA, >
+<ID, v>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<ID, a>
+<ASIGN, >
+<ID, fun>
+<PARENT, 1>
+<ID, a>
+<COMA, >
+<ID, v>
+<PARENT, 2>
+<$, >
+<ID, a>
+<ASIGN, >
+<ID, fun>
+<PARENT, 1>
+<ID, a>
+<COMA, >
+<ID, v>
+<PARENT, 2>
+<CR, >
+<$, >
+<ID, a>
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<$, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, a>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, c>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, a>
+<MAS, >
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Pon tu nombre>
+<PARENT, 2>
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, c>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Hola, >
+<PARENT, 2>
+<CR, >
+<CR, >
+<$, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, a>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, c>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, a>
+<MAS, >
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Pon tu nombre>
+<PARENT, 2>
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, c>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Hola, >
+<PARENT, 2>
+<CR, >
+<CR, >
+<$, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, a>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, c>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, a>
+<MAS, >
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Pon tu nombre>
+<PARENT, 2>
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, c>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Hola, >
+<PARENT, 2>
+<CR, >
+<CR, >
+<$, >
+<ID, b>
+<ASIGN, >
+<ENT, 8>
+<MAS, >
+<ENT, 6>
+<CR, >
+<ID, i>
+<ASIGN, >
+<ID, i>
+<MAYOR, >
+<ENT, 88>
+<CR, >
+<ID, sumar>
+<PARENT, 1>
+<ID, b>
+<COMA, >
+<ID, n>
+<MENOS, >
+<ENT, 8>
+<PARENT, 2>
+<CR, >
+<ID, b>
+<ASIGN, >
+<ID, fun1>
+<PARENT, 1>
+<ENT, 9>
+<PARENT, 2>
+<CR, >
+<ID, c>
+<ASIGN, >
+<ID, b>
+<MAS, >
+<ID, fun2>
+<PARENT, 1>
+<ID, b>
+<COMA, >
+<ID, fun3>
+<PARENT, 1>
+<PARENT, 2>
+<MENOS, >
+<ENT, 8>
+<PARENT, 2>
+<CR, >
+<PR, 3> //return  
+<ID, j>
+<MAS, >
+<ID, j>
+<CR, >
+<$, >
+<ID, b>
+<ASIGN, >
+<ENT, 8>
+<MAS, >
+<ENT, 6>
+<CR, >
+<ID, i>
+<ASIGN, >
+<ID, i>
+<MAYOR, >
+<ENT, 88>
+<CR, >
+<ID, sumar>
+<PARENT, 1>
+<ID, b>
+<COMA, >
+<ID, n>
+<MENOS, >
+<ENT, 8>
+<PARENT, 2>
+<CR, >
+<ID, b>
+<ASIGN, >
+<ID, fun1>
+<PARENT, 1>
+<ENT, 9>
+<PARENT, 2>
+<CR, >
+<ID, c>
+<ASIGN, >
+<ID, b>
+<MAS, >
+<ID, fun2>
+<PARENT, 1>
+<ID, b>
+<COMA, >
+<ID, fun3>
+<PARENT, 1>
+<PARENT, 2>
+<MENOS, >
+<ENT, 8>
+<PARENT, 2>
+<CR, >
+<PR, 3> //return  
+<ID, j>
+<MAS, >
+<ID, j>
+<$, >
+<ID, b>
+<ASIGN, >
+<ENT, 8>
+<MAS, >
+<ENT, 6>
+<CR, >
+<ID, i>
+<ASIGN, >
+<ID, i>
+<MAYOR, >
+<ENT, 88>
+<CR, >
+<ID, sumar>
+<PARENT, 1>
+<ID, b>
+<COMA, >
+<ID, n>
+<MENOS, >
+<ENT, 8>
+<PARENT, 2>
+<CR, >
+<ID, b>
+<ASIGN, >
+<ID, fun1>
+<PARENT, 1>
+<ENT, 9>
+<PARENT, 2>
+<CR, >
+<ID, c>
+<ASIGN, >
+<ID, b>
+<MAS, >
+<ID, fun2>
+<PARENT, 1>
+<ID, b>
+<COMA, >
+<ID, fun3>
+<PARENT, 1>
+<PARENT, 2>
+<MENOS, >
+<ENT, 8>
+<PARENT, 2>
+<CR, >
+<PR, 3> //return  
+<ID, j>
+<MAS, >
+<ID, j>
+<CR, >
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 9> //bool  
+<ID, Suma>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, aux>
+<COMA, >
+<PR, 0> //int  
+<ID, fin>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, aux>
+<MAYOR, >
+<ENT, 10000>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, hola>
+<PARENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, Hola>
+<PARENT, 2>
+<CR, >
+<ID, hola>
+<PARENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<$, >
+<ID, t>
+<ASIGN, >
+<ID, a>
+<MAS, >
+<ENT, 1>
+<CR, >
+<ID, t>
+<ASIGN, >
+<ID, a>
+<MENOS, >
+<ENT, 1>
+<CR, >
+<ID, t>
+<ASIGN, >
+<ID, a>
+<MAYOR, >
+<ENT, 1>
+<CR, >
+<ID, t>
+<ASIGN, >
+<ID, a>
+<AND, >
+<ID, b>
+<CR, >
+<$, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, a>
+<MAYOR, >
+<ID, b>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<ID, b>
+<PARENT, 2>
+<CR, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 8> //case  
+<ENT, 1>
+<DOS_PUNTOS, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, lunes>
+<PARENT, 2>
+<PUNTO_COMA, >
+<PR, 11> //break  
+<CR, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 8> //case  
+<ENT, 1>
+<DOS_PUNTOS, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, lunes>
+<PARENT, 2>
+<PUNTO_COMA, >
+<PR, 11> //break  
+<CR, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 8> //case  
+<ENT, 1>
+<DOS_PUNTOS, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, lunes>
+<PARENT, 2>
+<PUNTO_COMA, >
+<PR, 11> //break  
+<PUNTO_COMA, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, a>
+<MAS, >
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, a>
+<MAS, >
+<ID, a>
+<COMA, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, a>
+<MAS, >
+<ID, a>
+<PARENT, 2>
+<CR, >
+<CR, >
+<$, >
+<ID, a>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<PARENT, 1>
+<ID, c>
+<MAS, >
+<ID, b>
+<PARENT, 2>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, i>
+<MAS, >
+<ID, j>
+<PARENT, 2>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<$, >
+<ID, id>
+<MAS, >
+<ID, id>
+<MAS, >
+<PR, 2> //var  
+<ID, a>
+<ID, a>
+<ASIGN, >
+<ID, id>
+<MAS, >
+<PARENT, 1>
+<ID, id>
+<MAS, >
+<ID, id>
+<PARENT, 2>
+<CR, >
+<$, >
+<ID, a>
+<ASIGN, >
+<ID, id>
+<MAS, >
+<PARENT, 1>
+<ID, id>
+<MAS, >
+<ID, id>
+<PARENT, 2>
+<CR, >
+<$, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 8> //case  
+<ENT, 1>
+<DOS_PUNTOS, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, lunes>
+<PARENT, 2>
+<PUNTO_COMA, >
+<PR, 11> //break  
+<CR, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<LLAVE, 2>
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, a>
+<MAYOR, >
+<ID, b>
+<PARENT, 2>
+<ID, c>
+<ASIGN, >
+<ID, b>
+<CR, >
+<$, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, fin>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, adiÃ³s>
+<PARENT, 2>
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, fin>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, adiÃ³s>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, a>
+<MAYOR, >
+<ID, b>
+<PARENT, 2>
+<ID, c>
+<ASIGN, >
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 1>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 1>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 1>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 1>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 1>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MENOR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, mensaje>
+<MAS, >
+<ID, numero>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, mensaje>
+<MAS, >
+<ID, numero>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 7> //switch  
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 8> //case  
+<ENT, 1>
+<DOS_PUNTOS, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, mensaje>
+<MAS, >
+<STRING, lunes>
+<PARENT, 2>
+<PUNTO_COMA, >
+<PR, 11> //break  
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MENOR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MENOR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MAYOR, >
+<ENT, 4>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<ID, A>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<ID, B>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, mensaje>
+<MAS, >
+<ID, numero>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MAYOR, >
+<ENT, 7>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<PR, 5> //write  
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<PR, 5> //write  
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MAYOR, >
+<ENT, 7>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<ID, A>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<ID, B>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, mensaje>
+<MAS, >
+<ID, numero>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MAYOR, >
+<ENT, 7>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<STRING, Miercoles>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<STRING, ?>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, mensaje>
+<MAS, >
+<ID, numero>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MAYOR, >
+<ENT, 7>
+<PARENT, 2>
+<INTERR, >
+<STRING, Miercoles>
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 4> //chars  
+<ID, test>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 4> //chars  
+<ID, mensaje>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, numero>
+<CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, b>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ENT, 7>
+<CR, >
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ID, numero>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, fallo>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, mensaje>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, max>
+<ASIGN, >
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 2>
+<AND, >
+<ID, dia>
+<MAYOR, >
+<ENT, 7>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<STRING, Miercoles>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<STRING, ?>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<ID, FactorialRecursivo>
+<PARENT, 1>
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, numero>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<MENOS, >
+<PARENT, 1>
+<ID, numero>
+<MAS, >
+<ENT, 1>
+<PARENT, 2>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, mensaje>
+<MAS, >
+<ID, numero>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<$, >

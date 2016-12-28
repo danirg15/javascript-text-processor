@@ -9,6 +9,7 @@ public class SAConfig2 {
 		
 		LL1Table table = new LL1Table();
 		
+		NonTerminalSymbol Pprima = 		new NonTerminalSymbol("P'");
 		NonTerminalSymbol P = 		new NonTerminalSymbol("P");
 		NonTerminalSymbol B = 		new NonTerminalSymbol("B");
 		NonTerminalSymbol S = 		new NonTerminalSymbol("S");
@@ -36,7 +37,7 @@ public class SAConfig2 {
 		NonTerminalSymbol W = 		new NonTerminalSymbol("W");
 		NonTerminalSymbol N = 		new NonTerminalSymbol("N");
 		NonTerminalSymbol Nprima = 	new NonTerminalSymbol("N'");
-		NonTerminalSymbol I = 		new NonTerminalSymbol("I");
+		NonTerminalSymbol M = 	new NonTerminalSymbol("M");
 		
 	
 		TerminalSymbol lambda = 	new TerminalSymbol(new Token(TokenType.LAMBDA, null));
@@ -69,396 +70,437 @@ public class SAConfig2 {
 		TerminalSymbol switch_ =	new TerminalSymbol(new Token(TokenType.PR, "7"));
 		TerminalSymbol case_ = 		new TerminalSymbol(new Token(TokenType.PR, "8"));
 		TerminalSymbol bool_ = 		new TerminalSymbol(new Token(TokenType.PR, "9"));
-		TerminalSymbol default_ = 	new TerminalSymbol(new Token(TokenType.PR, "10"));
-		TerminalSymbol if_ = 		new TerminalSymbol(new Token(TokenType.PR, "11"));
-		TerminalSymbol break_ = 	new TerminalSymbol(new Token(TokenType.PR, "12"));
+		TerminalSymbol if_ = 		new TerminalSymbol(new Token(TokenType.PR, "10"));
+		TerminalSymbol break_ = 	new TerminalSymbol(new Token(TokenType.PR, "11"));
 		
+			
+		//P'
+		GrammaticalSymbol r1der[] = {P}; 
+		SintacticRule r1 = new SintacticRule(1, Pprima, r1der); //P' -> P
 		
+		GrammaticalSymbol r2der[] = {Z, P}; 
+		SintacticRule r2 = new SintacticRule(2, Pprima, r2der); //P' -> Z P
 		
-		
-		
+		table.addRule(Pprima, var_, r1);
+		table.addRule(Pprima, id, r1);
+		table.addRule(Pprima, switch_, r1);
+		table.addRule(Pprima, return_, r1);
+		table.addRule(Pprima, write_, r1);
+		table.addRule(Pprima, prompt_, r1);
+		table.addRule(Pprima, if_, r1);
+		table.addRule(Pprima, function_, r1);
+		table.addRule(Pprima, CR_, r2);
 		
 		
 		//P
-		GrammaticalSymbol r4der[] = {lambda}; 
-		SintacticRule r4 = new SintacticRule(4, P, r4der); //P -> lambda
+		GrammaticalSymbol r3der[] = {B,Z,P}; 
+		SintacticRule r3 = new SintacticRule(3, P, r3der); //P -> BZP
 		
-		GrammaticalSymbol r1der[] = {B,Z,P}; 
-		SintacticRule r1 = new SintacticRule(1, P, r1der); //P -> BZP
+		GrammaticalSymbol r4der[] = {F,Z,P}; 
+		SintacticRule r4 = new SintacticRule(4, P, r4der); //P -> FZP
 		
-		GrammaticalSymbol r2der[] = {F,Z,P}; 
-		SintacticRule r2 = new SintacticRule(2, P, r2der); //P -> FZP
-		
-		GrammaticalSymbol r3der[] = {Z,P}; 
-		SintacticRule r3 = new SintacticRule(3, P, r3der); //P -> ZP
+		GrammaticalSymbol r5der[] = {lambda}; 
+		SintacticRule r5 = new SintacticRule(5, P, r5der); //P -> lambda
 		
 		
-		table.addRule(P, eof, r4);	 		//P -> BZP
-		table.addRule(P, var_, r1); 		//P -> BZP
-		table.addRule(P, id, r1); 			//P -> BZP
-		table.addRule(P, switch_, r1); 		//P -> BZP
-		table.addRule(P, return_, r1); 		//P -> BZP
-		table.addRule(P, write_, r1); 		//P -> BZP
-		table.addRule(P, prompt_, r1); 		//P -> BZP
-		table.addRule(P, function_, r2); 	//P -> FZP
-		table.addRule(P, CR_, r3); 			//P -> ZP
-		table.addRule(P, if_, r1); 			//P -> BZP
+		table.addRule(P, var_, r3);
+		table.addRule(P, if_, r3);
+		table.addRule(P, switch_, r3);
+		table.addRule(P, return_, r3);
+		table.addRule(P, id, r3);
+		table.addRule(P, write_, r3);
+		table.addRule(P, prompt_, r3);
+		table.addRule(P, function_, r4);
+		table.addRule(P, eof, r5);
+		
 		
 		//B
-		GrammaticalSymbol r5der[] = {var_, T, id}; 
-		SintacticRule r5 = new SintacticRule(5, B, r5der); //B -> var T id
+		GrammaticalSymbol r6der[] = {var_, T, id}; 
+		SintacticRule r6 = new SintacticRule(6, B, r6der); //B -> var T id
 		
 		GrammaticalSymbol r7der[] = {S}; 
 		SintacticRule r7 = new SintacticRule(7, B, r7der); //B -> S
 		
-		GrammaticalSymbol r6der[] = {switch_, par1, E, par2, Z, llave1, Z, W, llave2}; 
-		SintacticRule r6 = new SintacticRule(6, B, r6der); //B -> switch(E) Z { Z W }
+		GrammaticalSymbol r8der[] = {if_, par1, E, par2, S}; 
+		SintacticRule r8 = new SintacticRule(8, B, r8der); //B -> if ( E ) S
 		
-		GrammaticalSymbol r57der[] = {if_, par1, E, par2, S}; 
-		SintacticRule r57 = new SintacticRule(57, B, r57der); //B -> if ( E ) S
+		GrammaticalSymbol r9der[] = {switch_, par1, E, par2, Z, llave1, Z, W, llave2}; 
+		SintacticRule r9 = new SintacticRule(9, B, r9der); //B -> switch(E) Z { Z W }
 		
 		
-		table.addRule(B, var_, r5);			//B -> var T id
-		table.addRule(B, id, r7);			//B -> S
-		table.addRule(B, switch_, r6); 		//B -> switch(E) Z { Z W }
-		table.addRule(B, return_, r7);		//B -> S
-		table.addRule(B, write_, r7);		//B -> S
-		table.addRule(B, prompt_, r7);		//B -> S
-		table.addRule(B, if_, r57);		
-		
+		table.addRule(B, var_, r6);	
+		table.addRule(B, return_, r7);	
+		table.addRule(B, id, r7);	
+		table.addRule(B, write_, r7);	
+		table.addRule(B, prompt_, r7);	
+		table.addRule(B, if_, r8);	
+		table.addRule(B, switch_, r9);	
+			
 		
 		//S
-		GrammaticalSymbol r9der[] = {id, Sprima}; 
-		SintacticRule r9 = new SintacticRule(9, S, r9der); //S -> id S'
+		GrammaticalSymbol r10der[] = {return_, X}; 
+		SintacticRule r10 = new SintacticRule(10, S, r10der); //S -> return X
 		
-		GrammaticalSymbol r8der[] = {return_, X}; 
-		SintacticRule r8 = new SintacticRule(8, S, r8der); //S -> return X
+		GrammaticalSymbol r11der[] = {id, Sprima}; 
+		SintacticRule r11 = new SintacticRule(11, S, r11der); //S -> id S'
 		
-		GrammaticalSymbol r10der[] = {write_, par1, E, par2}; 
-		SintacticRule r10 = new SintacticRule(10, S, r10der); //S -> write ( E )
+		GrammaticalSymbol r12der[] = {write_, par1, E, par2}; 
+		SintacticRule r12 = new SintacticRule(12, S, r12der); //S -> write ( E )
 
-		GrammaticalSymbol r11der[] = {prompt_, par1, id, par2}; 
-		SintacticRule r11 = new SintacticRule(11, S, r11der); //S -> prompt ( id )
+		GrammaticalSymbol r13der[] = {prompt_, par1, id, par2}; 
+		SintacticRule r13 = new SintacticRule(13, S, r13der); //S -> prompt ( id )
 
 		
-		table.addRule(S, id, r9);		//S -> id S'
-		table.addRule(S, return_, r8);	//S -> return  X
-		table.addRule(S, write_, r10);	//S -> write ( E ) 
-		table.addRule(S, prompt_, r11);	//S -> prompt ( id )
+		table.addRule(S, id, r11);		//S -> id S'
+		table.addRule(S, return_, r10);	//S -> return  X
+		table.addRule(S, write_, r12);	//S -> write ( E ) 
+		table.addRule(S, prompt_, r13);	//S -> prompt ( id )
 		
 		
 		//S'
-		GrammaticalSymbol r13der[] = {par1, L, par2}; 
-		SintacticRule r13 = new SintacticRule(13, Sprima, r13der); //S' -> ( L )
+		GrammaticalSymbol r14der[] = {asign, E}; 
+		SintacticRule r14 = new SintacticRule(14, Sprima, r14der); //S' -> = E
 		
-		GrammaticalSymbol r12der[] = {asign, E}; 
-		SintacticRule r12 = new SintacticRule(12, Sprima, r12der); //S' -> = E
+		GrammaticalSymbol r15der[] = {par1, L, par2}; 
+		SintacticRule r15 = new SintacticRule(15, Sprima, r15der); //S' -> ( L )
 		
-		
-		table.addRule(Sprima, par1, r13);
-		table.addRule(Sprima, asign, r12);
+		table.addRule(Sprima, par1, r15);
+		table.addRule(Sprima, asign, r14);
 		
 		
 		//X
-		GrammaticalSymbol r14der[] = {E}; 
-		SintacticRule r14 = new SintacticRule(14, X, r14der); //X -> E
+		GrammaticalSymbol r16der[] = {E}; 
+		SintacticRule r16 = new SintacticRule(16, X, r16der); //X -> E
 		
-		GrammaticalSymbol r15der[] = {lambda}; 
-		SintacticRule r15 = new SintacticRule(15, X, r15der); //X -> lambda
+		GrammaticalSymbol r17der[] = {lambda}; 
+		SintacticRule r17 = new SintacticRule(17, X, r17der); //X -> lambda
 		
-		
-		table.addRule(X, id, r14);
-		table.addRule(X, par1, r14);
-		table.addRule(X, entero, r14);
-		table.addRule(X, cadena, r14);
-		table.addRule(X, CR_, r15);
+		table.addRule(X, id, r16);
+		table.addRule(X, par1, r16);
+		table.addRule(X, entero, r16);
+		table.addRule(X, cadena, r16);
+		table.addRule(X, CR_, r17);
+		table.addRule(X, punto_coma, r17);
 		
 		
 		//L
-		GrammaticalSymbol r16der[] = {E,Q}; 
-		SintacticRule r16 = new SintacticRule(16, L, r16der); //L -> E Q
+		GrammaticalSymbol r18der[] = {E,Q}; 
+		SintacticRule r18 = new SintacticRule(18, L, r18der); //L -> E Q
 		
-		GrammaticalSymbol r17der[] = {lambda}; 
-		SintacticRule r17 = new SintacticRule(17, L, r17der); //L -> lambda
-		
-		table.addRule(L, id, r16);
-		table.addRule(L, par1, r16);
-		table.addRule(L, par2, r17);
-		table.addRule(L, entero, r16);
-		table.addRule(L, cadena, r16);
-		
-		
-		//Q
 		GrammaticalSymbol r19der[] = {lambda}; 
-		SintacticRule r19 = new SintacticRule(19, Q, r19der); //Q -> lambda
+		SintacticRule r19 = new SintacticRule(19, L, r19der); //L -> lambda
 		
-		GrammaticalSymbol r18der[] = {coma, E, Q}; 
-		SintacticRule r18 = new SintacticRule(18, Q, r18der); //Q -> ,EQ
+		table.addRule(L, id, r18);
+		table.addRule(L, par1, r18);
+		table.addRule(L, entero, r18);
+		table.addRule(L, cadena, r18);
+		table.addRule(L, par2, r19);
 		
-		table.addRule(Q, par2, r19);
-		table.addRule(Q, coma, r18);
+	
+		//Q
+		GrammaticalSymbol r20der[] = {coma, E, Q}; 
+		SintacticRule r20 = new SintacticRule(20, Q, r20der); //Q -> ,EQ
+		
+		GrammaticalSymbol r21der[] = {lambda}; 
+		SintacticRule r21 = new SintacticRule(21, Q, r21der); //Q -> lambda
+		
+		table.addRule(Q, coma, r20);
+		table.addRule(Q, par2, r21);
+		
+		
+		//T
+		GrammaticalSymbol r22der[] = {char_}; 
+		SintacticRule r22 = new SintacticRule(22, T, r22der); //T -> chars
+		
+		GrammaticalSymbol r23der[] = {int_}; 
+		SintacticRule r23 = new SintacticRule(23, T, r23der); //T -> int
+		
+		GrammaticalSymbol r24der[] = {bool_}; 
+		SintacticRule r24 = new SintacticRule(24, T, r24der); //T -> bool
+		
+		table.addRule(T, char_, r22);
+		table.addRule(T, int_, r23);
+		table.addRule(T, bool_, r24);
 		
 		
 		//E
-		GrammaticalSymbol r23der[] = {R,Eprima}; 
-		SintacticRule r23 = new SintacticRule(23, E, r23der); //E -> RE'
+		GrammaticalSymbol r25der[] = {R,Eprima}; 
+		SintacticRule r25 = new SintacticRule(25, E, r25der); //E -> RE'
 		
-		table.addRule(E, id, r23);
-		table.addRule(E, par1, r23);
-		table.addRule(E, entero, r23);
-		table.addRule(E, cadena, r23);
+		table.addRule(E, id, r25);
+		table.addRule(E, par1, r25);
+		table.addRule(E, entero, r25);
+		table.addRule(E, cadena, r25);
+		
 		
 		//E'
-		GrammaticalSymbol r25der[] = {lambda}; 
-		SintacticRule r25 = new SintacticRule(25, Eprima, r25der); //E' -> lambda
+		GrammaticalSymbol r26der[] = {and, R, Eprima}; 
+		SintacticRule r26 = new SintacticRule(26, Eprima, r26der); //E' -> && R E'
 		
-		GrammaticalSymbol r24der[] = {and, R, Eprima}; 
-		SintacticRule r24 = new SintacticRule(24, Eprima, r24der); //E' -> && R E'
+		GrammaticalSymbol r27der[] = {lambda}; 
+		SintacticRule r27 = new SintacticRule(27, Eprima, r27der); //E' -> lambda
 		
-		table.addRule(Eprima, par2, r25);
-		table.addRule(Eprima, and, r24);
-		table.addRule(Eprima, CR_, r25);
-		table.addRule(Eprima, coma, r25);
-		table.addRule(Eprima, punto_coma, r25);
+		table.addRule(Eprima, and, r26);
+		table.addRule(Eprima, par2, r27);
+		table.addRule(Eprima, CR_, r27);
+		table.addRule(Eprima, coma, r27);
+		table.addRule(Eprima, punto_coma, r27);
+		
 		
 		//R
-		GrammaticalSymbol r26der[] = {U, Rprima}; 
-		SintacticRule r26 = new SintacticRule(26, R, r26der); //R -> U R'
+		GrammaticalSymbol r28der[] = {U, Rprima}; 
+		SintacticRule r28 = new SintacticRule(28, R, r28der); //R -> U R'
 		
-		table.addRule(R, id, r26);
-		table.addRule(R, par1, r26);
-		table.addRule(R, entero, r26);
-		table.addRule(R, cadena, r26);
+		table.addRule(R, id, r28);
+		table.addRule(R, par1, r28);
+		table.addRule(R, entero, r28);
+		table.addRule(R, cadena, r28);
+		
 		
 		//R'
-		GrammaticalSymbol r27der[] = {lambda}; 
-		SintacticRule r27 = new SintacticRule(27, Rprima, r27der); //R' -> lambda
+		GrammaticalSymbol r29der[] = {mayor, U, Rprima}; 
+		SintacticRule r29 = new SintacticRule(29, Rprima, r29der); //R' -> > U R'
 		
-		GrammaticalSymbol r28der[] = {mayor, U, Rprima}; 
-		SintacticRule r28 = new SintacticRule(28, Rprima, r28der); //R' -> > U R'
+		GrammaticalSymbol r30der[] = {lambda}; 
+		SintacticRule r30 = new SintacticRule(30, Rprima, r30der); //R' -> lambda
 		
-		table.addRule(Rprima, par2, r27);
-		table.addRule(Rprima, mayor, r28);
-		table.addRule(Rprima, coma, r27);
-		table.addRule(Rprima, and, r27);
-		table.addRule(Rprima, CR_, r27);
-		table.addRule(Rprima, punto_coma, r27);
+		table.addRule(Rprima, mayor, r29);
+		table.addRule(Rprima, par2, r30);
+		table.addRule(Rprima, coma, r30);
+		table.addRule(Rprima, and, r30);
+		table.addRule(Rprima, CR_, r30);
+		table.addRule(Rprima, punto_coma, r30);
 		
 		
 		//U
-		GrammaticalSymbol r29der[] = {V, Uprima}; 
-		SintacticRule r29 = new SintacticRule(29, U, r29der); //U -> VU'
+		GrammaticalSymbol r31der[] = {V, Uprima}; 
+		SintacticRule r31 = new SintacticRule(31, U, r31der); //U -> V U'
 		
-		table.addRule(U, id, r29);
-		table.addRule(U, par1, r29);
-		table.addRule(U, entero, r29);
-		table.addRule(U, cadena, r29);
+		table.addRule(U, id, r31);
+		table.addRule(U, par1, r31);
+		table.addRule(U, entero, r31);
+		table.addRule(U, cadena, r31);
 		
 		
 		//U'
-		GrammaticalSymbol r30der[] = {mas, V, Uprima}; 
-		SintacticRule r30 = new SintacticRule(30, Uprima, r30der); //U' -> + V U'
+		GrammaticalSymbol r32der[] = {mas, V, Uprima}; 
+		SintacticRule r32 = new SintacticRule(32, Uprima, r32der); //U' -> + V U'
 		
-		GrammaticalSymbol r31der[] = {menos, V, Uprima}; 
-		SintacticRule r31 = new SintacticRule(31, Uprima, r31der); //U' -> - V U'
+		GrammaticalSymbol r33der[] = {menos, V, Uprima}; 
+		SintacticRule r33 = new SintacticRule(33, Uprima, r33der); //U' -> - V U'
 		
-		GrammaticalSymbol r32der[] = {lambda}; 
-		SintacticRule r32 = new SintacticRule(32, Uprima, r32der); //U' -> lambda
+		GrammaticalSymbol r34der[] = {lambda}; 
+		SintacticRule r34 = new SintacticRule(34, Uprima, r34der); //U' -> lambda
 		
-		
-		table.addRule(Uprima, par2, r32);
-		table.addRule(Uprima, mas, r30);
-		table.addRule(Uprima, menos, r31);
-		table.addRule(Uprima, CR_, r32);
-		table.addRule(Uprima, and, r32);
-		table.addRule(Uprima, mayor, r32);
-		table.addRule(Uprima, coma, r32);
-		table.addRule(Uprima, punto_coma, r32);
+		table.addRule(Uprima, mas, r32);
+		table.addRule(Uprima, menos, r33);
+		table.addRule(Uprima, par2, r34);
+		table.addRule(Uprima, CR_, r34);
+		table.addRule(Uprima, and, r34);
+		table.addRule(Uprima, mayor, r34);
+		table.addRule(Uprima, coma, r34);
+		table.addRule(Uprima, punto_coma, r34);
 		
 		
 		//V
-		GrammaticalSymbol r33der[] = {entero}; 
-		SintacticRule r33 = new SintacticRule(33, V, r33der); //V -> entero
+		GrammaticalSymbol r35der[] = {entero}; 
+		SintacticRule r35 = new SintacticRule(35, V, r35der); //V -> entero
 		
-		GrammaticalSymbol r34der[] = {cadena}; 
-		SintacticRule r34 = new SintacticRule(34, V, r34der); //V -> cadena
+		GrammaticalSymbol r36der[] = {cadena}; 
+		SintacticRule r36 = new SintacticRule(36, V, r36der); //V -> cadena
 		
-		GrammaticalSymbol r35der[] = {id, Y}; 
-		SintacticRule r35 = new SintacticRule(35, V, r35der); //V -> id Y
+		GrammaticalSymbol r37der[] = {id, Y}; 
+		SintacticRule r37 = new SintacticRule(37, V, r37der); //V -> id Y
 		
-		GrammaticalSymbol r36der[] = {par1, E, par2, J}; 
-		SintacticRule r36 = new SintacticRule(36, V, r36der); //V -> ( E ) J
+		GrammaticalSymbol r38der[] = {par1, E, par2, J}; 
+		SintacticRule r38 = new SintacticRule(38, V, r38der); //V -> ( E ) J
 		
-		
-		table.addRule(V, id, r35);
-		table.addRule(V, par1, r36);
-		table.addRule(V, entero, r33);
-		table.addRule(V, cadena, r34);
+		table.addRule(V, entero, r35);
+		table.addRule(V, cadena, r36);
+		table.addRule(V, id, r37);
+		table.addRule(V, par1, r38);
 		
 		
 		//Y
-		GrammaticalSymbol r37der[] = {par1, L, par2}; 
-		SintacticRule r37 = new SintacticRule(37, Y, r37der); //Y -> ( L )
+		GrammaticalSymbol r39der[] = {par1, L, par2}; 
+		SintacticRule r39 = new SintacticRule(39, Y, r39der); //Y -> ( L )
 		
-		GrammaticalSymbol r38der[] = {lambda}; 
-		SintacticRule r38 = new SintacticRule(38, Y, r38der); //Y -> lambda
+		GrammaticalSymbol r40der[] = {lambda}; 
+		SintacticRule r40 = new SintacticRule(40, Y, r40der); //Y -> lambda
 		
-		
-		table.addRule(Y, par1, r37);
-		table.addRule(Y, par2, r38);
-		table.addRule(Y, CR_, r38);
-		table.addRule(Y, coma, r38);
-		table.addRule(Y, and, r38);
-		table.addRule(Y, mayor, r38);
-		table.addRule(Y, mas, r38);
-		table.addRule(Y, menos, r38);
+		table.addRule(Y, par1, r39);
+		table.addRule(Y, par2, r40);
+		table.addRule(Y, CR_, r40);
+		table.addRule(Y, punto_coma, r40);
+		table.addRule(Y, coma, r40);
+		table.addRule(Y, and, r40);
+		table.addRule(Y, mayor, r40);
+		table.addRule(Y, mas, r40);
+		table.addRule(Y, menos, r40);
 		
 		
 		//J
-		GrammaticalSymbol r39der[] = {interr, par1, E, par2, dos_puntos, par1, E, par2}; 
-		SintacticRule r39 = new SintacticRule(39, J, r39der); //J -> ? (E) : (E)
+		GrammaticalSymbol r41der[] = {interr, par1, E, par2, dos_puntos, par1, E, par2}; 
+		SintacticRule r41 = new SintacticRule(41, J, r41der); //J -> ? (E) : (E)
 		
-		GrammaticalSymbol r40der[] = {lambda}; 
-		SintacticRule r40 = new SintacticRule(40, J, r40der); //J -> lambda
+		GrammaticalSymbol r42der[] = {lambda}; 
+		SintacticRule r42 = new SintacticRule(42, J, r42der); //J -> lambda
 		
-		table.addRule(J, par2, r40);
-		table.addRule(J, interr, r39);
-		table.addRule(J, CR_, r40);
+		table.addRule(J, interr, r41);
+		
+		table.addRule(J, par2, r42);
+		table.addRule(J, CR_, r42);
+		table.addRule(J, coma, r42);
+		table.addRule(J, and, r42);
+		table.addRule(J, mayor, r42);
+		table.addRule(J, mas, r42);
+		table.addRule(J, menos, r42);
+		table.addRule(J, punto_coma, r42);
 		
 		
 		//F
-		GrammaticalSymbol r45der[] = {function_, H, id, par1, A, par2, Z, llave1, Z, C, llave2}; 
-		SintacticRule r45 = new SintacticRule(45, F, r45der); //F -> function H id(A) Z { Z C }
+		GrammaticalSymbol r43der[] = {function_, H, id, par1, A, par2, Z, llave1, Z, C, llave2}; 
+		SintacticRule r43 = new SintacticRule(43, F, r43der); //F -> function H id(A) Z { Z C }
 		
-		table.addRule(F, function_, r45);
+		table.addRule(F, function_, r43);
 		
 		//H
-		GrammaticalSymbol r46der[] = {T}; 
-		SintacticRule r46 = new SintacticRule(46, H, r46der); //H -> T
+		GrammaticalSymbol r44der[] = {T}; 
+		SintacticRule r44 = new SintacticRule(44, H, r44der); //H -> T
 		
-		GrammaticalSymbol r47der[] = {lambda}; 
-		SintacticRule r47 = new SintacticRule(47, H, r47der); //H -> lambda
+		GrammaticalSymbol r45der[] = {lambda}; 
+		SintacticRule r45 = new SintacticRule(45, H, r45der); //H -> lambda
 		
-		table.addRule(H, id, r47);
-		table.addRule(H, char_, r46);
-		table.addRule(H, bool_, r46);
-		table.addRule(H, int_, r46);
+		table.addRule(H, char_, r44);
+		table.addRule(H, bool_, r44);
+		table.addRule(H, int_, r44);
+		table.addRule(H, id, r45);
 		
 		//A
-		GrammaticalSymbol r48der[] = {T, id, K}; 
-		SintacticRule r48 = new SintacticRule(48, A, r48der); //A -> T id K
+		GrammaticalSymbol r46der[] = {T, id, K}; 
+		SintacticRule r46 = new SintacticRule(46, A, r46der); //A -> T id K
 		
-		GrammaticalSymbol r49der[] = {lambda}; 
-		SintacticRule r49 = new SintacticRule(49, A, r49der); //A -> lambda
+		GrammaticalSymbol r47der[] = {lambda}; 
+		SintacticRule r47 = new SintacticRule(47, A, r47der); //A -> lambda
 		
-		table.addRule(A, par2, r49);
-		table.addRule(A, char_, r48);
-		table.addRule(A, bool_, r48);
-		table.addRule(A, int_, r48);
+		table.addRule(A, par2, r47);
+		table.addRule(A, char_, r46);
+		table.addRule(A, bool_, r46);
+		table.addRule(A, int_, r46);
+		
 		
 		//K
-		GrammaticalSymbol r50der[] = {coma, T , id, K}; 
-		SintacticRule r50 = new SintacticRule(50, K, r50der); //K -> , T id K
+		GrammaticalSymbol r48der[] = {coma, T , id, K}; 
+		SintacticRule r48 = new SintacticRule(48, K, r48der); //K -> , T id K
 		
-		GrammaticalSymbol r51der[] = {lambda}; 
-		SintacticRule r51 = new SintacticRule(51, K, r51der); //K -> lambda
+		GrammaticalSymbol r49der[] = {lambda}; 
+		SintacticRule r49 = new SintacticRule(49, K, r49der); //K -> lambda
 		
+		table.addRule(K, par2, r49);
+		table.addRule(K, coma, r48);
 		
-		table.addRule(K, par2, r51);
-		table.addRule(K, coma, r50);
 		
 		//C
-		GrammaticalSymbol r52der[] = {B, Z, C}; 
-		SintacticRule r52 = new SintacticRule(52, C, r52der); //C -> BZC
+		GrammaticalSymbol r50der[] = {B, Z, C}; 
+		SintacticRule r50 = new SintacticRule(50, C, r50der); //C -> BZC
 		
-		GrammaticalSymbol r53der[] = {lambda}; 
-		SintacticRule r53 = new SintacticRule(53, C, r53der); //C -> lambda
+		GrammaticalSymbol r51der[] = {lambda}; 
+		SintacticRule r51 = new SintacticRule(51, C, r51der); //C -> lambda
 		
-		table.addRule(C, var_, r52);
-		table.addRule(C, id, r52);
-		table.addRule(C, switch_, r52);
-		table.addRule(C, return_, r52);
-		table.addRule(C, write_, r52);
-		table.addRule(C, prompt_, r52);
-		table.addRule(C, llave2, r53);
-		table.addRule(C, if_, r52);
+		table.addRule(C, var_, r50);
+		table.addRule(C, id, r50);
+		table.addRule(C, switch_, r50);
+		table.addRule(C, return_, r50);
+		table.addRule(C, write_, r50);
+		table.addRule(C, prompt_, r50);
+		table.addRule(C, if_, r50);
+		table.addRule(C, llave2, r51);
 		
 		
 		//Z
-		GrammaticalSymbol r54der[] = {CR_, Zprima}; 
-		SintacticRule r54 = new SintacticRule(54, Z, r54der); //Z -> cr Z'
+		GrammaticalSymbol r52der[] = {CR_, Zprima}; 
+		SintacticRule r52 = new SintacticRule(52, Z, r52der); //Z -> cr Z'
 		
-		table.addRule(Z, CR_, r54);
+		table.addRule(Z, CR_, r52);
 		
 		//Z'
-		GrammaticalSymbol r55der[] = {CR_, Zprima}; 
-		SintacticRule r55 = new SintacticRule(55, Zprima, r55der); //Z' -> cr Z'
+		GrammaticalSymbol r53der[] = {CR_, Zprima}; 
+		SintacticRule r53 = new SintacticRule(53, Zprima, r53der); //Z' -> cr Z'
 		
-		GrammaticalSymbol r56der[] = {lambda}; 
-		SintacticRule r56 = new SintacticRule(56, Zprima, r56der); //Z' -> lambda
+		GrammaticalSymbol r54der[] = {lambda}; 
+		SintacticRule r54 = new SintacticRule(54, Zprima, r54der); //Z' -> lambda
 		
 		
-		table.addRule(Zprima, llave2, r56);
-		table.addRule(Zprima, llave1, r56);
-		table.addRule(Zprima, eof, r56);
-		table.addRule(Zprima, var_, r56);
-		table.addRule(Zprima, id, r56);
-		table.addRule(Zprima, switch_, r56);
-		table.addRule(Zprima, return_, r56);
-		table.addRule(Zprima, write_, r56);
-		table.addRule(Zprima, prompt_, r56);
-		table.addRule(Zprima, function_, r56);
-		table.addRule(Zprima, case_, r56);
-		table.addRule(Zprima, CR_, r55);
-		table.addRule(Zprima, default_, r56);
-
+		table.addRule(Zprima, CR_, r53);
 		
-		//T
-		GrammaticalSymbol r20der[] = {char_}; 
-		SintacticRule r20 = new SintacticRule(20, T, r20der); //T -> char
-		
-		GrammaticalSymbol r21der[] = {int_}; 
-		SintacticRule r21 = new SintacticRule(21, T, r21der); //T -> int
-		
-		GrammaticalSymbol r22der[] = {bool_}; 
-		SintacticRule r22 = new SintacticRule(22, T, r22der); //T -> bool
-		
-		table.addRule(T, char_, r20);
-		table.addRule(T, int_, r21);
-		table.addRule(T, bool_, r22);
+		table.addRule(Zprima, llave2, r54);
+		table.addRule(Zprima, llave1, r54);
+		table.addRule(Zprima, eof, r54);
+		table.addRule(Zprima, var_, r54);
+		table.addRule(Zprima, id, r54);
+		table.addRule(Zprima, switch_, r54);
+		table.addRule(Zprima, return_, r54);
+		table.addRule(Zprima, write_, r54);
+		table.addRule(Zprima, prompt_, r54);
+		table.addRule(Zprima, function_, r54);
+		table.addRule(Zprima, case_, r54);
+		table.addRule(Zprima, break_, r54);
+		table.addRule(Zprima, if_, r54);
+		table.addRule(Zprima, entero, r54);
+		table.addRule(Zprima, cadena, r54);
+		table.addRule(Zprima, par1, r54);
 		
 		
 		//W  
-		GrammaticalSymbol r41der[] = {N, default_, dos_puntos, S, Z}; 
-		SintacticRule r41 = new SintacticRule(41, W, r41der); //W -> N default : S Z
+		GrammaticalSymbol r55der[] = {case_, entero, dos_puntos, N, W}; 
+		SintacticRule r55 = new SintacticRule(55, W, r55der); //W -> case ent : N W
 		
-		table.addRule(W, case_, r41);
+		GrammaticalSymbol r56der[] = {lambda}; 
+		SintacticRule r56 = new SintacticRule(56, W, r56der); //W -> lambda
+		
+		table.addRule(W, case_, r55);
+		table.addRule(W, llave2, r56);
+		
 		
 		//N 
-		GrammaticalSymbol r42der[] = {case_, entero, dos_puntos, S, I, Z, Nprima}; 
-		SintacticRule r42 = new SintacticRule(42, N, r42der); //N -> case entero : S I Z N’
-
-		table.addRule(N, case_, r42);
+		GrammaticalSymbol r57der[] = {S, Nprima}; 
+		SintacticRule r57 = new SintacticRule(57, N, r57der); //N -> S N'
+		
+		GrammaticalSymbol r58der[] = {break_}; 
+		SintacticRule r58 = new SintacticRule(58, N, r58der); //N -> break
+		
+		table.addRule(N, return_, r57);
+		table.addRule(N, id, r57);
+		table.addRule(N, write_, r57);
+		table.addRule(N, prompt_, r57);
+		table.addRule(N, break_, r58);
+		
 	
 		//N'
-		GrammaticalSymbol r43der[] = {N}; 
-		SintacticRule r43 = new SintacticRule(43, Nprima, r43der); //N' -> N
+		GrammaticalSymbol r59der[] = {punto_coma, N}; 
+		SintacticRule r59 = new SintacticRule(59, Nprima, r59der); //N' -> ; N
 		
-		GrammaticalSymbol r44der[] = {lambda}; 
-		SintacticRule r44 = new SintacticRule(44, Nprima, r44der); //N' -> lambda
+		GrammaticalSymbol r60der[] = {Z, M}; 
+		SintacticRule r60 = new SintacticRule(60, Nprima, r60der); //N' -> Z M
 		
-		table.addRule(Nprima, case_, r43);
-		table.addRule(Nprima, default_, r44);
+		table.addRule(Nprima, punto_coma, r59);
+		table.addRule(Nprima, CR_, r60);
 		
-		//I
-		GrammaticalSymbol r58der[] = {punto_coma, break_}; 
-		SintacticRule r58 = new SintacticRule(58, I, r58der); //I -> ; break 
 		
-		GrammaticalSymbol r59der[] = {lambda}; 
-		SintacticRule r59 = new SintacticRule(59, I, r59der); //I -> lambda		
+		//M
+		GrammaticalSymbol r61der[] = {lambda}; 
+		SintacticRule r61 = new SintacticRule(61, M, r61der); //M -> lambda
 		
-		table.addRule(I, CR_, r59);
-		table.addRule(I, punto_coma, r58);
+		GrammaticalSymbol r62der[] = {N}; 
+		SintacticRule r62 = new SintacticRule(62, M, r62der); //M -> N
+		
+		table.addRule(M, case_, r61);
+		table.addRule(M, llave2, r61);
+		table.addRule(M, break_, r62);
+		table.addRule(M, return_, r62);
+		table.addRule(M, id, r62);
+		table.addRule(M, write_, r62);
+		table.addRule(M, prompt_, r62);
 		
 		
 		

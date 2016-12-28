@@ -2,13 +2,9 @@ package Main;
 
 import lexicalAnalizer.JSLexicalAnalizer;
 import lexicalAnalizer.LAConfig;
-import lexicalAnalizer.Token;
-import lexicalAnalizer.TokenType;
 import sintacticAnalizer.NonTerminalSymbol;
-import sintacticAnalizer.SAConfig;
 import sintacticAnalizer.SAConfig2;
 import sintacticAnalizer.SintacticAnalizer;
-import sintacticAnalizer.TerminalSymbol;
 import tables.AttrTable;
 import tables.SymbolTable;
 import automata.DFA;
@@ -29,9 +25,8 @@ public class TestSintacticAnalizer {
 		tablaPR.add("switch");//7
 		tablaPR.add("case");//8
 		tablaPR.add("bool");//9
-		tablaPR.add("default");//10
-		tablaPR.add("if");//11
-		tablaPR.add("break");//12
+		tablaPR.add("if");//10
+		tablaPR.add("break");//11
 		
 		//Tabla de simbolos
 		SymbolTable TS = new SymbolTable();
@@ -49,21 +44,20 @@ public class TestSintacticAnalizer {
 				
 		
 		//Analizador Sintactico
-		NonTerminalSymbol axiom = new NonTerminalSymbol("P");	
+		NonTerminalSymbol axiom = new NonTerminalSymbol("P'");	
 		SintacticAnalizer sa = new SintacticAnalizer(axiom, SAConfig2.getLL1Table(), lexAnalizer);
 		
 		sa.analize();
+		
+		
+		//Para obtener ejecutable, exportar como runnable jar, y elegir entry point
+		//Luego desde CLI > java -jar main.jar arg1 arg2
 
 
 		sf.close();
+			
 		
-//		NonTerminalSymbol T = new NonTerminalSymbol("T");
-//		TerminalSymbol int_ = new TerminalSymbol(new Token(TokenType.PR, "0"));
-//		
-//		System.out.print( SAConfig2.getLL1Table().getRule(T, int_) );
-		
-		
-		
+		//System.out.println(args.length);
 	}
 	
 	

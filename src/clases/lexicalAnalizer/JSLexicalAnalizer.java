@@ -1,5 +1,10 @@
 package lexicalAnalizer;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 import tables.AttrTable;
@@ -26,6 +31,37 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 	}
 	
 
+	public void writeTokenToFile(Token token) throws IOException{
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+		
+		try{
+			File file = new File("./tokens.txt");
+
+			fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+
+		    
+		    if(token.getAttr() != null){
+		    	if(token.getType() == TokenType.PR){
+		    		bw.write("<"+token.getType()+", "+ token.getAttr() +"> //"+this.tablePR.getAtIndex(Integer.parseInt(token.getAttr()))+"  \n");
+		    	}else{
+		    		bw.write("<"+token.getType()+", "+ token.getAttr() +">\n");
+		    	}	
+		    }
+		    else{
+		    	bw.write("<"+token.getType()+", >\n");
+		    }
+		    
+		    bw.close();
+			fw.close();
+		} catch (IOException e) {
+		   System.err.println("Error al escribir fichero ");
+		   bw.close();
+		   fw.close();
+		}
+	}
+	
 
 	@Override
 	public Token getNewToken() throws Exception {			
@@ -36,9 +72,12 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 		State currentState = getAutomaton().getCurrentState();
 		
 		int ascii = getSource().getCurrentChar();
-		if(ascii == -1)
-			return new Token(TokenType.$, null);
-		
+		if(ascii == -1){
+			Token t = new Token(TokenType.$, null);
+			this.writeTokenToFile(t);
+			return t;
+		}
+			
 		char c = (char)ascii;
 				
 		while(!(currentState instanceof FinalState)){			
@@ -47,7 +86,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 			
 			//Si no hay ninguna transicion es porque el automatca no reconoce el simbolo
 			if(tran == null){
-				System.err.println("Error in : " + concat + c);
+				System.err.println("Lexical Analizer. Error in : " + concat + c);
 				break;//generar error
 			}
 				
@@ -240,6 +279,8 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					break;				
 			}
 		}
+		
+		this.writeTokenToFile(token);
 	
 		return token;
 	}

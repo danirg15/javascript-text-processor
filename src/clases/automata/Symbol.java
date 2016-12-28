@@ -93,7 +93,7 @@ public class Symbol {
 	}
 	
 	private boolean isBreakLine(char c){
-		return (int)c == 10;
+		return (int)c == 10 || (int)c == 13;
 	}
 
 	private boolean isTab(char c){
