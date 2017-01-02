@@ -12,15 +12,15 @@ import extra.AttrTable;
 import extra.SourceFile;
 import extra.WriteToFile;
 
-public class TestSintacticAnalizer {
+public class TestMain {
 
 	public static void main(String[] args) throws Exception{	
-//		System.out.println("Args: " + args.length);
-//		
-//		if( args.length < 2 ) {
-//			System.out.println("USO: java -jar analizador path_fichero_fuente");
-//			System.exit(-1);
-//		}
+		
+		if( args.length < 1 ) {
+			System.out.println("USO: java -jar analizador path_fichero_fuente");
+			System.exit(-1);
+		}
+		
 		
 		//TablaAtributos -> palabras reservadas
 		AttrTable tablaPR = new AttrTable();
@@ -48,7 +48,7 @@ public class TestSintacticAnalizer {
 		DFA afd = LAConfig.get();
 		
 		//Fichero Fuente
-		SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/programa.js");
+		SourceFile sf = new SourceFile(args[0]);
 		sf.open();
 		sf.read();
 				
@@ -68,9 +68,7 @@ public class TestSintacticAnalizer {
 
 
 		sf.close();
-			
-		
-		//System.out.println(args.length);
+					
 	}
 	
 	

@@ -2,18 +2,20 @@ package sintacticAnalizer;
 
 import java.util.Stack;
 
-import lexicalAnalizer.LexicalAnalizer;
+import extra.WriteToFile;
+import lexicalAnalizer.JSLexicalAnalizer;
 import lexicalAnalizer.Token;
 import lexicalAnalizer.TokenType;
 
 public class SintacticAnalizer {
 	private Stack<GrammaticalSymbol> stack;
 	private LL1Table tableLL1;
-	private LexicalAnalizer LexA;
+	private JSLexicalAnalizer LexA;
 	private Token EOFToken;
 	private String parse = "";
+	private WriteToFile writeToFile = new WriteToFile();
 	
-	public SintacticAnalizer(NonTerminalSymbol axiom, LL1Table tableLL1, LexicalAnalizer LexA){
+	public SintacticAnalizer(NonTerminalSymbol axiom, LL1Table tableLL1, JSLexicalAnalizer LexA){
 		this.tableLL1 = tableLL1;
 		this.LexA = LexA;
 		this.EOFToken = new Token(TokenType.$, null);
@@ -39,7 +41,7 @@ public class SintacticAnalizer {
 					p = new TerminalSymbol(this.LexA.getNewToken());//Next Token
 				}
 				else{
-					System.err.println("Error semantico 1");
+					System.err.println("Error semantico 1 -> Linea "+this.LexA.currentLine());
 					System.exit(-1);
 				}
 			}
@@ -69,7 +71,7 @@ public class SintacticAnalizer {
 				
 				}
 				else{
-					System.err.println("Error semantico 2");
+					System.err.println("Error semantico 2 -> Linea " + this.LexA.currentLine());
 					System.exit(-1);
 				}
 			}
@@ -79,6 +81,7 @@ public class SintacticAnalizer {
 		
 		if(a.equals(EOF)){
 			System.out.println("Acepta, Parse: "+parse);
+			this.writeToFile.parse(parse);
 		}
 		else{
 			System.out.println("Error, No Acepta");

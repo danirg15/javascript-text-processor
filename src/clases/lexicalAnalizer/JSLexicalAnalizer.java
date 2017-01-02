@@ -4,77 +4,82 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 
-import tables.AttrTable;
-import tables.Entry;
-import tables.SymbolTable;
+import symbolTable.Entry;
+import symbolTable.SymbolTable;
+import extra.AttrTable;
 import extra.HexadecimalValues;
 import extra.SourceFile;
+import extra.WriteToFile;
 import automata.DFA;
 import automata.FinalState;
 import automata.State;
 import automata.Transition;
 
 
-public class JSLexicalAnalizer extends LexicalAnalizer{
+public class JSLexicalAnalizer {
+	private SourceFile source;
+	private DFA automaton;
 	private AttrTable tablePR;
 	private SymbolTable symbolsTable;
-	private HashMap<String, Integer> hex;
+	private HashMap<String, Integer> hex = HexadecimalValues.get();
+	private WriteToFile writeToFile;
+	private int line;
 	
 	public JSLexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR, SymbolTable symbolsTable) {
-		super(source, automaton);
+		this.source = source;
+		this.automaton = automaton;
 		this.tablePR = tablePR;
 		this.symbolsTable = symbolsTable;
-		this.hex = HexadecimalValues.get();
+		this.writeToFile = new WriteToFile();
+		this.line = 1;
 	}
 	
 
-	public void writeTokenToFile(Token token) throws IOException{
-		BufferedWriter bw = null;
-		FileWriter fw = null;
-		
-		try{
-			File file = new File("./tokens.txt");
-
-			fw = new FileWriter(file.getAbsoluteFile(), true);
-			bw = new BufferedWriter(fw);
-
-		    
-		    if(token.getAttr() != null){
-		    	if(token.getType() == TokenType.PR){
-		    		bw.write("<"+token.getType()+", "+ token.getAttr() +"> //"+this.tablePR.getAtIndex(Integer.parseInt(token.getAttr()))+"  \n");
-		    	}else{
-		    		bw.write("<"+token.getType()+", "+ token.getAttr() +">\n");
-		    	}	
-		    }
-		    else{
-		    	bw.write("<"+token.getType()+", >\n");
-		    }
-		    
-		    bw.close();
-			fw.close();
-		} catch (IOException e) {
-		   System.err.println("Error al escribir fichero ");
-		   bw.close();
-		   fw.close();
-		}
-	}
+//	public void writeTokenToFile(Token token) throws IOException{
+//		BufferedWriter bw = null;
+//		FileWriter fw = null;
+//		
+//		try{
+//			File file = new File("./tokens.txt");
+//
+//			fw = new FileWriter(file.getAbsoluteFile(), true);
+//			bw = new BufferedWriter(fw);
+//
+//		    
+//		    if(token.getAttr() != null){
+//		    	if(token.getType() == TokenType.PR){
+//		    		bw.write("<"+token.getType()+", "+ token.getAttr() +"> //"+this.tablePR.getAtIndex(Integer.parseInt(token.getAttr()))+"  \n");
+//		    	}else{
+//		    		bw.write("<"+token.getType()+", "+ token.getAttr() +">\n");
+//		    	}	
+//		    }
+//		    else{
+//		    	bw.write("<"+token.getType()+", >\n");
+//		    }
+//		    
+//		    bw.close();
+//			fw.close();
+//		} catch (IOException e) {
+//		   System.err.println("Error al escribir fichero ");
+//		   bw.close();
+//		   fw.close();
+//		}
+//	}
 	
 
-	@Override
 	public Token getNewToken() throws Exception {			
-		getAutomaton().restart();
+		this.automaton.restart();
 		String concat = "";
 		int number = 0;
 		Token token = null;
-		State currentState = getAutomaton().getCurrentState();
+		State currentState = this.automaton.getCurrentState();
 		
-		int ascii = getSource().getCurrentChar();
+		int ascii = this.source.getCurrentChar();
 		if(ascii == -1){
 			Token t = new Token(TokenType.$, null);
-			this.writeTokenToFile(t);
+			this.writeToFile.token(tablePR, t);
 			return t;
 		}
 			
@@ -82,7 +87,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 				
 		while(!(currentState instanceof FinalState)){			
 			//Obtiene la que seria la proxima transicion desde el estado actual
-			Transition tran = getAutomaton().getTransitionWithSymbol(currentState, c);
+			Transition tran = this.automaton.getTransitionWithSymbol(currentState, c);
 			
 			//Si no hay ninguna transicion es porque el automatca no reconoce el simbolo
 			if(tran == null){
@@ -90,13 +95,13 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 				break;//generar error
 			}
 				
-			getAutomaton().transit(c);
-			currentState = getAutomaton().getCurrentState();
+			this.automaton.transit(c);
+			currentState = this.automaton.getCurrentState();
 			
 			//Ejecuta Accion Semantica
 			switch(tran.getSemanticAction()){
 				case A:
-					int tmp =  getSource().read();
+					int tmp =  this.source.read();
 					
 					if(tmp == -1)
 						return new Token(TokenType.$, null);
@@ -107,22 +112,22 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					
 				case B: 
 					concat += c;
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 			
 				case C:
 					token = new Token(TokenType.AND, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case D:
 					concat = c + "";
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 				
 				case E:
 					concat += c;
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case F:					
@@ -146,12 +151,12 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					
 				case G:
 					number = Integer.valueOf(c+"");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case H:
 					number = number * 10 + Integer.valueOf(c + "");		
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case I:
@@ -161,7 +166,7 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					
 				case J:
 					number = 0;
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 				
 				case K:
@@ -170,12 +175,12 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					
 				case L:
 					number = Integer.valueOf(hex.get(c+""));
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case M:
 					number = number * 16 + Integer.valueOf(hex.get(c+""));
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case N:
@@ -185,12 +190,12 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 					
 				case O:
 					number = Integer.valueOf(c+"");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 				
 				case P:
 					number = number * 8 + Integer.valueOf(c+"");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 				
 				case Q:
@@ -200,97 +205,103 @@ public class JSLexicalAnalizer extends LexicalAnalizer{
 				
 				case R:
 					token = new Token(TokenType.LLAVE, "1");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 				
 				case S:
 					token = new Token(TokenType.LLAVE, "2");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case T:
 					token = new Token(TokenType.PARENT, "1");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case U: 
 					token = new Token(TokenType.PARENT, "2");
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case V:
 					token = new Token(TokenType.MAS, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case W:
 					token = new Token(TokenType.MENOS, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case X:
 					token = new Token(TokenType.ASIGN, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case Y:
 					token = new Token(TokenType.DOS_PUNTOS, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case Z:
 					token = new Token(TokenType.INTERR, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case AA:
 					token = new Token(TokenType.MAYOR, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case BB:
 					token = new Token(TokenType.MENOR, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case CC:
 					token = new Token(TokenType.COMA, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case DD:
 					token = new Token(TokenType.EXCLA, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 					
 				case EE:
 					token = new Token(TokenType.CR, null);
-					c = (char) getSource().read();
+					this.line++;
+					c = (char) this.source.read();
 					break;
 					
 				case FF:
 					token = new Token(TokenType.STRING, concat);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;
 				
 				case GG: 
 					token = new Token(TokenType.PUNTO_COMA, null);
-					c = (char) getSource().read();
+					c = (char) this.source.read();
 					break;				
 			}
 		}
 		
-		this.writeTokenToFile(token);
+		this.writeToFile.token(tablePR, token);
 	
 		return token;
 	}
 	
 	private void checkNumberOverflow(int number){
 		if(number > 32767){
-			System.err.println("El numero "+ number + " no se puede representar con 2 bytes");
+			System.err.println("Linea " + this.currentLine() + ": El numero "+ number + " no se puede representar con 2 bytes");
 			System.exit(-1);
 		}
 	}
+	
+	public int currentLine() {
+		return this.line;
+	}
+	
 	
 
 }
