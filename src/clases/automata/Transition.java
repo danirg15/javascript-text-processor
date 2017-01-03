@@ -4,9 +4,9 @@ public class Transition {
 	private State initialState;
 	private Symbol symbol;
 	private State targetState;
-	private SemanticAction semanticAction;
+	private Action semanticAction;
 	
-	public Transition(State input, Symbol symbol, State output, SemanticAction semanticAction) {
+	public Transition(State input, Symbol symbol, State output, Action semanticAction) {
 		this.initialState = input;
 		this.symbol = symbol;
 		this.targetState = output;
@@ -25,7 +25,7 @@ public class Transition {
 		return targetState;
 	}
 	
-	public SemanticAction getSemanticAction(){
+	public Action getSemanticAction(){
 		return semanticAction;
 	}
 

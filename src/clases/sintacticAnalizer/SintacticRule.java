@@ -1,11 +1,13 @@
 package sintacticAnalizer;
 
+import semanticAnalizer.SemanticAction;
+
 public class SintacticRule {
 	private int id;
 	private NonTerminalSymbol symbol;
-	private GrammaticalSymbol[] derivation;
+	private Object[] derivation;
 	
-	public SintacticRule(int id, NonTerminalSymbol symbol, GrammaticalSymbol[] derivation) {
+	public SintacticRule(int id, NonTerminalSymbol symbol, Object[] derivation) {
 		this.id = id;
 		this.symbol = symbol;
 		this.derivation = derivation;
@@ -15,7 +17,7 @@ public class SintacticRule {
 		return symbol;
 	}
 
-	public GrammaticalSymbol[] getDerivation() {
+	public Object[] getDerivation() {
 		return derivation;
 	}
 	
@@ -29,8 +31,12 @@ public class SintacticRule {
 	public String toString() {
 		String s = "Rule "+id+": " + symbol +" -> ";
 		
-		for(GrammaticalSymbol symbol : this.derivation){
-			s += symbol + " ";
+		for(Object symbol : this.derivation){
+			if(symbol instanceof SemanticAction){
+				s += "SemAct" + " ";
+			}else{
+				s += symbol + " ";
+			}
 		}
 		
 		return s + "\n";

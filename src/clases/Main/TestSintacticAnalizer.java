@@ -2,8 +2,9 @@ package Main;
 
 import lexicalAnalizer.JSLexicalAnalizer;
 import lexicalAnalizer.LAConfig;
+import semanticAnalizer.SemanticAnalizer;
 import sintacticAnalizer.NonTerminalSymbol;
-import sintacticAnalizer.SAConfig;
+import sintacticAnalizer.SinAConfig;
 import sintacticAnalizer.SintacticAnalizer;
 import symbolTable.SymbolTable;
 import symbolTable.TSContainer;
@@ -13,6 +14,11 @@ import extra.SourceFile;
 import extra.WriteToFile;
 
 public class TestSintacticAnalizer {
+	
+	public void test(){
+		System.out.println("Testinng..");
+	}
+	
 
 	public static void main(String[] args) throws Exception{	
 //		System.out.println("Args: " + args.length);
@@ -31,7 +37,7 @@ public class TestSintacticAnalizer {
 		tablaPR.add("chars");//4
 		tablaPR.add("write");//5
 		tablaPR.add("prompt");//6
-		tablaPR.add("switch");//7
+		tablaPR.add("switch");//
 		tablaPR.add("case");//8
 		tablaPR.add("bool");//9
 		tablaPR.add("if");//10
@@ -43,6 +49,8 @@ public class TestSintacticAnalizer {
 		//Tabla de simbolos
 		TSContainer ts_container = new TSContainer();
 		SymbolTable TS = ts_container.create("Global");
+		SemanticAnalizer.setGST(TS);
+			
 		
 		//Automata AFD
 		DFA afd = LAConfig.get();
@@ -58,7 +66,7 @@ public class TestSintacticAnalizer {
 		
 		//Analizador Sintactico
 		NonTerminalSymbol axiom = new NonTerminalSymbol("P'");	
-		SintacticAnalizer sa = new SintacticAnalizer(axiom, SAConfig.getLL1Table(), lexAnalizer);
+		SintacticAnalizer sa = new SintacticAnalizer(axiom, SinAConfig.getLL1Table(), lexAnalizer);
 		
 		sa.analize();
 		
@@ -71,6 +79,8 @@ public class TestSintacticAnalizer {
 			
 		
 		//System.out.println(args.length);
+		
+		
 	}
 	
 	

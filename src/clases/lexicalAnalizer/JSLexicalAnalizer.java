@@ -1,21 +1,17 @@
 package lexicalAnalizer;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 
 import symbolTable.Entry;
 import symbolTable.SymbolTable;
-import extra.AttrTable;
-import extra.HexadecimalValues;
-import extra.SourceFile;
-import extra.WriteToFile;
 import automata.DFA;
 import automata.FinalState;
 import automata.State;
 import automata.Transition;
+import extra.AttrTable;
+import extra.HexadecimalValues;
+import extra.SourceFile;
+import extra.WriteToFile;
 
 
 public class JSLexicalAnalizer {
@@ -35,38 +31,6 @@ public class JSLexicalAnalizer {
 		this.writeToFile = new WriteToFile();
 		this.line = 1;
 	}
-	
-
-//	public void writeTokenToFile(Token token) throws IOException{
-//		BufferedWriter bw = null;
-//		FileWriter fw = null;
-//		
-//		try{
-//			File file = new File("./tokens.txt");
-//
-//			fw = new FileWriter(file.getAbsoluteFile(), true);
-//			bw = new BufferedWriter(fw);
-//
-//		    
-//		    if(token.getAttr() != null){
-//		    	if(token.getType() == TokenType.PR){
-//		    		bw.write("<"+token.getType()+", "+ token.getAttr() +"> //"+this.tablePR.getAtIndex(Integer.parseInt(token.getAttr()))+"  \n");
-//		    	}else{
-//		    		bw.write("<"+token.getType()+", "+ token.getAttr() +">\n");
-//		    	}	
-//		    }
-//		    else{
-//		    	bw.write("<"+token.getType()+", >\n");
-//		    }
-//		    
-//		    bw.close();
-//			fw.close();
-//		} catch (IOException e) {
-//		   System.err.println("Error al escribir fichero ");
-//		   bw.close();
-//		   fw.close();
-//		}
-//	}
 	
 
 	public Token getNewToken() throws Exception {			
@@ -91,7 +55,7 @@ public class JSLexicalAnalizer {
 			
 			//Si no hay ninguna transicion es porque el automatca no reconoce el simbolo
 			if(tran == null){
-				System.err.println("Lexical Analizer. Error in : " + concat + c);
+				System.err.println("Linea " + this.line + ": Lexical Analizer. Error in : " + concat + c);
 				break;//generar error
 			}
 				

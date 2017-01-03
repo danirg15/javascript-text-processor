@@ -1,1 +1,1 @@
-var int a
+return

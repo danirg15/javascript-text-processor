@@ -4,7 +4,7 @@ import automata.DFA;
 import automata.FinalState;
 import automata.Match;
 import automata.NonFinalState;
-import automata.SemanticAction;
+import automata.Action;
 import automata.Symbol;
 import automata.Transition;
 import automata.TransitionMatrix;
@@ -98,79 +98,79 @@ public class LAConfig {
 		TransitionMatrix matrix = new TransitionMatrix(estadosNoFinales, estadosFinales, alphabet);
 		
 			//delimitador
-			matrix.addTransition(new Transition(E0, del, E0, SemanticAction.A));
+			matrix.addTransition(new Transition(E0, del, E0, Action.A));
 			//llave1
-			matrix.addTransition(new Transition(E0, llave1, E11, SemanticAction.R));
+			matrix.addTransition(new Transition(E0, llave1, E11, Action.R));
 			//llave2
-			matrix.addTransition(new Transition(E0, llave2, E12, SemanticAction.S));
+			matrix.addTransition(new Transition(E0, llave2, E12, Action.S));
 			//parent1
-			matrix.addTransition(new Transition(E0, parent1, E13, SemanticAction.T));
+			matrix.addTransition(new Transition(E0, parent1, E13, Action.T));
 			//parent2
-			matrix.addTransition(new Transition(E0, parent2, E14, SemanticAction.U));
+			matrix.addTransition(new Transition(E0, parent2, E14, Action.U));
 			//mas
-			matrix.addTransition(new Transition(E0, mas, E15, SemanticAction.V));
+			matrix.addTransition(new Transition(E0, mas, E15, Action.V));
 			//menos
-			matrix.addTransition(new Transition(E0, menos, E16, SemanticAction.W));
+			matrix.addTransition(new Transition(E0, menos, E16, Action.W));
 			//asignacion
-			matrix.addTransition(new Transition(E0, asign, E17, SemanticAction.X));
+			matrix.addTransition(new Transition(E0, asign, E17, Action.X));
 			//dos puntos
-			matrix.addTransition(new Transition(E0, dos_puntos, E18, SemanticAction.Y));
+			matrix.addTransition(new Transition(E0, dos_puntos, E18, Action.Y));
 			//interrogacion
-			matrix.addTransition(new Transition(E0, interr, E19, SemanticAction.Z));
+			matrix.addTransition(new Transition(E0, interr, E19, Action.Z));
 			//mayor
-			matrix.addTransition(new Transition(E0, mayor, E20, SemanticAction.AA));
+			matrix.addTransition(new Transition(E0, mayor, E20, Action.AA));
 			//menor
-			matrix.addTransition(new Transition(E0, menor, E21, SemanticAction.BB));
+			matrix.addTransition(new Transition(E0, menor, E21, Action.BB));
 			//coma
-			matrix.addTransition(new Transition(E0, coma, E22, SemanticAction.CC));
+			matrix.addTransition(new Transition(E0, coma, E22, Action.CC));
 			//exclmacion
-			matrix.addTransition(new Transition(E0, exclam, E23, SemanticAction.DD));
+			matrix.addTransition(new Transition(E0, exclam, E23, Action.DD));
 			//salto de linea
-			matrix.addTransition(new Transition(E0, CR, E24, SemanticAction.EE));
+			matrix.addTransition(new Transition(E0, CR, E24, Action.EE));
 			//punto y coma
-			matrix.addTransition(new Transition(E0, punto_coma, E32, SemanticAction.GG));
+			matrix.addTransition(new Transition(E0, punto_coma, E32, Action.GG));
 			
 			//and
-			matrix.addTransition(new Transition(E0, ampersand, E10, SemanticAction.A));
-			matrix.addTransition(new Transition(E10, ampersand, E26, SemanticAction.C));
+			matrix.addTransition(new Transition(E0, ampersand, E10, Action.A));
+			matrix.addTransition(new Transition(E10, ampersand, E26, Action.C));
 			
 			
 			//decimales
-			matrix.addTransition(new Transition(E0, digitNotZero, E2, SemanticAction.G));
-			matrix.addTransition(new Transition(E2, d, E2, SemanticAction.H));
-			matrix.addTransition(new Transition(E2, OC, E28, SemanticAction.I));
+			matrix.addTransition(new Transition(E0, digitNotZero, E2, Action.G));
+			matrix.addTransition(new Transition(E2, d, E2, Action.H));
+			matrix.addTransition(new Transition(E2, OC, E28, Action.I));
 			
 			//Identificadores y palabras reservadas
-			matrix.addTransition(new Transition(E0, l, E1, SemanticAction.D));
-			matrix.addTransition(new Transition(E1, l, E1, SemanticAction.E));
-			matrix.addTransition(new Transition(E1, d, E1, SemanticAction.E));
-			matrix.addTransition(new Transition(E1, underscore, E1, SemanticAction.E));
-			matrix.addTransition(new Transition(E1, OC, E27, SemanticAction.F));
+			matrix.addTransition(new Transition(E0, l, E1, Action.D));
+			matrix.addTransition(new Transition(E1, l, E1, Action.E));
+			matrix.addTransition(new Transition(E1, d, E1, Action.E));
+			matrix.addTransition(new Transition(E1, underscore, E1, Action.E));
+			matrix.addTransition(new Transition(E1, OC, E27, Action.F));
 			
 			//Hex, Oct, Numero 0
-			matrix.addTransition(new Transition(E0, cero, E3, SemanticAction.J));
-			matrix.addTransition(new Transition(E3, d, E6, SemanticAction.O));//debe ser todo deigito menor 0
-			matrix.addTransition(new Transition(E3, x, E4, SemanticAction.A));
-			matrix.addTransition(new Transition(E3, OC, E29, SemanticAction.K));
+			matrix.addTransition(new Transition(E0, cero, E3, Action.J));
+			matrix.addTransition(new Transition(E3, d, E6, Action.O));//debe ser todo deigito menor 0
+			matrix.addTransition(new Transition(E3, x, E4, Action.A));
+			matrix.addTransition(new Transition(E3, OC, E29, Action.K));
 			
-			matrix.addTransition(new Transition(E4, carHex, E5, SemanticAction.L));
-			matrix.addTransition(new Transition(E5, carHex, E5, SemanticAction.M));
-			matrix.addTransition(new Transition(E5, OC, E30, SemanticAction.N));
+			matrix.addTransition(new Transition(E4, carHex, E5, Action.L));
+			matrix.addTransition(new Transition(E5, carHex, E5, Action.M));
+			matrix.addTransition(new Transition(E5, OC, E30, Action.N));
 			
-			matrix.addTransition(new Transition(E6, d, E6, SemanticAction.P));
-			matrix.addTransition(new Transition(E6, OC, E31, SemanticAction.Q));
+			matrix.addTransition(new Transition(E6, d, E6, Action.P));
+			matrix.addTransition(new Transition(E6, OC, E31, Action.Q));
 			
 			//Comentario
-			matrix.addTransition(new Transition(E0, barra, E7, SemanticAction.A));
-			matrix.addTransition(new Transition(E7, barra, E8, SemanticAction.A));
-			matrix.addTransition(new Transition(E8, CR, E24, SemanticAction.EE));
+			matrix.addTransition(new Transition(E0, barra, E7, Action.A));
+			matrix.addTransition(new Transition(E7, barra, E8, Action.A));
+			matrix.addTransition(new Transition(E8, CR, E24, Action.EE));
 			//matrix.addTransition(new Transition(E8, CR, E0, SemanticAction.EE));
-			matrix.addTransition(new Transition(E8, caracter, E8, SemanticAction.A));
+			matrix.addTransition(new Transition(E8, caracter, E8, Action.A));
 			
 			//String
-			matrix.addTransition(new Transition(E0, comilla, E9, SemanticAction.A));
-			matrix.addTransition(new Transition(E9, caracter_excepto_comilla, E9, SemanticAction.B));
-			matrix.addTransition(new Transition(E9, comilla, E25, SemanticAction.FF));
+			matrix.addTransition(new Transition(E0, comilla, E9, Action.A));
+			matrix.addTransition(new Transition(E9, caracter_excepto_comilla, E9, Action.B));
+			matrix.addTransition(new Transition(E9, comilla, E25, Action.FF));
 			
 			
 			//Automata AFD
