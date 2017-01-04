@@ -1,1 +1,9 @@
 CONTENIDO DE LA TABLA # 1 : 
+* LEXEMA : 'a'
+	 ATRIBUTOS : 
+	 tipo : 'INTEGER' 
+
+-------------------------------------* LEXEMA : 'b'
+	 ATRIBUTOS : 
+
+-------------------------------------

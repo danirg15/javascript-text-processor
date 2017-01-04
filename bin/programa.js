@@ -1,1 +1,3 @@
-return
+var int a
+
+prompt(b)

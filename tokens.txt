@@ -1,3 +1,11 @@
-<PR, 3> //return  
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, a>
+<CR, >
+<CR, >
+<PR, 6> //prompt  
+<PARENT, 1>
+<ID, b>
+<PARENT, 2>
 <CR, >
 <$, >

@@ -2,9 +2,10 @@ package sintacticAnalizer;
 
 import java.util.Stack;
 
+import common.WriteToFile;
+
 import semanticAnalizer.SemanticAction;
-import extra.WriteToFile;
-import lexicalAnalizer.JSLexicalAnalizer;
+import lexicalAnalizer.LexicalAnalizer;
 import lexicalAnalizer.Token;
 import lexicalAnalizer.TokenType;
 
@@ -14,12 +15,12 @@ public class SintacticAnalizer {
 	private static Stack<GrammaticalSymbol> aux_stack;
 	
 	private LL1Table tableLL1;
-	private JSLexicalAnalizer LexA;
+	private LexicalAnalizer LexA;
 	private Token EOFToken;
 	private String parse = "";
 	private WriteToFile writeToFile = new WriteToFile();
 	
-	public SintacticAnalizer(NonTerminalSymbol axiom, LL1Table tableLL1, JSLexicalAnalizer LexA){
+	public SintacticAnalizer(NonTerminalSymbol axiom, LL1Table tableLL1, LexicalAnalizer LexA){
 		this.axiom = axiom;
 		this.tableLL1 = tableLL1;
 		this.LexA = LexA;
@@ -59,10 +60,24 @@ public class SintacticAnalizer {
 				if(((TerminalSymbol) X).match(a)){
 					Object o = this.stack.pop();
 					aux_stack.push((GrammaticalSymbol) o);
-					p = new TerminalSymbol(this.LexA.getNewToken());//Next Token
+					
+					Token t = this.LexA.getNewToken();
+					
+					p = new TerminalSymbol(t);//Next Token
+					
+					if(t.getType() == TokenType.ID) {
+						for(int i = stack.size()-1; i >= 0 ;i--) {
+							if(stack.elementAt(i) instanceof TerminalSymbol){
+								stack.setElementAt(new TerminalSymbol(t), i);
+								break;
+							}
+						}
+					}
+					
+					
 				}
 				else{
-					System.err.println("Error semantico 1 -> Linea "+this.LexA.currentLine());
+					System.err.println("Error semantico 1 -> Linea " + LexicalAnalizer.currentLine);
 					System.exit(-1);
 				}
 			}
@@ -92,7 +107,7 @@ public class SintacticAnalizer {
 				
 				}
 				else{
-					System.err.println("Error semantico 2 -> Linea " + this.LexA.currentLine());
+					System.err.println("Error semantico 2 -> Linea " + LexicalAnalizer.currentLine);
 					System.exit(-1);
 				}
 			}

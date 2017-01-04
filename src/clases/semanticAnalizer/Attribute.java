@@ -1,13 +1,30 @@
 package semanticAnalizer;
 
+import symbolTable.Types;
+
 
 public class Attribute {
-	Types type;
-	Types returnType;
+	private Types type;
+	private Types returnType;
+	private int lenght;
 	
 	public Attribute() {
 		
 	}
+	
+	
+
+	public int getLenght() {
+		return lenght;
+	}
+
+
+
+	public void setLenght(int lenght) {
+		this.lenght = lenght;
+	}
+
+
 
 	public Types type() {
 		return type;

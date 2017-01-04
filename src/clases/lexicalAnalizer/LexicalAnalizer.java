@@ -2,34 +2,33 @@ package lexicalAnalizer;
 
 import java.util.HashMap;
 
+import common.AttrTable;
+import common.HexadecimalValues;
+import common.SourceFile;
+import common.WriteToFile;
+
+import semanticAnalizer.SemanticAnalizer;
 import symbolTable.Entry;
-import symbolTable.SymbolTable;
 import automata.DFA;
 import automata.FinalState;
 import automata.State;
 import automata.Transition;
-import extra.AttrTable;
-import extra.HexadecimalValues;
-import extra.SourceFile;
-import extra.WriteToFile;
 
 
-public class JSLexicalAnalizer {
+public class LexicalAnalizer {
 	private SourceFile source;
 	private DFA automaton;
 	private AttrTable tablePR;
-	private SymbolTable symbolsTable;
 	private HashMap<String, Integer> hex = HexadecimalValues.get();
 	private WriteToFile writeToFile;
-	private int line;
+	public static int currentLine = 0;
 	
-	public JSLexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR, SymbolTable symbolsTable) {
+	public LexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR) {
 		this.source = source;
 		this.automaton = automaton;
 		this.tablePR = tablePR;
-		this.symbolsTable = symbolsTable;
 		this.writeToFile = new WriteToFile();
-		this.line = 1;
+		currentLine = 1;
 	}
 	
 
@@ -55,7 +54,7 @@ public class JSLexicalAnalizer {
 			
 			//Si no hay ninguna transicion es porque el automatca no reconoce el simbolo
 			if(tran == null){
-				System.err.println("Linea " + this.line + ": Lexical Analizer. Error in : " + concat + c);
+				System.err.println("Linea " + currentLine + ": Lexical Analizer. Error in : " + concat + c);
 				break;//generar error
 			}
 				
@@ -101,12 +100,12 @@ public class JSLexicalAnalizer {
 					if((index = this.tablePR.find(concat)) != -1){
 						token = new Token(TokenType.PR, index+"");
 					}
-					else if(this.symbolsTable.search(concat) != null){
+					else if(SemanticAnalizer.currentTS.search(concat) != null){
 						//locallizar identificadores
 						token = new Token(TokenType.ID, concat);
 					}
 					else{
-						this.symbolsTable.add(new Entry(concat));
+						SemanticAnalizer.currentTS.add(new Entry(concat));
 						token = new Token(TokenType.ID, concat);
 					}
 					
@@ -234,7 +233,7 @@ public class JSLexicalAnalizer {
 					
 				case EE:
 					token = new Token(TokenType.CR, null);
-					this.line++;
+					currentLine++;
 					c = (char) this.source.read();
 					break;
 					
@@ -257,15 +256,9 @@ public class JSLexicalAnalizer {
 	
 	private void checkNumberOverflow(int number){
 		if(number > 32767){
-			System.err.println("Linea " + this.currentLine() + ": El numero "+ number + " no se puede representar con 2 bytes");
+			System.err.println("Linea " + currentLine + ": El numero "+ number + " no se puede representar con 2 bytes");
 			System.exit(-1);
 		}
 	}
 	
-	public int currentLine() {
-		return this.line;
-	}
-	
-	
-
 }

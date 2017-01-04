@@ -3,12 +3,12 @@ package symbolTable;
 
 public class Entry {
 	private String lex;
-	private IdentifierType identifierType = null;
+	private Types type = null;
 	private Integer offset = null;
 	//private String memoryAddr;
 	//private int dimension;
 	private int nArgs;
-	private IdentifierType returnedIdentifier = null;
+	private Types returnedType = null;
 	
 	
 	public Entry(String lex){
@@ -31,13 +31,13 @@ public class Entry {
 	}
 
 
-	public IdentifierType getIdentifierType() {
-		return identifierType;
+	public Types getType() {
+		return type;
 	}
 
 
-	public void setIdentifierType(IdentifierType identifierType) {
-		this.identifierType = identifierType;
+	public void setType(Types type) {
+		this.type = type;
 	}
 	
 
@@ -51,13 +51,13 @@ public class Entry {
 	}
 
 
-	public IdentifierType getReturnedIdentifier() {
-		return returnedIdentifier;
+	public Types getReturnedIdentifier() {
+		return returnedType;
 	}
 
 
-	public void setReturnedIdentifier(IdentifierType returnedIdentifier) {
-		this.returnedIdentifier = returnedIdentifier;
+	public void setReturnedType(Types returnedType) {
+		this.returnedType = returnedType;
 	}
 	
 	
@@ -66,8 +66,8 @@ public class Entry {
 		String s = "* LEXEMA : '" + this.lex + "'\n";
 		s += "\t ATRIBUTOS : \n";
 		
-		if(this.identifierType != null) {
-			s += "\t tipo : '"+ identifierType +"' \n";
+		if(this.type != null) {
+			s += "\t tipo : '"+ type +"' \n";
 		}
 		else if(this.offset != null) {
 			s += "\t desplazamiento : "+ offset +" \n";

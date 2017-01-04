@@ -1,17 +1,15 @@
 package Main;
 
-import lexicalAnalizer.JSLexicalAnalizer;
+import common.AttrTable;
+import common.SourceFile;
+import common.WriteToFile;
+
+import lexicalAnalizer.LexicalAnalizer;
 import lexicalAnalizer.LAConfig;
-import semanticAnalizer.SemanticAnalizer;
 import sintacticAnalizer.NonTerminalSymbol;
 import sintacticAnalizer.SinAConfig;
 import sintacticAnalizer.SintacticAnalizer;
-import symbolTable.SymbolTable;
-import symbolTable.TSContainer;
 import automata.DFA;
-import extra.AttrTable;
-import extra.SourceFile;
-import extra.WriteToFile;
 
 public class TestSintacticAnalizer {
 	
@@ -45,12 +43,7 @@ public class TestSintacticAnalizer {
 		
 		//
 		WriteToFile.cleanFiles();
-		
-		//Tabla de simbolos
-		TSContainer ts_container = new TSContainer();
-		SymbolTable TS = ts_container.create("Global");
-		SemanticAnalizer.setGST(TS);
-			
+				
 		
 		//Automata AFD
 		DFA afd = LAConfig.get();
@@ -61,7 +54,7 @@ public class TestSintacticAnalizer {
 		sf.read();
 				
 		//Analizador Lexico
-		JSLexicalAnalizer lexAnalizer = new JSLexicalAnalizer(sf, afd, tablaPR, TS);
+		LexicalAnalizer lexAnalizer = new LexicalAnalizer(sf, afd, tablaPR);
 				
 		
 		//Analizador Sintactico

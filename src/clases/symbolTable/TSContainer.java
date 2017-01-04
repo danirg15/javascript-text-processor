@@ -3,7 +3,7 @@ package symbolTable;
 import java.io.IOException;
 import java.util.HashMap;
 
-import extra.WriteToFile;
+import common.WriteToFile;
 
 
 public class TSContainer {
@@ -12,14 +12,14 @@ public class TSContainer {
 	private static WriteToFile writeToFile = new WriteToFile();
 	
 	
-	public SymbolTable create(String name) {
+	public static SymbolTable create(String name) {
 		SymbolTable t = new SymbolTable(id_counter, name);
 		tables.put(id_counter, t);
 		id_counter++;
 		return t;
 	}
 	
-	public void destroy(int id) throws IOException {
+	public static void destroy(int id) throws IOException {
 		writeToFile.symbolTable(tables.get(id));
 		tables.remove(id);
 	}

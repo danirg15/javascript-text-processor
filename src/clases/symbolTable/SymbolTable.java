@@ -20,7 +20,6 @@ public class SymbolTable {
 	}
 
 
-
 	public int getId() {
 		return id;
 	}
@@ -39,6 +38,16 @@ public class SymbolTable {
 		return this.table.get(name);
 	}
 	
-
+	public void insertType(String lex, Types type) {
+		this.search(lex).setType(type);
+	}
+	
+	public void insertOffset(String lex, int offset) {
+		this.search(lex).setOffset(offset);
+	}
+	
+	public Types findType(String lex) {
+		return this.search(lex).getType();
+	}
 	
 }

@@ -1,15 +1,14 @@
 package Main;
 
-import lexicalAnalizer.JSLexicalAnalizer;
+import common.AttrTable;
+import common.SourceFile;
+import common.WriteToFile;
+
+import lexicalAnalizer.LexicalAnalizer;
 import lexicalAnalizer.LAConfig;
 import lexicalAnalizer.Token;
 import lexicalAnalizer.TokenType;
-import symbolTable.SymbolTable;
-import symbolTable.TSContainer;
 import automata.DFA;
-import extra.AttrTable;
-import extra.SourceFile;
-import extra.WriteToFile;
 
 public class TestLexicalAnalizer {
 
@@ -33,8 +32,8 @@ public class TestLexicalAnalizer {
 		WriteToFile.cleanFiles();
 		
 		//Tabla de simbolos
-		TSContainer ts_container = new TSContainer();
-		SymbolTable TS = ts_container.create("Global");
+//		TSContainer ts_container = new TSContainer();
+//		SymbolTable TS = ts_container.create("Global");
 		
 		//Automata AFD
 		DFA afd = LAConfig.get();
@@ -46,7 +45,7 @@ public class TestLexicalAnalizer {
 		sf.read();
 				
 		//Analizador del lenguaje
-		JSLexicalAnalizer analizer = new JSLexicalAnalizer(sf, afd, tablaPR, TS);
+		LexicalAnalizer analizer = new LexicalAnalizer(sf, afd, tablaPR);
 	
 		//Cada llamada devuelve un token
 		Token t = null;

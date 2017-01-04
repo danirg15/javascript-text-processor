@@ -1,4 +1,4 @@
-package extra;
+package common;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,7 +10,7 @@ import lexicalAnalizer.Token;
 import lexicalAnalizer.TokenType;
 
 public class WriteToFile {
-	private final static String[] file_names = {"./tokens.txt", "./parse.txt", "./tablas_de_simbolos.txt"}; 
+	private final static String[] file_names = {"./tokens.txt", "./parse.txt", "./tablas_de_simbolos.txt", "./errores.txt"}; 
 	
 	public WriteToFile() {
 		
@@ -64,6 +64,11 @@ public class WriteToFile {
 		    this.write(filename, "<"+token.getType()+", >\n");
 		}
 		    
+	}
+	
+	public void error(String msg) throws IOException{
+		String filename = "./errores.txt";
+		this.write(filename,  msg + "\n");    
 	}
 	
 	

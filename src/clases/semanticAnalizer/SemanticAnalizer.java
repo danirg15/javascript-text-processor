@@ -1,27 +1,28 @@
 package semanticAnalizer;
 
+import symbolTable.Entry;
 import symbolTable.SymbolTable;
 
 public class SemanticAnalizer {
-	private static int offset;
-	private static SymbolTable GST;
+	public static boolean dec_zone = false;
+	public static boolean switch_flag = false;
+	public static SymbolTable currentTS = null;
+	public static SymbolTable GST = null;
+	public static SymbolTable LST = null;
+	public static int currentTS_offset = 0;
+	public static int GST_offset = 0;
+	public static int LST_offset = 0;
 	
-	public static void setGlobalOffset(int n) {
-		offset = n;
+	public static Entry findInAllTS(String lex) {
+		if(GST.search(lex) != null) {
+			return GST.search(lex);
+		}
+		else if(LST.search(lex) != null) {
+			return LST.search(lex);
+		}
+		else {
+			return null;
+		}
 	}
-	
-	public static int getGlobalOffset() {		
-		return offset;
-	}
-
-	public static SymbolTable getGST() {
-		return GST;
-	}
-
-	public static void setGST(SymbolTable gST) {
-		GST = gST;
-	}
-	
-	
-	
+		
 }
