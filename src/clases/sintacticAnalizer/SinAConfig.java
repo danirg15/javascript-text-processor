@@ -3,6 +3,8 @@ package sintacticAnalizer;
 import java.util.Stack;
 import java.util.concurrent.Callable;
 
+import errorManager.ErrorManager;
+import errorManager.ErrorTypes;
 import semanticAnalizer.SemanticAction;
 import semanticAnalizer.SemanticAnalizer;
 import symbolTable.SymbolTable;
@@ -17,7 +19,7 @@ public class SinAConfig {
 		
 		LL1Table table = new LL1Table();
 		
-		NonTerminalSymbol Pprima = 		new NonTerminalSymbol("P'");
+		NonTerminalSymbol Pprima = 	new NonTerminalSymbol("P'");
 		NonTerminalSymbol P = 		new NonTerminalSymbol("P");
 		NonTerminalSymbol B = 		new NonTerminalSymbol("B");
 		NonTerminalSymbol S = 		new NonTerminalSymbol("S");
@@ -98,8 +100,46 @@ public class SinAConfig {
 		SemanticAction Pp1_2 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
-				TSContainer.destroy(SemanticAnalizer.GST.getId());
-				SintacticAnalizer.popAuxStack(1);
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.OK){
+					TSContainer.destroy(SemanticAnalizer.GST.getId());
+					SintacticAnalizer.popAuxStack(1);
+				}
+				else {
+					ErrorManager.notify(ErrorTypes.SEM, "No acepta");
+				}
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction Pp2_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				SymbolTable TS = TSContainer.create("Global");
+				SemanticAnalizer.GST = TS;
+				SemanticAnalizer.GST_offset = 0;
+				SemanticAnalizer.currentTS = SemanticAnalizer.GST;
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction Pp2_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.OK){
+					TSContainer.destroy(SemanticAnalizer.GST.getId());
+					SintacticAnalizer.popAuxStack(2);
+				}
+				else {
+					ErrorManager.notify(ErrorTypes.SEM, "No acepta");
+				}
 				
 				return null;
 			}			
@@ -109,7 +149,7 @@ public class SinAConfig {
 		Object r1der[] = {Pp1_1, P, Pp1_2}; 
 		SintacticRule r1 = new SintacticRule(1, Pprima, r1der); //P' -> P
 		
-		GrammaticalSymbol r2der[] = {Z, P}; 
+		Object r2der[] = {Pp2_1, Z, P, Pp2_2}; 
 		SintacticRule r2 = new SintacticRule(2, Pprima, r2der); //P' -> Z P
 		
 		table.addRule(Pprima, var_, r1);
@@ -124,27 +164,58 @@ public class SinAConfig {
 		
 		
 		//P
-		SemanticAction s2_1 = new SemanticAction(new Callable<Object>() {
+		SemanticAction P_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top - 3).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				if(aux_stack.elementAt(top-2).getAttribute().type() == Types.OK){
+					aux_stack.elementAt(top - 3).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				}
+				
 				SintacticAnalizer.popAuxStack(3);
 				
 				return null;
 			}			
 		});
 		
+		SemanticAction P_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				if(aux_stack.elementAt(top-2).getAttribute().type() == Types.OK){
+					aux_stack.elementAt(top - 3).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				}
+				
+				SintacticAnalizer.popAuxStack(3);
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction P_3 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top).getAttribute().setType( Types.OK );
+				
+				return null;
+			}			
+		});
+		
 	
-		Object r3der[] = {B,Z,P, s2_1}; 
+		Object r3der[] = {B,Z,P, P_1}; 
 		SintacticRule r3 = new SintacticRule(3, P, r3der); //P -> BZP
 		
-		GrammaticalSymbol r4der[] = {F,Z,P}; 
+		Object r4der[] = {F,Z,P, P_2}; 
 		SintacticRule r4 = new SintacticRule(4, P, r4der); //P -> FZP
 		
-		GrammaticalSymbol r5der[] = {lambda}; 
+		Object r5der[] = {lambda, P_3}; 
 		SintacticRule r5 = new SintacticRule(5, P, r5der); //P -> lambda
 		
 		
@@ -234,6 +305,7 @@ public class SinAConfig {
 				} 
 				else {
 					aux_stack.elementAt(top-5).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba una expresión lógica en la condición del 'if'");
 				}
 				
 				SintacticAnalizer.popAuxStack(5);
@@ -251,6 +323,7 @@ public class SinAConfig {
 				
 				if(aux_stack.elementAt(top-1).getAttribute().type() != Types.INTEGER) {
 					aux_stack.elementAt(top-4).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba un entero o identificador de tipo entero en el 'switch'");
 				}
 				else {
 					SemanticAnalizer.switch_flag = true;
@@ -306,12 +379,13 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				if(aux_stack.elementAt(top).getAttribute().type() != Types.ERROR){
+				if(aux_stack.elementAt(top).getAttribute().type() != Types.ERROR && SemanticAnalizer.function_flag == true){
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.OK);
 					aux_stack.elementAt(top-2).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().type() );					
 				}
 				else{
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "No se esperaba la sentencia 'return' fuera de una funcion");
 				}
 				
 				SintacticAnalizer.popAuxStack(2);
@@ -329,11 +403,17 @@ public class SinAConfig {
 				
 				String lex = ((TerminalSymbol)aux_stack.elementAt(top-1)).getToken().getAttr();
 				
-				if(SemanticAnalizer.findInAllTS(lex).getType() == aux_stack.elementAt(top).getAttribute().type()) {
+				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty() && 
+				   SemanticAnalizer.findInAllTS(lex).getType() != null) {
+					
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.OK);
 				}
-				else if(SemanticAnalizer.findInAllTS(lex).getType() == aux_stack.elementAt(top).getAttribute().type()->t ) {
+				else if(SemanticAnalizer.findInAllTS(lex).typesListIsEqual( aux_stack.elementAt(top).getAttribute().getTypesList()) ) {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.OK);
+				}
+				else {
+					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Falta error aqui, S, del semantico");
 				}
 					
 				aux_stack.elementAt(top-2).getAttribute().setReturnType(Types.VOID);
@@ -357,6 +437,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-4).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba un identificador o expresión lógica en la sentencia 'write'");
 				}
 				
 				aux_stack.elementAt(top-4).getAttribute().setReturnType(Types.VOID);
@@ -382,6 +463,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-4).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba un identificador en la sentencia 'prompt'");
 				}
 				
 				aux_stack.elementAt(top-4).getAttribute().setReturnType(Types.VOID);
@@ -420,6 +502,7 @@ public class SinAConfig {
 				int top = aux_stack.size() - 1;
 				
 				aux_stack.elementAt(top-2).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				aux_stack.elementAt(top-2).getAttribute().getTypesList().clear();
 				SintacticAnalizer.popAuxStack(2);
 				
 				return null;
@@ -432,7 +515,8 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top-3).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+				aux_stack.elementAt(top-3).getAttribute().addListOfTypes( aux_stack.elementAt(top-1).getAttribute().getTypesList() );
+				aux_stack.elementAt(top-3).getAttribute().setType(Types.VOID);
 				SintacticAnalizer.popAuxStack(3);
 				
 				return null;
@@ -456,7 +540,7 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top-1).getAttribute().setType(aux_stack.elementAt(top-1).getAttribute().type());
+				aux_stack.elementAt(top-1).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
 				SintacticAnalizer.popAuxStack(1);
 				
 				return null;
@@ -496,7 +580,7 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID && 
+				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty() && 
 				   aux_stack.elementAt(top-1).getAttribute().type() != Types.ERROR) {
 					
 					aux_stack.elementAt(top-2).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
@@ -504,10 +588,12 @@ public class SinAConfig {
 				else if(aux_stack.elementAt(top).getAttribute().type() != Types.VOID &&
 						aux_stack.elementAt(top-1).getAttribute().type() != Types.ERROR) {
 					
-					aux_stack.elementAt(top-2).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() x aux[top].tipo );
+					aux_stack.elementAt(top-2).getAttribute().addTypeToList( aux_stack.elementAt(top-1).getAttribute().type() );
+					aux_stack.elementAt(top-2).getAttribute().addListOfTypes( aux_stack.elementAt(top).getAttribute().getTypesList() );
 				}
 				else {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Los argumentos de la llamada no se corresponden con la funcion a la que llama");
 				}
 				
 				SintacticAnalizer.popAuxStack(2);
@@ -524,9 +610,7 @@ public class SinAConfig {
 				int top = aux_stack.size() - 1;
 				
 				aux_stack.elementAt(top).getAttribute().setType(Types.VOID);
-				
-				SintacticAnalizer.popAuxStack(2);
-				
+								
 				return null;
 			}			
 		});
@@ -552,11 +636,12 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				if(aux_stack.elementAt(top).getAttribute().type() != Types.VOID) {
-					aux_stack.elementAt(top-3).getAttribute().setType(  aux_stack.elementAt(top-1).getAttribute().type() x aux[top].tipo );
+				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty()) {
+					aux_stack.elementAt(top-3).getAttribute().addTypeToList( aux_stack.elementAt(top-1).getAttribute().type() );
+					aux_stack.elementAt(top-3).getAttribute().addListOfTypes( aux_stack.elementAt(top-1).getAttribute().getTypesList() );
 				}
 				else {
-					aux_stack.elementAt(top-3).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+					aux_stack.elementAt(top-3).getAttribute().addTypeToList( aux_stack.elementAt(top-1).getAttribute().type() );
 				}
 				
 				SintacticAnalizer.popAuxStack(3);
@@ -571,7 +656,7 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top).getAttribute().setType(Types.VOID);
+				aux_stack.elementAt(top).getAttribute().getTypesList().clear();
 				
 				return null;
 			}			
@@ -658,6 +743,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta");
 				}
 				
 				SintacticAnalizer.popAuxStack(2);
@@ -690,6 +776,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta, se esperaba una expresión logica");
 				}
 				
 				SintacticAnalizer.popAuxStack(3);
@@ -738,6 +825,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta");
 				}
 				
 				SintacticAnalizer.popAuxStack(2);
@@ -770,6 +858,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta, se esperaba una expresión entera");
 				}
 				
 				SintacticAnalizer.popAuxStack(3);
@@ -818,6 +907,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta");
 				}
 				
 				SintacticAnalizer.popAuxStack(2);
@@ -850,6 +940,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta, se esperaba una expresion entera en la suma");
 				}
 				
 				SintacticAnalizer.popAuxStack(3);
@@ -871,6 +962,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta, se esperaba una expresión entera para la suma");
 				}
 				
 				SintacticAnalizer.popAuxStack(3);
@@ -919,7 +1011,7 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top-1).getAttribute().setType( Types.INTEGER);
+				aux_stack.elementAt(top-1).getAttribute().setType(Types.INTEGER);
 				SintacticAnalizer.popAuxStack(1);
 				
 				return null;
@@ -932,7 +1024,7 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top-1).getAttribute().setType( Types.STRING);
+				aux_stack.elementAt(top-1).getAttribute().setType(Types.STRING);
 				SintacticAnalizer.popAuxStack(1);
 				
 				return null;
@@ -950,27 +1042,59 @@ public class SinAConfig {
 				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID) {
 					aux_stack.elementAt(top-2).getAttribute().setType( SemanticAnalizer.findInAllTS(lex).getType() );
 				}
-				else if() {
-					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+				else if(aux_stack.elementAt(top).getAttribute().type() != Types.VOID && 
+						SemanticAnalizer.findInAllTS(lex).typesListIsEqual( aux_stack.elementAt(top).getAttribute().getTypesList() ) && 
+						SemanticAnalizer.findInAllTS(lex).getType() != null ) {
+					
+					aux_stack.elementAt(top-2).getAttribute().setType( SemanticAnalizer.findInAllTS(lex).getReturnedType() );
+				}
+				else {
+					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Variable '"+ lex +"' no declarada");
 				}
 				
-				SintacticAnalizer.popAuxStack(3);
+				SintacticAnalizer.popAuxStack(2);
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction V_4 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID) {
+					aux_stack.elementAt(top-4).getAttribute().setType( aux_stack.elementAt(top-2).getAttribute().type() );
+				}
+				else if(aux_stack.elementAt(top).getAttribute().type() != Types.ERROR && 
+						aux_stack.elementAt(top-2).getAttribute().type() == Types.BOOLEAN) {
+					
+					aux_stack.elementAt(top-4).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				}
+				else {
+					aux_stack.elementAt(top-4).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión entre paréntesis incorrecta");
+				}
+				
+				SintacticAnalizer.popAuxStack(4);
 				
 				return null;
 			}			
 		});
 		
 		
-		GrammaticalSymbol r35der[] = {entero}; 
+		Object r35der[] = {entero, V_1}; 
 		SintacticRule r35 = new SintacticRule(35, V, r35der); //V -> entero
 		
-		GrammaticalSymbol r36der[] = {cadena}; 
+		Object r36der[] = {cadena, V_2}; 
 		SintacticRule r36 = new SintacticRule(36, V, r36der); //V -> cadena
 		
-		GrammaticalSymbol r37der[] = {id, Y}; 
+		Object r37der[] = {id, Y, V_3}; 
 		SintacticRule r37 = new SintacticRule(37, V, r37der); //V -> id Y
 		
-		GrammaticalSymbol r38der[] = {par1, E, par2, J}; 
+		Object r38der[] = {par1, E, par2, J, V_4}; 
 		SintacticRule r38 = new SintacticRule(38, V, r38der); //V -> ( E ) J
 		
 		table.addRule(V, entero, r35);
@@ -980,10 +1104,36 @@ public class SinAConfig {
 		
 		
 		//Y
-		GrammaticalSymbol r39der[] = {par1, L, par2}; 
+		SemanticAction Y_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				aux_stack.elementAt(top-3).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+				SintacticAnalizer.popAuxStack(3);
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction Y_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				aux_stack.elementAt(top).getAttribute().setType( Types.VOID );
+				
+				return null;
+			}			
+		});
+		
+		
+		Object r39der[] = {par1, L, par2, Y_1}; 
 		SintacticRule r39 = new SintacticRule(39, Y, r39der); //Y -> ( L )
 		
-		GrammaticalSymbol r40der[] = {lambda}; 
+		Object r40der[] = {lambda, Y_2}; 
 		SintacticRule r40 = new SintacticRule(40, Y, r40der); //Y -> lambda
 		
 		table.addRule(Y, par1, r39);
@@ -998,10 +1148,43 @@ public class SinAConfig {
 		
 		
 		//J
-		GrammaticalSymbol r41der[] = {interr, par1, E, par2, dos_puntos, par1, E, par2}; 
+		SemanticAction J_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				if(aux_stack.elementAt(top-5).getAttribute().type() == aux_stack.elementAt(top-1).getAttribute().type()) {
+					aux_stack.elementAt(top-8).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+				}
+				else {
+					aux_stack.elementAt(top-8).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Expresión incorrecta en el operador condicional");
+				}
+				
+				SintacticAnalizer.popAuxStack(8);
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction J_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				aux_stack.elementAt(top).getAttribute().setType(Types.VOID);
+								
+				return null;
+			}			
+		});
+		
+		
+		Object r41der[] = {interr, par1, E, par2, dos_puntos, par1, E, par2, J_1}; 
 		SintacticRule r41 = new SintacticRule(41, J, r41der); //J -> ? (E) : (E)
 		
-		GrammaticalSymbol r42der[] = {lambda}; 
+		Object r42der[] = {lambda, J_2}; 
 		SintacticRule r42 = new SintacticRule(42, J, r42der); //J -> lambda
 		
 		table.addRule(J, interr, r41);
@@ -1017,16 +1200,107 @@ public class SinAConfig {
 		
 		
 		//F
-		GrammaticalSymbol r43der[] = {function_, H, id, par1, A, par2, Z, llave1, Z, C, llave2}; 
+		SemanticAction F_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				SemanticAnalizer.dec_zone = true;
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction F_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				SemanticAnalizer.LST = TSContainer.create("tabla de una funcion, hay que especificar cual");
+				SemanticAnalizer.LST_offset = 0;
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction F_3 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				String lex = ((TerminalSymbol)aux_stack.elementAt(top-3)).getToken().getAttr();
+				
+				SemanticAnalizer.GST.insertType(lex, aux_stack.elementAt(top-4).getAttribute().type());
+				SemanticAnalizer.GST.search(lex).addListOfTypes( aux_stack.elementAt(top-1).getAttribute().getTypesList() );
+				SemanticAnalizer.GST.search(lex).setnArgs( aux_stack.elementAt(top-1).getAttribute().getTypesList().size() );
+				
+				SemanticAnalizer.GST.search(lex).setIdToReferencedTable( SemanticAnalizer.LST.getId() );
+				
+				SemanticAnalizer.function_flag = true;
+				SemanticAnalizer.dec_zone = false;
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction F_4 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				if(aux_stack.elementAt(top-1).getAttribute().returnType() != aux_stack.elementAt(top-9).getAttribute().type()) {
+					aux_stack.elementAt(top-11).getAttribute().setType( Types.ERROR );
+					ErrorManager.notify(ErrorTypes.SEM, "Tipo de retorno no coincide con el tipo de la funcion");
+				}
+				else {
+					aux_stack.elementAt(top-11).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+				}
+				
+				SemanticAnalizer.function_flag = false;
+				TSContainer.destroy(SemanticAnalizer.LST.getId());
+				SemanticAnalizer.LST = null;
+				
+				SintacticAnalizer.popAuxStack(11);
+				
+				return null;
+			}			
+		});
+		
+		
+		Object r43der[] = {function_, F_1, H, id, F_2, par1, A, par2, F_3, Z, llave1, Z, C, llave2, F_4}; 
 		SintacticRule r43 = new SintacticRule(43, F, r43der); //F -> function H id(A) Z { Z C }
 		
 		table.addRule(F, function_, r43);
 		
 		//H
-		GrammaticalSymbol r44der[] = {T}; 
+		SemanticAction H_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top-1).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				SintacticAnalizer.popAuxStack(1);
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction H_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top).getAttribute().setType( Types.VOID );
+				
+				return null;
+			}			
+		});
+		
+		
+		Object r44der[] = {T, H_1}; 
 		SintacticRule r44 = new SintacticRule(44, H, r44der); //H -> T
 		
-		GrammaticalSymbol r45der[] = {lambda}; 
+		Object r45der[] = {lambda, H_2}; 
 		SintacticRule r45 = new SintacticRule(45, H, r45der); //H -> lambda
 		
 		table.addRule(H, char_, r44);
@@ -1035,10 +1309,56 @@ public class SinAConfig {
 		table.addRule(H, id, r45);
 		
 		//A
-		GrammaticalSymbol r46der[] = {T, id, K}; 
+		SemanticAction A_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				String lex = ((TerminalSymbol)aux_stack.elementAt(top-1)).getToken().getAttr();
+								
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID) {
+					SemanticAnalizer.LST.insertType(lex, aux_stack.elementAt(top-2).getAttribute().type());
+					SemanticAnalizer.LST.insertOffset(lex, SemanticAnalizer.LST_offset);
+					SemanticAnalizer.LST_offset += aux_stack.elementAt(top-2).getAttribute().getLenght();
+					aux_stack.elementAt(top-3).getAttribute().setType( aux_stack.elementAt(top-2).getAttribute().type() );
+				}
+				else if(aux_stack.elementAt(top).getAttribute().type() != Types.VOID) {
+					SemanticAnalizer.LST.insertType(lex, aux_stack.elementAt(top-2).getAttribute().type());
+					SemanticAnalizer.LST.insertOffset(lex, SemanticAnalizer.LST_offset);
+					SemanticAnalizer.LST_offset += aux_stack.elementAt(top-2).getAttribute().getLenght();
+					
+					aux_stack.elementAt(top-3).getAttribute().addTypeToList( aux_stack.elementAt(top-2).getAttribute().type() );
+					aux_stack.elementAt(top).getAttribute().addListOfTypes( aux_stack.elementAt(top-2).getAttribute().getTypesList() );
+				}
+				else {
+					aux_stack.elementAt(top-3).getAttribute().setType( Types.ERROR );
+					ErrorManager.notify(ErrorTypes.SEM, "Declaración incorrecta de los parámetros de una función");
+				}
+				
+				SintacticAnalizer.popAuxStack(3);
+					
+				return null;
+			}			
+		});
+		
+		SemanticAction A_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top).getAttribute().getTypesList().clear();
+				
+				return null;
+			}			
+		});
+		
+		
+		Object r46der[] = {T, id, K, A_1}; 
 		SintacticRule r46 = new SintacticRule(46, A, r46der); //A -> T id K
 		
-		GrammaticalSymbol r47der[] = {lambda}; 
+		Object r47der[] = {lambda, A_2}; 
 		SintacticRule r47 = new SintacticRule(47, A, r47der); //A -> lambda
 		
 		table.addRule(A, par2, r47);
@@ -1048,10 +1368,53 @@ public class SinAConfig {
 		
 		
 		//K
-		GrammaticalSymbol r48der[] = {coma, T , id, K}; 
+		SemanticAction K_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				String lex = ((TerminalSymbol)aux_stack.elementAt(top-1)).getToken().getAttr();
+				
+				SemanticAnalizer.LST.insertType(lex, aux_stack.elementAt(top-2).getAttribute().type());
+				SemanticAnalizer.LST.insertOffset(lex, SemanticAnalizer.LST_offset);
+				SemanticAnalizer.LST_offset += aux_stack.elementAt(top-2).getAttribute().getLenght();				
+				
+				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty()) {
+					aux_stack.elementAt(top-4).getAttribute().addTypeToList( aux_stack.elementAt(top-2).getAttribute().type() );
+				}
+				else if(!aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty()) {
+					aux_stack.elementAt(top-4).getAttribute().addTypeToList( aux_stack.elementAt(top-2).getAttribute().type() );
+					aux_stack.elementAt(top-4).getAttribute().addListOfTypes( aux_stack.elementAt(top).getAttribute().getTypesList() );
+				}
+				else {
+					aux_stack.elementAt(top-4).getAttribute().setType( Types.ERROR );
+					ErrorManager.notify(ErrorTypes.SEM, "Declaración incorrecta de los parámetros de una función");
+				}
+				
+				SintacticAnalizer.popAuxStack(4);
+					
+				return null;
+			}			
+		});
+		
+		SemanticAction K_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top).getAttribute().getTypesList().clear();
+				
+				return null;
+			}			
+		});
+		
+		
+		Object r48der[] = {coma, T , id, K, K_1}; 
 		SintacticRule r48 = new SintacticRule(48, K, r48der); //K -> , T id K
 		
-		GrammaticalSymbol r49der[] = {lambda}; 
+		Object r49der[] = {lambda, K_2}; 
 		SintacticRule r49 = new SintacticRule(49, K, r49der); //K -> lambda
 		
 		table.addRule(K, par2, r49);
@@ -1059,6 +1422,49 @@ public class SinAConfig {
 		
 		
 		//C
+		SemanticAction C_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID) {
+					aux_stack.elementAt(top-3).getAttribute().setType( aux_stack.elementAt(top-2).getAttribute().type() );
+				}
+				else if(aux_stack.elementAt(top).getAttribute().type() != Types.VOID &&
+						aux_stack.elementAt(top-2).getAttribute().type() == Types.OK) {
+					
+					aux_stack.elementAt(top-3).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				}
+				else {
+					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Error en el cuerpo de la función");
+				}
+				
+				///////////////
+				if(aux_stack.elementAt(top).getAttribute().returnType() == Types.VOID && 
+				   aux_stack.elementAt(top-2).getAttribute().returnType() == Types.VOID) {
+					
+					aux_stack.elementAt(top-3).getAttribute().setReturnType( Types.VOID );
+				}
+				else if(aux_stack.elementAt(top).getAttribute().returnType() == Types.VOID && 
+						aux_stack.elementAt(top-2).getAttribute().returnType() != Types.VOID) {
+							
+					aux_stack.elementAt(top-3).getAttribute().setReturnType( aux_stack.elementAt(top-2).getAttribute().returnType() );
+				}
+				else if(aux_stack.elementAt(top).getAttribute().returnType() == aux_stack.elementAt(top-2).getAttribute().returnType()) {
+					aux_stack.elementAt(top-3).getAttribute().setReturnType( aux_stack.elementAt(top-2).getAttribute().returnType() );
+				}
+				else {
+					aux_stack.elementAt(top-3).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
+				}
+				
+				SintacticAnalizer.popAuxStack(3);
+				
+				return null;
+			}			
+		});
+		
 		SemanticAction C_2 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
@@ -1072,9 +1478,9 @@ public class SinAConfig {
 			}			
 		});
 		
-
 		
-		GrammaticalSymbol r50der[] = {B, Z, C}; 
+		
+		Object r50der[] = {B, Z, C, C_1}; 
 		SintacticRule r50 = new SintacticRule(50, C, r50der); //C -> BZC
 		
 		Object r51der[] = {lambda, C_2}; 
@@ -1091,7 +1497,7 @@ public class SinAConfig {
 		
 		
 		//Z
-		SemanticAction s6_1 = new SemanticAction(new Callable<Object>() {
+		SemanticAction Z_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
 				SintacticAnalizer.popAuxStack(2);				
@@ -1100,13 +1506,13 @@ public class SinAConfig {
 			}			
 		});
 		
-		Object r52der[] = {CR_, Zprima, s6_1}; 
+		Object r52der[] = {CR_, Zprima, Z_1}; 
 		SintacticRule r52 = new SintacticRule(52, Z, r52der); //Z -> cr Z'
 		
 		table.addRule(Z, CR_, r52);
 		
 		//Z'
-		SemanticAction s7_1 = new SemanticAction(new Callable<Object>() {
+		SemanticAction Zp_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
 				SintacticAnalizer.popAuxStack(2);				
@@ -1115,10 +1521,10 @@ public class SinAConfig {
 			}			
 		});
 		
-		Object r53der[] = {CR_, Zprima, s7_1}; 
+		Object r53der[] = {CR_, Zprima, Zp_1}; 
 		SintacticRule r53 = new SintacticRule(53, Zprima, r53der); //Z' -> cr Z'
 		
-		GrammaticalSymbol r54der[] = {lambda}; 
+		GrammaticalSymbol r54der[] = {lambda, }; 
 		SintacticRule r54 = new SintacticRule(54, Zprima, r54der); //Z' -> lambda
 		
 		
@@ -1143,10 +1549,76 @@ public class SinAConfig {
 		
 		
 		//W  
-		GrammaticalSymbol r55der[] = {case_, entero, dos_puntos, N, W}; 
+		SemanticAction W_1_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				if(SemanticAnalizer.switch_flag == false) {
+					aux_stack.elementAt(top-3).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "No se esperaba una sentencia 'case' fuera de un 'switch'");
+				}
+							
+				return null;
+			}			
+		});
+		
+		SemanticAction W_1_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID ||
+				   (aux_stack.elementAt(top-1).getAttribute().type() == Types.OK && 
+				   aux_stack.elementAt(top).getAttribute().type() == Types.OK)) {
+				
+					aux_stack.elementAt(top-5).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+				
+					if(aux_stack.elementAt(top).getAttribute().returnType() == Types.VOID ||
+							   (aux_stack.elementAt(top-1).getAttribute().returnType() != Types.VOID && 
+							   aux_stack.elementAt(top).getAttribute().returnType() != Types.VOID)) {
+						
+						aux_stack.elementAt(top-5).getAttribute().setReturnType( aux_stack.elementAt(top-1).getAttribute().returnType() );
+					}
+					else {
+						aux_stack.elementAt(top-5).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
+					}
+				
+				}
+				else {
+					aux_stack.elementAt(top-5).getAttribute().setType( Types.ERROR );
+					ErrorManager.notify(ErrorTypes.SEM, "Sentencias del 'switch' incorrectas");
+				}
+				
+				SintacticAnalizer.popAuxStack(5);
+					
+				return null;
+			}			
+		});
+		
+		SemanticAction W_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+					
+				aux_stack.elementAt(top).getAttribute().setType( Types.VOID );
+				aux_stack.elementAt(top).getAttribute().setReturnType( Types.VOID );
+					
+				return null;
+			}			
+		});
+		
+		
+
+		
+		
+		Object r55der[] = {case_, entero, dos_puntos, W_1_1, N, W, W_1_2}; 
 		SintacticRule r55 = new SintacticRule(55, W, r55der); //W -> case ent : N W
 		
-		GrammaticalSymbol r56der[] = {lambda}; 
+		Object r56der[] = {lambda, W_2}; 
 		SintacticRule r56 = new SintacticRule(56, W, r56der); //W -> lambda
 		
 		table.addRule(W, case_, r55);
@@ -1154,12 +1626,70 @@ public class SinAConfig {
 		
 		
 		//N 
+		SemanticAction N_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+								
+				if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID) {
+					aux_stack.elementAt(top-2).getAttribute().setType( aux_stack.elementAt(top-1).getAttribute().type() );
+					aux_stack.elementAt(top-2).getAttribute().setReturnType( aux_stack.elementAt(top-1).getAttribute().type() );
+				}
+				else if(aux_stack.elementAt(top-1).getAttribute().type() == Types.OK &&
+						aux_stack.elementAt(top).getAttribute().type() == Types.OK) {
+					
+					aux_stack.elementAt(top-2).getAttribute().setType( Types.OK );
+					
+					if(aux_stack.elementAt(top-1).getAttribute().returnType() == Types.VOID &&
+					   aux_stack.elementAt(top).getAttribute().returnType() != Types.VOID) {
+						
+						aux_stack.elementAt(top-2).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
+					}else {
+						aux_stack.elementAt(top-2).getAttribute().setReturnType( aux_stack.elementAt(top-1).getAttribute().returnType() );
+					}
+					
+				}
+				else {
+					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
+					ErrorManager.notify(ErrorTypes.SEM, "Error en las sentencias del 'case'");
+				}
+				
+				aux_stack.elementAt(top-2).getAttribute().setReturnType(Types.VOID);
+				SintacticAnalizer.popAuxStack(2);
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction N_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				
+				if(SemanticAnalizer.switch_flag == true) {
+					aux_stack.elementAt(top-2).getAttribute().setType( Types.OK );
+					aux_stack.elementAt(top-2).getAttribute().setReturnType( Types.VOID );
+				}
+				else {
+					aux_stack.elementAt(top-2).getAttribute().setType( Types.ERROR );
+					ErrorManager.notify(ErrorTypes.SEM, "Sentencia 'break' fuera de una estructura 'switch'");
+				}
+				
+				aux_stack.elementAt(top-2).getAttribute().setType( Types.VOID );
+				SintacticAnalizer.popAuxStack(2);
+						
+				return null;
+			}			
+		});
 		
 	
-		GrammaticalSymbol r57der[] = {S, Nprima}; 
+		Object r57der[] = {S, Nprima, N_1}; 
 		SintacticRule r57 = new SintacticRule(57, N, r57der); //N -> S N'
 		
-		GrammaticalSymbol r58der[] = {break_, Z}; 
+		Object r58der[] = {break_, Z, N_2}; 
 		SintacticRule r58 = new SintacticRule(58, N, r58der); //N -> break Z
 		
 		table.addRule(N, return_, r57);
@@ -1170,10 +1700,39 @@ public class SinAConfig {
 		
 	
 		//N'
-		GrammaticalSymbol r59der[] = {punto_coma, N}; 
+		SemanticAction Np_1 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top-2).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				aux_stack.elementAt(top-2).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
+				SintacticAnalizer.popAuxStack(2);				
+				
+				return null;
+			}			
+		});
+		
+		SemanticAction Np_2 = new SemanticAction(new Callable<Object>() {
+			public Object call() throws Exception {
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top-2).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				aux_stack.elementAt(top-2).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
+				SintacticAnalizer.popAuxStack(2);				
+				
+				return null;
+			}			
+		});
+		
+		
+		Object r59der[] = {punto_coma, N, Np_1}; 
 		SintacticRule r59 = new SintacticRule(59, Nprima, r59der); //N' -> ; N
 		
-		GrammaticalSymbol r60der[] = {Z, M}; 
+		Object r60der[] = {Z, M, Np_2}; 
 		SintacticRule r60 = new SintacticRule(60, Nprima, r60der); //N' -> Z M
 		
 		table.addRule(Nprima, punto_coma, r59);
@@ -1200,8 +1759,8 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
-				aux_stack.elementAt(top).getAttribute().setType(Types.VOID);
-				aux_stack.elementAt(top).getAttribute().setReturnType(Types.VOID);
+				aux_stack.elementAt(top-1).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
+				aux_stack.elementAt(top-1).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
 				
 				SintacticAnalizer.popAuxStack(1);
 								

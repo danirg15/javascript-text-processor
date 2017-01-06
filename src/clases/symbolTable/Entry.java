@@ -1,18 +1,53 @@
 package symbolTable;
 
+import java.util.ArrayList;
+
 
 public class Entry {
 	private String lex;
 	private Types type = null;
 	private Integer offset = null;
-	//private String memoryAddr;
-	//private int dimension;
 	private int nArgs;
+	private ArrayList<Types> typesList;
 	private Types returnedType = null;
+	private int idToReferencedTable;
 	
 	
 	public Entry(String lex){
 		this.lex = lex;
+		this.typesList = new ArrayList<Types>();
+	}
+	
+	public void addTypeToList(Types t) {
+		this.typesList.add(t);
+	}
+	
+	public void addListOfTypes(ArrayList<Types> list) {
+		for(Types t : list){
+			this.typesList.add(t);
+		}
+	}
+	
+	public ArrayList<Types> getTypesList() {
+		return this.typesList;
+	}
+	
+	public boolean typesListIsEqual(ArrayList<Types> list) {
+		boolean match = true;
+		
+		if(this.typesList.size() == list.size()) {
+			for(Types t : this.typesList) {
+				if(!list.contains(t)) {
+					match = false;
+					break;
+				}
+			}
+		}
+		else {
+			match = false;
+		}
+		
+		return match;
 	}
 
 
@@ -51,7 +86,7 @@ public class Entry {
 	}
 
 
-	public Types getReturnedIdentifier() {
+	public Types getReturnedType() {
 		return returnedType;
 	}
 
@@ -61,6 +96,16 @@ public class Entry {
 	}
 	
 	
+	
+	
+	public int getIdToReferencedTable() {
+		return idToReferencedTable;
+	}
+
+	public void setIdToReferencedTable(int idToReferencedTable) {
+		this.idToReferencedTable = idToReferencedTable;
+	}
+
 	public String formattedEntry(){
 	
 		String s = "* LEXEMA : '" + this.lex + "'\n";

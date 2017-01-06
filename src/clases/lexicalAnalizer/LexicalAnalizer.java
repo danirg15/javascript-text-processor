@@ -1,12 +1,14 @@
 package lexicalAnalizer;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import common.AttrTable;
 import common.HexadecimalValues;
 import common.SourceFile;
 import common.WriteToFile;
-
+import errorManager.ErrorManager;
+import errorManager.ErrorTypes;
 import semanticAnalizer.SemanticAnalizer;
 import symbolTable.Entry;
 import automata.DFA;
@@ -54,7 +56,7 @@ public class LexicalAnalizer {
 			
 			//Si no hay ninguna transicion es porque el automatca no reconoce el simbolo
 			if(tran == null){
-				System.err.println("Linea " + currentLine + ": Lexical Analizer. Error in : " + concat + c);
+				ErrorManager.notify(ErrorTypes.LEX, "No se reconoce el token " + concat + c);
 				break;//generar error
 			}
 				
@@ -94,21 +96,27 @@ public class LexicalAnalizer {
 					break;
 					
 				case F:					
-					//comprueba tabla de atributos y simbolo
-					//Falta completar
+					
 					int index;
-					if((index = this.tablePR.find(concat)) != -1){
+					if((index = this.tablePR.find(concat)) != -1){ //Es palabra reservada
 						token = new Token(TokenType.PR, index+"");
 					}
-					else if(SemanticAnalizer.currentTS.search(concat) != null){
-						//locallizar identificadores
+					else if(SemanticAnalizer.dec_zone == true) { //Se esta declarando una variable
+						if(SemanticAnalizer.currentTS.search(concat) != null){
+							ErrorManager.notify(ErrorTypes.LEX, "La variable '"+ concat +"' ya ha sido declarada");
+						}
+						else {
+							SemanticAnalizer.currentTS.add(new Entry(concat));
+							token = new Token(TokenType.ID, concat);
+						}
+					}
+					else if(SemanticAnalizer.currentTS.search(concat) == null) { //Si se usa una variable no declarada
+						ErrorManager.notify(ErrorTypes.LEX, "La variable '"+ concat +"' no ha sido declarada");
+					}
+					else {
 						token = new Token(TokenType.ID, concat);
 					}
-					else{
-						SemanticAnalizer.currentTS.add(new Entry(concat));
-						token = new Token(TokenType.ID, concat);
-					}
-					
+								
 					
 					break;
 					
@@ -254,10 +262,9 @@ public class LexicalAnalizer {
 		return token;
 	}
 	
-	private void checkNumberOverflow(int number){
+	private void checkNumberOverflow(int number) throws IOException{
 		if(number > 32767){
-			System.err.println("Linea " + currentLine + ": El numero "+ number + " no se puede representar con 2 bytes");
-			System.exit(-1);
+			ErrorManager.notify(ErrorTypes.LEX, "El numero "+ number + " no se puede representar con 2 bytes");
 		}
 	}
 	
