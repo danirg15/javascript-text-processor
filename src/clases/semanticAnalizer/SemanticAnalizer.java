@@ -15,10 +15,10 @@ public class SemanticAnalizer {
 	public static int LST_offset = 0;
 	
 	public static Entry findInAllTS(String lex) {
-		if(LST.search(lex) != null) {
+		if(LST != null && LST.search(lex) != null) {
 			return LST.search(lex);
 		}
-		else if(GST.search(lex) != null) {
+		else if(GST != null && GST.search(lex) != null) {
 			return GST.search(lex);
 		}
 		else {

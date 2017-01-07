@@ -12,8 +12,10 @@ public class ErrorManager {
 	
 	public static void notify(ErrorTypes type, String msg) throws IOException{
 		String err = "[Error " + type + " ] Linea: " + LexicalAnalizer.currentLine + " " + msg + "\n";
-		System.err.println(err);
+		System.err.print(err);
 		writeToFile.error(err);	
+		System.err.println("Stopped");
+		System.exit(-1);
 	}
 	
 }

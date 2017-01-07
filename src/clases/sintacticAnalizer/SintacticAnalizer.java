@@ -59,20 +59,28 @@ public class SintacticAnalizer {
 			if(X instanceof TerminalSymbol){
 				if(((TerminalSymbol) X).match(a)){
 					Object o = this.stack.pop();
+					
+					if(o instanceof TerminalSymbol && a instanceof TerminalSymbol && 
+					  ((TerminalSymbol)o).getToken().getType() == TokenType.ID &&
+					  ((TerminalSymbol)a).getToken().getType() == TokenType.ID) {
+						
+						o = a;
+					}
+					
 					aux_stack.push((GrammaticalSymbol) o);
 					
 					Token t = this.LexA.getNewToken();
 					
 					p = new TerminalSymbol(t);//Next Token
 					
-					if(t.getType() == TokenType.ID) {
-						for(int i = stack.size()-1; i >= 0 ;i--) {
-							if(stack.elementAt(i) instanceof TerminalSymbol){
-								stack.setElementAt(new TerminalSymbol(t), i);
-								break;
-							}
-						}
-					}
+//					if(t.getType() == TokenType.ID) {
+//						for(int i = stack.size()-1; i >= 0 ;i--) {
+//							if(stack.elementAt(i) instanceof TerminalSymbol && ((TerminalSymbol)stack.elementAt(i)).getToken().getType() == TokenType.ID ){
+//								stack.setElementAt(new TerminalSymbol(t), i);
+//								break;
+//							}
+//						}
+//					}
 					
 					
 				}
@@ -101,6 +109,14 @@ public class SintacticAnalizer {
 						  ((TerminalSymbol)s).getToken().getType() == TokenType.LAMBDA) {
 							continue;
 						}
+						
+//						if(s instanceof TerminalSymbol && 
+//						   ((TerminalSymbol)s).getToken().getType() == TokenType.ID ){
+//							
+//							s = new TerminalSymbol(this.LexA.getLastReadId());
+//							
+//						}
+						
 						
 						this.stack.push(s);
 					}

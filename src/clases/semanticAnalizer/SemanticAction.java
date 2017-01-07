@@ -12,6 +12,13 @@ public class SemanticAction {
 	public void exec() throws Exception {
 		this.func.call();
 	}
+
+	@Override
+	public String toString() {
+		return "SemAct";
+	}
+	
+	
 	
 	
 }
