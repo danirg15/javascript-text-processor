@@ -10,7 +10,7 @@ import lexicalAnalizer.Token;
 import lexicalAnalizer.TokenType;
 
 public class WriteToFile {
-	private final static String[] file_names = {"./tokens.txt", "./parse.txt", "./tablas_de_simbolos.txt", "./errores.txt"}; 
+	private final static String[] file_names = {"./tokens.txt", "./parse.txt", "./tablas_de_simbolos.txt", "./errores.txt"}; 	
 	
 	public WriteToFile() {
 		
@@ -39,12 +39,13 @@ public class WriteToFile {
 	public void symbolTable(SymbolTable st) throws IOException {
 		String filename = "./tablas_de_simbolos.txt";
 		
-		String s = "CONTENIDO DE LA TABLA # "+ st.getId() +" : \n";
+		String s = "TABLA " + st.getName() +" #"+ st.getId() +" : \n";
 		
 		for(String key : st.getTable().keySet()) {
 			s += st.search(key).formattedEntry() + "\n";
-			s += "-------------------------------------";
 		}
+		
+		s += "-------------------------------------\n";
 		
 		this.write(filename, s);
 	}

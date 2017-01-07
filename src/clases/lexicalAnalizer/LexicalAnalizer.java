@@ -24,7 +24,6 @@ public class LexicalAnalizer {
 	private HashMap<String, Integer> hex = HexadecimalValues.get();
 	private WriteToFile writeToFile;
 	public static int currentLine = 0;
-	//private Token lastReadId;
 	
 	public LexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR) {
 		this.source = source;
@@ -32,11 +31,6 @@ public class LexicalAnalizer {
 		this.tablePR = tablePR;
 		this.writeToFile = new WriteToFile();
 	}
-	
-	
-//	public Token getLastReadId() {
-//		return this.lastReadId;
-//	}
 	
 
 	public Token getNewToken() throws Exception {			
@@ -113,21 +107,16 @@ public class LexicalAnalizer {
 						else {
 							SemanticAnalizer.currentTS.add(new Entry(concat));
 							token = new Token(TokenType.ID, concat);
-							//this.lastReadId = token;
 						}
 					}
-					//else if(SemanticAnalizer.currentTS.search(concat) == null) { //Si se usa una variable no declarada
 					else if(SemanticAnalizer.findInAllTS(concat) == null) { //Si se usa una variable no declarada
 						
 						ErrorManager.notify(ErrorTypes.LEX, "La variable '"+ concat +"' no ha sido declarada");
 					}
 					else {
 						token = new Token(TokenType.ID, concat);
-						//this.lastReadId = token;
 					}
 								
-					
-					
 					break;
 					
 				case G:

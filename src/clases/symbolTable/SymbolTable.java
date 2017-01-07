@@ -46,6 +46,11 @@ public class SymbolTable {
 		this.search(lex).setOffset(offset);
 	}
 	
+	public void increaseArgs(String lex) {
+		Entry e = this.search(lex);
+		e.setnArgs( e.getnArgs() + 1 );
+	}
+	
 	public Types findType(String lex) {
 		return this.search(lex).getType();
 	}

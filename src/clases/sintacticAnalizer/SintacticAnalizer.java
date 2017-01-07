@@ -3,7 +3,8 @@ package sintacticAnalizer;
 import java.util.Stack;
 
 import common.WriteToFile;
-
+import errorManager.ErrorManager;
+import errorManager.ErrorTypes;
 import semanticAnalizer.SemanticAction;
 import lexicalAnalizer.LexicalAnalizer;
 import lexicalAnalizer.Token;
@@ -31,20 +32,7 @@ public class SintacticAnalizer {
 		this.stack.push(new TerminalSymbol(EOFToken)); //$
 		this.stack.push(axiom);
 	}
-	
-	public static Stack<GrammaticalSymbol> getAuxStack() {
-		if(aux_stack == null) {
-			System.err.println("Error aux_stack no inicializada");
-		}
-		return aux_stack;
-	}
-	
-	public static void popAuxStack(int n) {
-		for(int i = 0; i < n; i++){
-			aux_stack.pop();
-		}
-	}
-	
+
 	
 	public void analize() throws Exception{
 		GrammaticalSymbol a = null;
@@ -53,13 +41,16 @@ public class SintacticAnalizer {
 		GrammaticalSymbol EOF = new TerminalSymbol(EOFToken); //$
 		
 		//Algoritmo http://www-lt.ls.fi.upm.es/compiladores/procesadores/Documentos/ll.pdf
-		while(!X.equals(EOF) /*&& !aux_stack.lastElement().equals(this.axiom)*/) {
+		while(!X.equals(EOF)) {
 			a = p;
 			
 			if(X instanceof TerminalSymbol){
 				if(((TerminalSymbol) X).match(a)){
 					Object o = this.stack.pop();
 					
+					//Como en las derivaciones de una regla el ID no tiene atributos, porque en ese punto no se sabe que ID se
+					//esta analizando, una vez que se conoce el ID y se va a meter en aux_stack hay que ponerle el atributo/lexema
+					//para que el analizador semantico pueda buscar en TS con el atributo del ID
 					if(o instanceof TerminalSymbol && a instanceof TerminalSymbol && 
 					  ((TerminalSymbol)o).getToken().getType() == TokenType.ID &&
 					  ((TerminalSymbol)a).getToken().getType() == TokenType.ID) {
@@ -73,20 +64,9 @@ public class SintacticAnalizer {
 					
 					p = new TerminalSymbol(t);//Next Token
 					
-//					if(t.getType() == TokenType.ID) {
-//						for(int i = stack.size()-1; i >= 0 ;i--) {
-//							if(stack.elementAt(i) instanceof TerminalSymbol && ((TerminalSymbol)stack.elementAt(i)).getToken().getType() == TokenType.ID ){
-//								stack.setElementAt(new TerminalSymbol(t), i);
-//								break;
-//							}
-//						}
-//					}
-					
-					
 				}
 				else{
-					System.err.println("Error semantico 1 -> Linea " + LexicalAnalizer.currentLine);
-					System.exit(-1);
+					ErrorManager.notify(ErrorTypes.SEM, "Error semantico 1");
 				}
 			}
 			else if(X instanceof NonTerminalSymbol){
@@ -110,21 +90,12 @@ public class SintacticAnalizer {
 							continue;
 						}
 						
-//						if(s instanceof TerminalSymbol && 
-//						   ((TerminalSymbol)s).getToken().getType() == TokenType.ID ){
-//							
-//							s = new TerminalSymbol(this.LexA.getLastReadId());
-//							
-//						}
-						
-						
 						this.stack.push(s);
 					}
 				
 				}
 				else{
-					System.err.println("Error semantico 2 -> Linea " + LexicalAnalizer.currentLine);
-					System.exit(-1);
+					ErrorManager.notify(ErrorTypes.SEM, "Error semantico 2");
 				}
 			}
 			else if(X instanceof SemanticAction) {
@@ -136,13 +107,29 @@ public class SintacticAnalizer {
 			X = this.stack.lastElement();
 		}//while
 		
-		if(a.equals(EOF)){
+		if(a.equals(EOF) && aux_stack.lastElement().equals(this.axiom)){
 			System.out.println("Acepta, Parse: "+parse);
 			this.writeToFile.parse(parse);
 		}
 		else{
 			System.out.println("Error, No Acepta");
 			System.exit(-1);
+		}
+	}
+	
+	
+	
+	public static Stack<GrammaticalSymbol> getAuxStack() {
+		if(aux_stack == null) {
+			System.err.println("Error aux_stack no inicializada");
+			System.exit(-1);
+		}
+		return aux_stack;
+	}
+	
+	public static void popAuxStack(int n) {
+		for(int i = 0; i < n; i++){
+			aux_stack.pop();
 		}
 	}
 	

@@ -22,9 +22,7 @@ public class Attribute {
 	}
 
 	public void addListOfTypes(ArrayList<Types> list) {
-		for(Types t : list){
-			this.typesList.add(t);
-		}
+		this.typesList.addAll(list);
 	}
 
 	public void addTypeToList(Types t) {

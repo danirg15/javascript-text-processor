@@ -1,11 +1,22 @@
-<PR, 2> //var  
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, suma>
+<PARENT, 1>
 <PR, 0> //int  
 <ID, a>
-<CR, >
-<CR, >
-<PR, 6> //prompt  
-<PARENT, 1>
-<ID, b>
 <PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, a>
+<CR, >
+<LLAVE, 2>
+<CR, >
 <CR, >
 <$, >

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class Entry {
 	private String lex;
 	private Types type = null;
-	private Integer offset = null;
-	private int nArgs;
+	private int offset = 0;
+	private int nArgs = 0;
 	private ArrayList<Types> typesList;
 	private Types returnedType = null;
-	private int idToReferencedTable;
+	private Integer idToReferencedTable = null;
 	
 	
 	public Entry(String lex){
@@ -109,14 +109,26 @@ public class Entry {
 	public String formattedEntry(){
 	
 		String s = "* LEXEMA : '" + this.lex + "'\n";
-		s += "\t ATRIBUTOS : \n";
+		s += "\t ATRIBUTOS: \n";
 		
 		if(this.type != null) {
-			s += "\t tipo : '"+ type +"' \n";
+			s += "\t + tipo: '"+ type +"' \n";
 		}
-		else if(this.offset != null) {
-			s += "\t desplazamiento : "+ offset +" \n";
+		
+		s += "\t + desplazamiento: "+ offset +" \n";
+		
+		if(idToReferencedTable != null){
+			s += "\t + parametros: "+ nArgs +" \n";
+			
+			for(int i = 0; i < typesList.size(); i++) {
+				s += "\t + tipoparam"+(i+1)+": "+typesList.get(i)+" \n";
+			}
+			
+			s += "\t + idtabla: "+ idToReferencedTable +" \n";
 		}
+		
+		
+	
 				
 
 		return s;

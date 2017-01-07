@@ -14,7 +14,6 @@ public class ErrorManager {
 		String err = "[Error " + type + " ] Linea: " + LexicalAnalizer.currentLine + " " + msg + "\n";
 		System.err.print(err);
 		writeToFile.error(err);	
-		System.err.println("Stopped");
 		System.exit(-1);
 	}
 	

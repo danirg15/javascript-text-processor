@@ -88,7 +88,7 @@ public class SinAConfig {
 		SemanticAction Pp1_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
-				SymbolTable TS = TSContainer.create("Global");
+				SymbolTable TS = TSContainer.create("GLOBAL");
 				SemanticAnalizer.GST = TS;
 				SemanticAnalizer.GST_offset = 0;
 				SemanticAnalizer.currentTS = SemanticAnalizer.GST;
@@ -118,7 +118,7 @@ public class SinAConfig {
 		SemanticAction Pp2_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
-				SymbolTable TS = TSContainer.create("Global");
+				SymbolTable TS = TSContainer.create("GLOBAL");
 				SemanticAnalizer.GST = TS;
 				SemanticAnalizer.GST_offset = 0;
 				SemanticAnalizer.currentTS = SemanticAnalizer.GST;
@@ -293,26 +293,6 @@ public class SinAConfig {
 		});
 		
 		
-//		SemanticAction B_3 = new SemanticAction(new Callable<Object>() {
-//			public Object call() throws Exception {
-//				
-//				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
-//				int top = aux_stack.size() - 1;
-//				
-//				if(aux_stack.elementAt(top-2).getAttribute().type() == Types.BOOLEAN) {
-//					aux_stack.elementAt(top-5).getAttribute().setType( aux_stack.elementAt(top).getAttribute().type() );
-//					aux_stack.elementAt(top-5).getAttribute().setReturnType( aux_stack.elementAt(top).getAttribute().returnType() );
-//				} 
-//				else {
-//					aux_stack.elementAt(top-5).getAttribute().setType(Types.ERROR);
-//					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba una expresión lógica en la condición del 'if'");
-//				}
-//				
-//				SintacticAnalizer.popAuxStack(5);
-//				
-//				return null;
-//			}			
-//		});
 		
 		SemanticAction B_3_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
@@ -324,9 +304,7 @@ public class SinAConfig {
 					aux_stack.elementAt(top-5).getAttribute().setType(Types.ERROR);
 					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba una expresión lógica en la condición del 'if'");
 				}
-							
-				//SintacticAnalizer.popAuxStack(5);
-				
+											
 				return null;
 			}			
 		});
@@ -425,39 +403,6 @@ public class SinAConfig {
 				return null;
 			}			
 		});
-		
-		
-//		SemanticAction S_2 = new SemanticAction(new Callable<Object>() {
-//			public Object call() throws Exception {
-//				
-//				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
-//				int top = aux_stack.size() - 1;
-//				
-//				String lex = ((TerminalSymbol)aux_stack.elementAt(top-1)).getToken().getAttr();
-//				
-//				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty() && 
-//				   SemanticAnalizer.findInAllTS(lex).getType() != null &&
-//				   SemanticAnalizer.findInAllTS(lex).getType() == aux_stack.elementAt(top).getAttribute().type()) {
-//					
-//					aux_stack.elementAt(top-2).getAttribute().setType(Types.OK);
-//				}
-//				else if(aux_stack.elementAt(top).getAttribute().type() == Types.VOID &&
-//						!aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty() &&
-//						SemanticAnalizer.findInAllTS(lex).typesListIsEqual( aux_stack.elementAt(top).getAttribute().getTypesList()) ) {
-//					
-//					aux_stack.elementAt(top-2).getAttribute().setType(Types.OK);
-//				}
-//				else {
-//					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
-//					ErrorManager.notify(ErrorTypes.SEM, "Variable no declarada previamente o argumentos de la variable incorrectos");
-//				}
-//					
-//				aux_stack.elementAt(top-2).getAttribute().setReturnType(Types.VOID);
-//				SintacticAnalizer.popAuxStack(2);
-//				
-//				return null;
-//			}			
-//		});
 		
 		
 		SemanticAction S_2 = new SemanticAction(new Callable<Object>() {
@@ -1277,7 +1222,11 @@ public class SinAConfig {
 		SemanticAction F_2 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
-				SemanticAnalizer.LST = TSContainer.create("tabla de una funcion, hay que especificar cual");
+				
+				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
+				int top = aux_stack.size() - 1;
+				
+				SemanticAnalizer.LST = TSContainer.create("FUNCION " + ((TerminalSymbol)aux_stack.elementAt(top)).getToken().getAttr());
 				SemanticAnalizer.LST_offset = 0;
 				SemanticAnalizer.currentTS = SemanticAnalizer.LST;
 				
@@ -1393,7 +1342,7 @@ public class SinAConfig {
 					SemanticAnalizer.LST.insertType(lex, aux_stack.elementAt(top-2).getAttribute().type());
 					SemanticAnalizer.LST.insertOffset(lex, SemanticAnalizer.LST_offset);
 					SemanticAnalizer.LST_offset += aux_stack.elementAt(top-2).getAttribute().getLenght();
-					
+										
 					aux_stack.elementAt(top-3).getAttribute().addTypeToList( aux_stack.elementAt(top-2).getAttribute().type() );
 					aux_stack.elementAt(top).getAttribute().addListOfTypes( aux_stack.elementAt(top-2).getAttribute().getTypesList() );
 				}
@@ -1444,7 +1393,8 @@ public class SinAConfig {
 				
 				SemanticAnalizer.LST.insertType(lex, aux_stack.elementAt(top-2).getAttribute().type());
 				SemanticAnalizer.LST.insertOffset(lex, SemanticAnalizer.LST_offset);
-				SemanticAnalizer.LST_offset += aux_stack.elementAt(top-2).getAttribute().getLenght();				
+				SemanticAnalizer.LST_offset += aux_stack.elementAt(top-2).getAttribute().getLenght();		
+			
 				
 				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty()) {
 					aux_stack.elementAt(top-4).getAttribute().addTypeToList( aux_stack.elementAt(top-2).getAttribute().type() );
