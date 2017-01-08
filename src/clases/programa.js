@@ -9,11 +9,8 @@
 //}
 
 
-var int c
-var chars a
+var int a
+var chars b
 
 
-c = 1 > 1
-		
-	
-	
+a = b

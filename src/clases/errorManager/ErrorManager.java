@@ -12,7 +12,7 @@ public class ErrorManager {
 	public static boolean thereAreErrors = false;
 	
 	public static void notify(ErrorTypes type, String msg) throws IOException{
-		String err = "[Error " + type + " ] Linea: " + LexicalAnalizer.currentLine + " " + msg + "\n";
+		String err = "[Error " + type + " ] Linea " + LexicalAnalizer.currentLine + ": " + msg + "\n";
 		
 		thereAreErrors = true;
 		

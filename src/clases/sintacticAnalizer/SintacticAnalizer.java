@@ -66,7 +66,8 @@ public class SintacticAnalizer {
 					
 				}
 				else{
-					ErrorManager.notify(ErrorTypes.SEM, "Error semantico 1");
+					ErrorManager.notify(ErrorTypes.SEM, "Error sintactico cerca del token '" + a + "'");
+					break;
 				}
 			}
 			else if(X instanceof NonTerminalSymbol){
@@ -74,7 +75,7 @@ public class SintacticAnalizer {
 				SintacticRule rule = this.tableLL1.getRule((NonTerminalSymbol) X, (TerminalSymbol) a);
 				
 				if(rule != null){
-					System.out.print(rule);
+					//System.out.print(rule);
 					this.parse += " " + rule.getId();
 					
 					Object o = this.stack.pop();
@@ -95,7 +96,8 @@ public class SintacticAnalizer {
 				
 				}
 				else{
-					ErrorManager.notify(ErrorTypes.SEM, "Error semantico 2");
+					ErrorManager.notify(ErrorTypes.SEM, "Error sintactico cerca del token '" + a + "'");
+					break;
 				}
 			}
 			else if(X instanceof SemanticAction) {
@@ -112,10 +114,10 @@ public class SintacticAnalizer {
 			this.writeToFile.parse(parse);
 		}
 		else if(ErrorManager.thereAreErrors) {
-			System.err.println("No Acepta, existen errores");
+			System.err.println("Analizador No Acepta, existen errores");
 		}
 		else{
-			System.err.println("No Acepta");
+			System.err.println("Analizador No Acepta");
 			System.exit(-1);
 		}
 	}

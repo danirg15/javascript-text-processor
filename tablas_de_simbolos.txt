@@ -1,12 +1,12 @@
 TABLA GLOBAL #1 : 
 * LEXEMA : 'a'
 	 ATRIBUTOS: 
-	 + tipo: 'STRING' 
-	 + desplazamiento: 2 
-
-* LEXEMA : 'c'
-	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
+
+* LEXEMA : 'b'
+	 ATRIBUTOS: 
+	 + tipo: 'STRING' 
+	 + desplazamiento: 2 
 
 -------------------------------------

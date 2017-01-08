@@ -11,19 +11,16 @@
 <CR, >
 <PR, 2> //var  
 <PR, 0> //int  
-<ID, c>
+<ID, a>
 <CR, >
 <PR, 2> //var  
 <PR, 4> //chars  
+<ID, b>
+<CR, >
+<CR, >
+<CR, >
 <ID, a>
-<CR, >
-<CR, >
-<CR, >
-<ID, c>
 <ASIGN, >
-<ENT, 1>
-<MAYOR, >
-<ENT, 1>
+<ID, b>
 <CR, >
-<CR, >
-<CR, >
+<$, >

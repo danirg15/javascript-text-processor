@@ -23,7 +23,7 @@ public class LexicalAnalizer {
 	private AttrTable tablePR;
 	private HashMap<String, Integer> hex = HexadecimalValues.get();
 	private WriteToFile writeToFile;
-	public static int currentLine = 0;
+	public static int currentLine = 1;
 	
 	public LexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR) {
 		this.source = source;
