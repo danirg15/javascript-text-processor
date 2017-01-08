@@ -1,2 +1,2 @@
-[Error SEM ] Linea: 15 'a' no es compatible con el tipo asignado
+[Error SEM ] Linea: 16 'c' no es compatible con el tipo asignado
 

@@ -18,8 +18,12 @@
 <ID, a>
 <CR, >
 <CR, >
-<ID, a>
-<ASIGN, >
+<CR, >
 <ID, c>
+<ASIGN, >
+<ENT, 1>
+<MAYOR, >
+<ENT, 1>
+<CR, >
 <CR, >
 <CR, >

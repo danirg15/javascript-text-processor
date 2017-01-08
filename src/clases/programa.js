@@ -12,6 +12,8 @@
 var int c
 var chars a
 
-a = c
+
+c = 1 > 1
 		
-		
+	
+	
