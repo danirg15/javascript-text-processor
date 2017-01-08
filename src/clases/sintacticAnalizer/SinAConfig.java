@@ -420,7 +420,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
-					ErrorManager.notify(ErrorTypes.SEM, "Variable no declarada previamente o argumentos de la variable incorrectos");
+					ErrorManager.notify(ErrorTypes.SEM, "'"+lex+"' no es compatible con el tipo asignado");
 				}
 					
 				aux_stack.elementAt(top-2).getAttribute().setReturnType(Types.VOID);

@@ -3,20 +3,23 @@
 <CR, >
 <CR, >
 <CR, >
-<PR, 1> //function  
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<PR, 2> //var  
 <PR, 0> //int  
-<ID, suma>
-<PARENT, 1>
-<PR, 0> //int  
-<ID, a>
-<PARENT, 2>
+<ID, c>
 <CR, >
-<LLAVE, 1>
-<CR, >
-<PR, 3> //return  
+<PR, 2> //var  
+<PR, 4> //chars  
 <ID, a>
 <CR, >
-<LLAVE, 2>
+<CR, >
+<ID, a>
+<ASIGN, >
+<ID, c>
 <CR, >
 <CR, >
-<$, >

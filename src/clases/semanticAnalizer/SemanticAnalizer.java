@@ -24,6 +24,7 @@ public class SemanticAnalizer {
 		else {
 			return null;
 		}
+		
 	}
 		
 }

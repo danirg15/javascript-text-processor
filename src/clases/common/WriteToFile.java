@@ -54,14 +54,14 @@ public class WriteToFile {
 	public void token(AttrTable tablePR, Token token) throws IOException{
 		String filename = "./tokens.txt";
 		
-		if(token.getAttr() != null){
+		if(token != null && token.getAttr() != null){
 	    	if(token.getType() == TokenType.PR){
 	    		this.write(filename, "<"+token.getType()+", "+ token.getAttr() +"> //"+tablePR.getAtIndex(Integer.parseInt(token.getAttr()))+"  \n");
 	    	}else{
 	    		this.write(filename, "<"+token.getType()+", "+ token.getAttr() +">\n");
 	    	}	
 	    }
-		else{
+		else if(token != null){
 		    this.write(filename, "<"+token.getType()+", >\n");
 		}
 		    

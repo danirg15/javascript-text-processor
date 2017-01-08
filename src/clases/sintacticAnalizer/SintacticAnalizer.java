@@ -107,12 +107,15 @@ public class SintacticAnalizer {
 			X = this.stack.lastElement();
 		}//while
 		
-		if(a.equals(EOF) && aux_stack.lastElement().equals(this.axiom)){
+		if(a.equals(EOF) && aux_stack.lastElement().equals(this.axiom) && !ErrorManager.thereAreErrors){
 			System.out.println("Acepta, Parse: "+parse);
 			this.writeToFile.parse(parse);
 		}
+		else if(ErrorManager.thereAreErrors) {
+			System.err.println("No Acepta, existen errores");
+		}
 		else{
-			System.out.println("Error, No Acepta");
+			System.err.println("No Acepta");
 			System.exit(-1);
 		}
 	}

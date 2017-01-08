@@ -103,15 +103,16 @@ public class LexicalAnalizer {
 					else if(SemanticAnalizer.dec_zone == true) { //Se esta declarando una variable
 						if(SemanticAnalizer.currentTS.search(concat) != null){
 							ErrorManager.notify(ErrorTypes.LEX, "La variable '"+ concat +"' ya ha sido declarada");
+							token = new Token(TokenType.ID, concat);
 						}
 						else {
 							SemanticAnalizer.currentTS.add(new Entry(concat));
 							token = new Token(TokenType.ID, concat);
 						}
 					}
-					else if(SemanticAnalizer.findInAllTS(concat) == null) { //Si se usa una variable no declarada
-						
+					else if(SemanticAnalizer.findInAllTS(concat) == null) { //Si se usa una variable no declarada			
 						ErrorManager.notify(ErrorTypes.LEX, "La variable '"+ concat +"' no ha sido declarada");
+						token = new Token(TokenType.ID, concat);
 					}
 					else {
 						token = new Token(TokenType.ID, concat);

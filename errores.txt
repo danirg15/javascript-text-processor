@@ -1,0 +1,2 @@
+[Error SEM ] Linea: 15 'a' no es compatible con el tipo asignado
+

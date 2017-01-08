@@ -3,7 +3,6 @@ package Main;
 import common.AttrTable;
 import common.SourceFile;
 import common.WriteToFile;
-
 import lexicalAnalizer.LexicalAnalizer;
 import lexicalAnalizer.LAConfig;
 import sintacticAnalizer.NonTerminalSymbol;
@@ -18,7 +17,7 @@ public class TestSintacticAnalizer {
 	}
 	
 
-	public static void main(String[] args) throws Exception{	
+	public static void main(String[] args) throws Exception {	
 //		System.out.println("Args: " + args.length);
 //		
 //		if( args.length < 2 ) {
@@ -61,7 +60,11 @@ public class TestSintacticAnalizer {
 		NonTerminalSymbol axiom = new NonTerminalSymbol("P'");	
 		SintacticAnalizer sa = new SintacticAnalizer(axiom, SinAConfig.getLL1Table(), lexAnalizer);
 		
-		sa.analize();
+		try {
+			sa.analize();
+		} catch (Exception e) {
+			System.err.println("Ejecución detenida por errores, ver fichero errores.txt");
+		}
 		
 		
 		//Para obtener ejecutable, exportar como runnable jar, y elegir entry point

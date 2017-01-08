@@ -1,17 +1,12 @@
-TABLA FUNCION suma #2 : 
+TABLA GLOBAL #1 : 
 * LEXEMA : 'a'
 	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
+	 + tipo: 'STRING' 
+	 + desplazamiento: 2 
 
--------------------------------------
-TABLA GLOBAL #1 : 
-* LEXEMA : 'suma'
+* LEXEMA : 'c'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
-	 + parametros: 1 
-	 + tipoparam1: INTEGER 
-	 + idtabla: 2 
 
 -------------------------------------

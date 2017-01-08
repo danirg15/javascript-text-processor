@@ -3,8 +3,15 @@
 //funcion void no funciona
 
 
-function int suma(int a)
-{
-	return a
-}
+//function int suma(int a)
+//{
+//	return a
+//}
 
+
+var int c
+var chars a
+
+a = c
+		
+		
