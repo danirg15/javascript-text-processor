@@ -42,6 +42,10 @@ public class SymbolTable {
 		this.search(lex).setType(type);
 	}
 	
+	public void insertRetType(String lex, Types type) {
+		this.search(lex).setReturnedType(type);
+	}
+	
 	public void insertOffset(String lex, int offset) {
 		this.search(lex).setOffset(offset);
 	}

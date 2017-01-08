@@ -107,7 +107,7 @@ public class LexicalAnalizer {
 						}
 						else {
 							SemanticAnalizer.currentTS.add(new Entry(concat));
-							token = new Token(TokenType.ID, concat);
+							token = new Token(TokenType.ID, concat);					
 						}
 					}
 					else if(SemanticAnalizer.findInAllTS(concat) == null) { //Si se usa una variable no declarada			

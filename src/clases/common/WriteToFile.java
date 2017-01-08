@@ -40,7 +40,7 @@ public class WriteToFile {
 		String filename = "./tablas_de_simbolos.txt";
 		
 		String s = "TABLA " + st.getName() +" #"+ st.getId() +" : \n";
-		
+				
 		for(String key : st.getTable().keySet()) {
 			s += st.search(key).formattedEntry() + "\n";
 		}
@@ -58,7 +58,12 @@ public class WriteToFile {
 	    	if(token.getType() == TokenType.PR){
 	    		this.write(filename, "<"+token.getType()+", "+ token.getAttr() +"> //"+tablePR.getAtIndex(Integer.parseInt(token.getAttr()))+"  \n");
 	    	}else{
-	    		this.write(filename, "<"+token.getType()+", "+ token.getAttr() +">\n");
+	    		
+	    		if(token.getType() == TokenType.STRING)
+	    			this.write(filename, "<"+token.getType()+", \""+ token.getAttr() +"\">\n");
+	    		else
+	    			this.write(filename, "<"+token.getType()+", "+ token.getAttr() +">\n");
+	    		
 	    	}	
 	    }
 		else if(token != null){

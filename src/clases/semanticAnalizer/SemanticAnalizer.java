@@ -7,6 +7,7 @@ public class SemanticAnalizer {
 	public static boolean dec_zone = false;
 	public static boolean switch_flag = false;
 	public static boolean function_flag = false;
+	public static boolean call_func_flag = false;
 	public static SymbolTable currentTS = null;
 	public static SymbolTable GST = null;
 	public static SymbolTable LST = null;

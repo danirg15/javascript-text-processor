@@ -75,7 +75,7 @@ public class SintacticAnalizer {
 				SintacticRule rule = this.tableLL1.getRule((NonTerminalSymbol) X, (TerminalSymbol) a);
 				
 				if(rule != null){
-					//System.out.print(rule);
+					System.out.print(rule);
 					this.parse += " " + rule.getId();
 					
 					Object o = this.stack.pop();

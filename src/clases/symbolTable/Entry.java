@@ -117,19 +117,21 @@ public class Entry {
 		
 		s += "\t + desplazamiento: "+ offset +" \n";
 		
+		if(returnedType != null) {
+			s += "\t + tipoRetorno: '"+ returnedType  +"' \n";
+		}
+		
 		if(idToReferencedTable != null){
 			s += "\t + parametros: "+ nArgs +" \n";
 			
 			for(int i = 0; i < typesList.size(); i++) {
-				s += "\t + tipoparam"+(i+1)+": "+typesList.get(i)+" \n";
+				s += "\t + tipoparam"+(i+1)+": '"+typesList.get(i)+"' \n";
 			}
 			
 			s += "\t + idtabla: "+ idToReferencedTable +" \n";
 		}
 		
-		
-	
-				
+			
 
 		return s;
 	}

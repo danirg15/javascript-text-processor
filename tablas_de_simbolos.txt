@@ -1,10 +1,35 @@
+TABLA FUNCION dia #2 : 
+* LEXEMA : 'd'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 0 
+
+* LEXEMA : 'resultado'
+	 ATRIBUTOS: 
+	 + tipo: 'STRING' 
+	 + desplazamiento: 2 
+
+-------------------------------------
 TABLA GLOBAL #1 : 
 * LEXEMA : 'a'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
 
-* LEXEMA : 'b'
+* LEXEMA : 'entrada'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 3 
+
+* LEXEMA : 'dia'
+	 ATRIBUTOS: 
+	 + desplazamiento: 0 
+	 + tipoRetorno: 'STRING' 
+	 + parametros: 1 
+	 + tipoparam1: 'INTEGER' 
+	 + idtabla: 2 
+
+* LEXEMA : 'mi_dia'
 	 ATRIBUTOS: 
 	 + tipo: 'STRING' 
 	 + desplazamiento: 2 

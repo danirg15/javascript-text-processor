@@ -23,5 +23,3 @@ prompt(entrada)
 mi_dia = dia(entrada)
 
 write(mi_dia)
-
-

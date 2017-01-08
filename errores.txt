@@ -1,2 +1,2 @@
-[Error SEM ] Linea 17: 'a' no es compatible con el tipo asignado
+[Error SEM ] Linea 8: 'a' no es compatible con el tipo asignado
 
