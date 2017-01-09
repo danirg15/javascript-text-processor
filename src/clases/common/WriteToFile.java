@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import symbolTable.SymbolTable;
 import lexicalAnalizer.Token;
@@ -11,6 +12,7 @@ import lexicalAnalizer.TokenType;
 
 public class WriteToFile {
 	private final static String[] file_names = {"./tokens.txt", "./parse.txt", "./tablas_de_simbolos.txt", "./errores.txt"}; 	
+	private static ArrayList<SymbolTable> tables = new  ArrayList<SymbolTable>(); 
 	
 	public WriteToFile() {
 		
@@ -36,18 +38,27 @@ public class WriteToFile {
 	}
 	
 	
-	public void symbolTable(SymbolTable st) throws IOException {
+	public void symbolTable(SymbolTable tabla) throws IOException {
 		String filename = "./tablas_de_simbolos.txt";
 		
-		String s = "TABLA " + st.getName() +" #"+ st.getId() +" : \n";
-				
-		for(String key : st.getTable().keySet()) {
-			s += st.search(key).formattedEntry() + "\n";
+		tables.add(tabla);
+		
+		if(tabla.getName() == "GLOBAL") {
+			String s;
+			
+			s = tables.get(tables.size()-1).toString();
+			s += "-------------------------------------\n";
+			this.write(filename, s);
+			
+			tables.remove(tables.size()-1);
+			
+			for(SymbolTable st : tables){
+				s = st.toString();
+				s += "-------------------------------------\n";
+				this.write(filename, s);
+			}
 		}
 		
-		s += "-------------------------------------\n";
-		
-		this.write(filename, s);
 	}
 	
 	

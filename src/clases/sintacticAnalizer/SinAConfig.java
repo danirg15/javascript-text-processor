@@ -293,7 +293,7 @@ public class SinAConfig {
 		});
 		
 		
-		
+
 		SemanticAction B_3_1 = new SemanticAction(new Callable<Object>() {
 			public Object call() throws Exception {
 				
@@ -475,14 +475,15 @@ public class SinAConfig {
 				
 				String lex = ((TerminalSymbol)aux_stack.elementAt(top-1)).getToken().getAttr();
 				
-				if(SemanticAnalizer.findInAllTS(lex).getType() == Types.INTEGER ||
-				   SemanticAnalizer.findInAllTS(lex).getType() == Types.STRING ) {
+				if(SemanticAnalizer.findInAllTS(lex) != null &&
+				   (SemanticAnalizer.findInAllTS(lex).getType() == Types.INTEGER ||
+				   SemanticAnalizer.findInAllTS(lex).getType() == Types.STRING) ) {
 					
 					aux_stack.elementAt(top-4).getAttribute().setType(Types.OK);
 				}
 				else {
 					aux_stack.elementAt(top-4).getAttribute().setType(Types.ERROR);
-					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba valor de tipo entero o logico en la sentencia 'prompt'");
+					ErrorManager.notify(ErrorTypes.SEM, "Se esperaba identificador de tipo entero o cadena en la sentencia 'prompt'");
 				}
 				
 				aux_stack.elementAt(top-4).getAttribute().setReturnType(Types.VOID);
@@ -707,6 +708,7 @@ public class SinAConfig {
 				int top = aux_stack.size() - 1;
 				
 				aux_stack.elementAt(top-1).getAttribute().setType(Types.STRING);
+				
 				aux_stack.elementAt(top-1).getAttribute().setLenght(1);
 				SintacticAnalizer.popAuxStack(1);
 				
@@ -1084,7 +1086,7 @@ public class SinAConfig {
 				}
 				else {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
-					ErrorManager.notify(ErrorTypes.SEM, "Variable '"+ lex +"' no declarada o no existe");
+					ErrorManager.notify(ErrorTypes.SEM, "La variable o funcion '"+ lex +"' no ha sidof declarada o no existe");
 				}
 				
 				SintacticAnalizer.popAuxStack(2);

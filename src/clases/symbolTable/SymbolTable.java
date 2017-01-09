@@ -58,5 +58,21 @@ public class SymbolTable {
 	public Types findType(String lex) {
 		return this.search(lex).getType();
 	}
+
+
+
+	@Override
+	public String toString() {
+		String s = "TABLA " + this.getName() +" #"+ this.getId() +" : \n";
+		
+		for(String key : this.getTable().keySet()) {
+			s += this.search(key).formattedEntry() + "\n";
+		}
+		
+		return s;
+	}
+	
+	
+	
 	
 }

@@ -1,2 +1,10 @@
-[Error SEM ] Linea 8: 'a' no es compatible con el tipo asignado
+[Error LEX ] Linea 3: El numero 12333111 es demasiado grande. El máximo permitido es 32767
+
+[Error SEM ] Linea 6: Se esperaba valor de tipo cadena o logico en la sentencia 'write'
+
+[Error LEX ] Linea 7: La variable 'a' no ha sido declarada
+
+[Error SEM ] Linea 8: Se esperaba identificador de tipo entero o cadena en la sentencia 'prompt'
+
+[Error SINT ] Linea 10: Error sintactico cerca del token 'CR'
 

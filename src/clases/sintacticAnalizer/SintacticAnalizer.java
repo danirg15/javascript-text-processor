@@ -66,7 +66,7 @@ public class SintacticAnalizer {
 					
 				}
 				else{
-					ErrorManager.notify(ErrorTypes.SEM, "Error sintactico cerca del token '" + a + "'");
+					ErrorManager.notify(ErrorTypes.SINT, "Error sintactico cerca del token '" + a + "'");
 					break;
 				}
 			}
@@ -96,7 +96,7 @@ public class SintacticAnalizer {
 				
 				}
 				else{
-					ErrorManager.notify(ErrorTypes.SEM, "Error sintactico cerca del token '" + a + "'");
+					ErrorManager.notify(ErrorTypes.SINT, "Error sintactico cerca del token '" + a + "'");
 					break;
 				}
 			}

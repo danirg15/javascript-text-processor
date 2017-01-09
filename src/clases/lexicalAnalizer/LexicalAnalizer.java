@@ -23,7 +23,7 @@ public class LexicalAnalizer {
 	private AttrTable tablePR;
 	private HashMap<String, Integer> hex = HexadecimalValues.get();
 	private WriteToFile writeToFile;
-	public static int currentLine = 1;
+	public static int currentLine = 0;
 	
 	public LexicalAnalizer(SourceFile source, DFA automaton, AttrTable tablePR) {
 		this.source = source;
@@ -264,7 +264,7 @@ public class LexicalAnalizer {
 	
 	private void checkNumberOverflow(int number) throws IOException{
 		if(number > 32767){
-			ErrorManager.notify(ErrorTypes.LEX, "El numero "+ number + " no se puede representar con 2 bytes");
+			ErrorManager.notify(ErrorTypes.LEX, "El numero "+ number + " es demasiado grande. El máximo permitido es 32767");
 		}
 	}
 	

@@ -107,16 +107,25 @@ public class Entry {
 	}
 
 	public String formattedEntry(){
-	
-		String s = "* LEXEMA : '" + this.lex + "'\n";
+		String s;
+		
+		if(idToReferencedTable != null){
+			s = "* LEXEMA : '" + this.lex + "' (funcion)  \n";
+		}
+		else{
+			s = "* LEXEMA : '" + this.lex + "'\n";
+		}
+		
 		s += "\t ATRIBUTOS: \n";
 		
 		if(this.type != null) {
 			s += "\t + tipo: '"+ type +"' \n";
 		}
 		
-		s += "\t + desplazamiento: "+ offset +" \n";
-		
+		if(idToReferencedTable == null){
+			s += "\t + desplazamiento: "+ offset +" \n";
+		}
+			
 		if(returnedType != null) {
 			s += "\t + tipoRetorno: '"+ returnedType  +"' \n";
 		}
