@@ -592,6 +592,8 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
+				aux_stack.elementAt(top-2).getAttribute().getTypesList().clear();
+				
 				if(aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty() && 
 				   aux_stack.elementAt(top-1).getAttribute().type() != Types.ERROR) {
 					
@@ -599,6 +601,8 @@ public class SinAConfig {
 				}
 				else if(!aux_stack.elementAt(top).getAttribute().getTypesList().isEmpty() &&
 						aux_stack.elementAt(top-1).getAttribute().type() != Types.ERROR) {
+					
+					
 					
 					aux_stack.elementAt(top-2).getAttribute().addTypeToList( aux_stack.elementAt(top-1).getAttribute().type() );
 					aux_stack.elementAt(top-2).getAttribute().addListOfTypes( aux_stack.elementAt(top).getAttribute().getTypesList() );
@@ -1129,6 +1133,8 @@ public class SinAConfig {
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
 				
+				aux_stack.elementAt(top-3).getAttribute().getTypesList().clear();
+				
 				SemanticAnalizer.call_func_flag = true;
 				aux_stack.elementAt(top-3).getAttribute().addListOfTypes( aux_stack.elementAt(top-1).getAttribute().getTypesList() );
 				SintacticAnalizer.popAuxStack(3);
@@ -1256,7 +1262,6 @@ public class SinAConfig {
 				
 				String lex = ((TerminalSymbol)aux_stack.elementAt(top-3)).getToken().getAttr();
 				
-				//SemanticAnalizer.GST.insertType(lex, aux_stack.elementAt(top-4).getAttribute().type());
 				SemanticAnalizer.GST.search(lex).addListOfTypes( aux_stack.elementAt(top-1).getAttribute().getTypesList() );
 				
 				SemanticAnalizer.GST.search(lex).setnArgs( aux_stack.elementAt(top-1).getAttribute().getTypesList().size() );
@@ -1285,8 +1290,12 @@ public class SinAConfig {
 				}
 				
 				SemanticAnalizer.function_flag = false;
+				
 				TSContainer.destroy(SemanticAnalizer.LST.getId());
 				SemanticAnalizer.LST = null;
+				SemanticAnalizer.currentTS = SemanticAnalizer.GST;
+				
+				aux_stack.elementAt(top-6).getAttribute().getTypesList().clear();
 				
 				SintacticAnalizer.popAuxStack(11);
 				

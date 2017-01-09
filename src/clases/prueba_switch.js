@@ -1,3 +1,5 @@
+//Prueba switch, declaracion funciones, llamada de funciones, declaracion de funciones, prompt, write
+
 function chars dia(int d) 
 {
 	var chars resultado

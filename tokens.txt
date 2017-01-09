@@ -1,120 +1,56 @@
-<PR, 2> //var  
-<PR, 0> //int  
-<ID, a>
-<CR, >
-<CR, >
 <PR, 1> //function  
-<PR, 4> //chars  
-<ID, dia>
+<PR, 0> //int  
+<ID, suma>
 <PARENT, 1>
 <PR, 0> //int  
-<ID, d>
-<PARENT, 2>
-<CR, >
-<LLAVE, 1>
-<CR, >
-<PR, 2> //var  
-<PR, 4> //chars  
-<ID, resultado>
-<CR, >
-<CR, >
 <ID, a>
-<ASIGN, >
-<ENT, 1>
-<MAYOR, >
-<ENT, 1>
-<CR, >
-<CR, >
-<PR, 7> //switch  
-<PARENT, 1>
-<ID, d>
+<COMA, >
+<PR, 0> //int  
+<ID, b>
 <PARENT, 2>
 <CR, >
 <LLAVE, 1>
-<CR, >
-<PR, 8> //case  
-<ENT, 1>
-<DOS_PUNTOS, >
-<ID, resultado>
-<ASIGN, >
-<STRING, lunes>
-<PUNTO_COMA, >
-<PR, 11> //break  
-<CR, >
-<PR, 8> //case  
-<ENT, 2>
-<DOS_PUNTOS, >
-<ID, resultado>
-<ASIGN, >
-<STRING, martes>
-<PUNTO_COMA, >
-<PR, 11> //break  
-<CR, >
-<PR, 8> //case  
-<ENT, 3>
-<DOS_PUNTOS, >
-<ID, resultado>
-<ASIGN, >
-<STRING, miercoles>
-<PUNTO_COMA, >
-<PR, 11> //break  
-<CR, >
-<PR, 8> //case  
-<ENT, 4>
-<DOS_PUNTOS, >
-<ID, resultado>
-<ASIGN, >
-<STRING, jueves>
-<PUNTO_COMA, >
-<PR, 11> //break  
-<CR, >
-<PR, 8> //case  
-<ENT, 5>
-<DOS_PUNTOS, >
-<ID, resultado>
-<ASIGN, >
-<STRING, viernes>
-<PUNTO_COMA, >
-<PR, 11> //break  
-<CR, >
-<LLAVE, 2>
-<CR, >
-<CR, >
 <CR, >
 <PR, 3> //return  
-<ID, resultado>
+<ID, a>
+<MAS, >
+<ID, b>
 <CR, >
 <LLAVE, 2>
 <CR, >
 <CR, >
 <PR, 2> //var  
-<PR, 4> //chars  
-<ID, mi_dia>
-<CR, >
-<PR, 2> //var  
 <PR, 0> //int  
-<ID, entrada>
+<ID, total>
 <CR, >
 <CR, >
-<PR, 6> //prompt  
-<PARENT, 1>
-<ID, entrada>
-<PARENT, 2>
-<CR, >
-<CR, >
-<ID, mi_dia>
+<ID, total>
 <ASIGN, >
-<ID, dia>
+<ID, suma>
 <PARENT, 1>
-<ID, entrada>
+<ENT, 7>
+<COMA, >
+<ENT, 3>
 <PARENT, 2>
 <CR, >
 <CR, >
-<PR, 5> //write  
+<ID, total>
+<ASIGN, >
+<ID, suma>
 <PARENT, 1>
-<ID, mi_dia>
+<ENT, 7>
+<COMA, >
+<ENT, 1>
 <PARENT, 2>
 <CR, >
 <CR, >
+<ID, total>
+<ASIGN, >
+<ID, suma>
+<PARENT, 1>
+<ENT, 7>
+<COMA, >
+<ENT, 1>
+<PARENT, 2>
 <CR, >
 <$, >

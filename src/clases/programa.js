@@ -1,27 +1,12 @@
-function chars dia(int d) 
+function int suma(int a, int b)
 {
-	var chars resultado
-		
-	switch(d)
-	{
-		case 1: resultado = "lunes"; break
-		case 2: resultado = "martes"; break
-		case 3: resultado = "miercoles"; break
-		case 4: resultado = "jueves"; break
-		case 5: resultado = "viernes"; break
-	}
-	
-	
-	return resultado
+	return a + b
 }
 
-var chars mi_dia
-var int entrada
+var int total
 
-prompt(entrada)
+total = suma(7,3)
 
-mi_dia = dia(entrada)
+total = suma(7,1)
 
-write(mi_dia)
-
-
+total = suma(7,1)

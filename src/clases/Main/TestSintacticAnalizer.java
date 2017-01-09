@@ -12,18 +12,15 @@ import automata.DFA;
 
 public class TestSintacticAnalizer {
 	
-	public void test(){
-		System.out.println("Testinng..");
-	}
-	
+
 
 	public static void main(String[] args) throws Exception {	
-		System.out.println("Args: " + args.length);
-		
-		if( args.length < 1 ) {
-			System.out.println("USO: java -jar analizador path_fichero_fuente");
-			System.exit(-1);
-		}
+//		System.out.println("Args: " + args.length);
+//		
+//		if( args.length < 1 ) {
+//			System.out.println("USO: java -jar analizador path_fichero_fuente");
+//			System.exit(-1);
+//		}
 		
 		//TablaAtributos -> palabras reservadas
 		AttrTable tablaPR = new AttrTable();
@@ -48,8 +45,8 @@ public class TestSintacticAnalizer {
 		DFA afd = LAConfig.get();
 		
 		//Fichero Fuente
-		//SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/programa.js");
-		SourceFile sf = new SourceFile(args[0]);
+		SourceFile sf = new SourceFile("/Users/dani/Documents/workspace/PDL/src/clases/programa.js");
+		//SourceFile sf = new SourceFile(args[0]);
 		
 		sf.open();
 		sf.read();
@@ -65,6 +62,7 @@ public class TestSintacticAnalizer {
 		try {
 			sa.analize();
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.err.println("Ejecución detenida por errores, ver fichero errores.txt");
 		}
 		
