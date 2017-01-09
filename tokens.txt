@@ -1,56 +1,105 @@
-<PR, 1> //function  
-<PR, 0> //int  
-<ID, suma>
-<PARENT, 1>
-<PR, 0> //int  
-<ID, a>
-<COMA, >
-<PR, 0> //int  
-<ID, b>
-<PARENT, 2>
-<CR, >
-<LLAVE, 1>
-<CR, >
-<PR, 3> //return  
-<ID, a>
-<MAS, >
-<ID, b>
-<CR, >
-<LLAVE, 2>
 <CR, >
 <CR, >
 <PR, 2> //var  
 <PR, 0> //int  
 <ID, total>
 <CR, >
+<PR, 2> //var  
+<PR, 9> //bool  
+<ID, x>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<ID, saludo>
+<PARENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, "Hola">
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<PR, 1> //function  
+<ID, despedida>
+<PARENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, "Adios">
+<PARENT, 2>
+<CR, >
+<PR, 3> //return  
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, factorialRecursivo>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, n>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, n>
+<MAS, >
+<ID, factorialRecursivo>
+<PARENT, 1>
+<ID, n>
+<MENOS, >
+<ENT, 1>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<CR, >
+<ID, saludo>
+<PARENT, 1>
+<PARENT, 2>
+<CR, >
 <CR, >
 <ID, total>
 <ASIGN, >
-<ID, suma>
+<ID, factorialRecursivo>
 <PARENT, 1>
-<ENT, 7>
-<COMA, >
+<ENT, 4>
+<PARENT, 2>
+<CR, >
+<CR, >
+<ID, x>
+<ASIGN, >
+<STRING, "hola">
+<AND, >
+<PARENT, 1>
+<ID, total>
+<MAYOR, >
+<ENT, 120>
+<PARENT, 2>
+<AND, >
+<PARENT, 1>
+<ENT, 2>
+<MAYOR, >
 <ENT, 3>
 <PARENT, 2>
 <CR, >
 <CR, >
-<ID, total>
-<ASIGN, >
-<ID, suma>
+<ID, despedida>
 <PARENT, 1>
-<ENT, 7>
-<COMA, >
-<ENT, 1>
-<PARENT, 2>
-<CR, >
-<CR, >
-<ID, total>
-<ASIGN, >
-<ID, suma>
-<PARENT, 1>
-<ENT, 7>
-<COMA, >
-<ENT, 1>
 <PARENT, 2>
 <CR, >
 <$, >

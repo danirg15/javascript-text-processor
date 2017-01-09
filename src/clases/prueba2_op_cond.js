@@ -1,3 +1,5 @@
+//Prueba operador condicional, declaracion funciones, llamada de funciones, funcion sin retorno, operador suma, operador mayor, IF
+
 function bool mayor(int a, int b)
 {
 	var bool resultado
@@ -28,7 +30,8 @@ b = 3
 if(mayor(a, b)) write("El 7 es mayor")
 
 
-total = suma(7,3)
+total = suma(2,3)
+
 
 print("Hola Mundo")
 

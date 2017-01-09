@@ -1,28 +1,45 @@
-TABLA FUNCION suma #2 : 
-* LEXEMA : 'a'
+TABLA FUNCION saludo #2 : 
+-------------------------------------
+TABLA FUNCION despedida #3 : 
+-------------------------------------
+TABLA FUNCION factorialRecursivo #4 : 
+* LEXEMA : 'n'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
-
-* LEXEMA : 'b'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 2 
 
 -------------------------------------
 TABLA GLOBAL #1 : 
-* LEXEMA : 'suma'
-	 ATRIBUTOS: 
-	 + desplazamiento: 0 
-	 + tipoRetorno: 'INTEGER' 
-	 + parametros: 2 
-	 + tipoparam1: 'INTEGER' 
-	 + tipoparam2: 'INTEGER' 
-	 + idtabla: 2 
-
 * LEXEMA : 'total'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
+
+* LEXEMA : 'despedida'
+	 ATRIBUTOS: 
+	 + desplazamiento: 0 
+	 + tipoRetorno: 'VOID' 
+	 + parametros: 0 
+	 + idtabla: 3 
+
+* LEXEMA : 'factorialRecursivo'
+	 ATRIBUTOS: 
+	 + desplazamiento: 0 
+	 + tipoRetorno: 'INTEGER' 
+	 + parametros: 1 
+	 + tipoparam1: 'INTEGER' 
+	 + idtabla: 4 
+
+* LEXEMA : 'saludo'
+	 ATRIBUTOS: 
+	 + desplazamiento: 0 
+	 + tipoRetorno: 'VOID' 
+	 + parametros: 0 
+	 + idtabla: 2 
+
+* LEXEMA : 'x'
+	 ATRIBUTOS: 
+	 + tipo: 'BOOLEAN' 
+	 + desplazamiento: 2 
 
 -------------------------------------

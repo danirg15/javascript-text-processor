@@ -427,9 +427,16 @@ public class SinAConfig {
 					aux_stack.elementAt(top-2).getAttribute().setType(Types.ERROR);
 					ErrorManager.notify(ErrorTypes.SEM, "'"+lex+"' no es compatible con el tipo asignado");
 				}
-					
+				
+									
 				aux_stack.elementAt(top-2).getAttribute().setReturnType(Types.VOID);
+				
+				//System.out.println("regla S_2 comprobar");
+				//aux_stack.elementAt(top).getAttribute().getTypesList().clear();
+				
 				SintacticAnalizer.popAuxStack(2);
+				
+				
 				
 				return null;
 			}			
@@ -526,6 +533,8 @@ public class SinAConfig {
 				
 				Stack<GrammaticalSymbol> aux_stack = SintacticAnalizer.getAuxStack();
 				int top = aux_stack.size() - 1;
+				
+				aux_stack.elementAt(top-3).getAttribute().getTypesList().clear();
 				
 				aux_stack.elementAt(top-3).getAttribute().addListOfTypes( aux_stack.elementAt(top-1).getAttribute().getTypesList() );
 				aux_stack.elementAt(top-3).getAttribute().setType(Types.VOID);
@@ -626,6 +635,8 @@ public class SinAConfig {
 				int top = aux_stack.size() - 1;
 				
 				aux_stack.elementAt(top).getAttribute().setType(Types.VOID);
+				
+				aux_stack.elementAt(top).getAttribute().getTypesList().clear();
 								
 				return null;
 			}			
