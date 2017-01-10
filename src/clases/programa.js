@@ -1,55 +1,23 @@
-//Prueba operador condicional, declaracion funciones, llamada de funciones, funcion sin retorno, operador suma, operador mayor, IF
-
-function int mayor(int a, int b)
+function chars dia(int d) 
 {
-	var int resultado
-	
-	resultado = (a > b) ? (a) : (b)
-			
+	var chars resultado
+		
+	switch(d)
+	{
+		case 1: resultado = "lunes"; break
+		case 2: resultado = "martes"; break
+		case 3: resultado = "miercoles"; break
+		case 4: resultado = "jueves"; break
+		case 5: resultado = "viernes"; break
+	}
 	return resultado
 }
 
+var chars mi_dia
+var int entrada
 
-function int adivina(int i, int j, int k) 
-{	
-	var int res
-	
-	res = ((i > 1) && (j > 10)) ? (4) : (k)
-			
-	return res
-}
+prompt(entrada)
 
+mi_dia = dia(entrada)
 
-function bool hoyNoEsLunes(int dia)
-{
-	if(dia > 1) return 2 > 1
-	
-	return 1 > 2
-}
-
-
-function int suma(int a, int b)
-{
-	return a + b
-}
-
-function print(chars msg) 
-{
-	write(msg)
-}
-
-
-var int a
-var int b
-var int total
-
-a = 7
-b = 3
-
-if(mayor(a, b) > 20) write("El a es mayor")
-
-
-total = suma(2,3)
-
-
-print("Hola Mundo")
+write(mi_dia)

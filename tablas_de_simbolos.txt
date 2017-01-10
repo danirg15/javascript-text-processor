@@ -1,123 +1,31 @@
 TABLA GLOBAL #1 : 
-* LEXEMA : 'suma' (funcion)  
-	 ATRIBUTOS: 
-	 + tipoRetorno: 'INTEGER' 
-	 + parametros: 2 
-	 + tipoparam1: 'INTEGER' 
-	 + tipoparam2: 'INTEGER' 
-	 + idtabla: 5 
-
-* LEXEMA : 'a'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
-
-* LEXEMA : 'print' (funcion)  
-	 ATRIBUTOS: 
-	 + tipoRetorno: 'VOID' 
-	 + parametros: 1 
-	 + tipoparam1: 'STRING' 
-	 + idtabla: 6 
-
-* LEXEMA : 'b'
+* LEXEMA : 'entrada'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 2 
 
-* LEXEMA : 'total'
+* LEXEMA : 'dia' (funcion)  
 	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 4 
-
-* LEXEMA : 'adivina' (funcion)  
-	 ATRIBUTOS: 
-	 + tipoRetorno: 'INTEGER' 
-	 + parametros: 5 
+	 + tipoRetorno: 'STRING' 
+	 + parametros: 1 
 	 + tipoparam1: 'INTEGER' 
-	 + tipoparam2: 'INTEGER' 
-	 + tipoparam3: 'INTEGER' 
-	 + tipoparam4: 'INTEGER' 
-	 + tipoparam5: 'INTEGER' 
-	 + idtabla: 3 
-
-* LEXEMA : 'mayor' (funcion)  
-	 ATRIBUTOS: 
-	 + tipoRetorno: 'INTEGER' 
-	 + parametros: 2 
-	 + tipoparam1: 'INTEGER' 
-	 + tipoparam2: 'INTEGER' 
 	 + idtabla: 2 
 
-* LEXEMA : 'hoyNoEsLunes' (funcion)  
-	 ATRIBUTOS: 
-	 + tipoRetorno: 'BOOLEAN' 
-	 + parametros: 1 
-	 + tipoparam1: 'INTEGER' 
-	 + idtabla: 4 
-
--------------------------------------
-TABLA FUNCION mayor #2 : 
-* LEXEMA : 'a'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
-
-* LEXEMA : 'b'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 2 
-
-* LEXEMA : 'resultado'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 4 
-
--------------------------------------
-TABLA FUNCION adivina #3 : 
-* LEXEMA : 'res'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 6 
-
-* LEXEMA : 'i'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
-
-* LEXEMA : 'j'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 2 
-
-* LEXEMA : 'k'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 4 
-
--------------------------------------
-TABLA FUNCION hoyNoEsLunes #4 : 
-* LEXEMA : 'dia'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
-
--------------------------------------
-TABLA FUNCION suma #5 : 
-* LEXEMA : 'a'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
-
-* LEXEMA : 'b'
-	 ATRIBUTOS: 
-	 + tipo: 'INTEGER' 
-	 + desplazamiento: 2 
-
--------------------------------------
-TABLA FUNCION print #6 : 
-* LEXEMA : 'msg'
+* LEXEMA : 'mi_dia'
 	 ATRIBUTOS: 
 	 + tipo: 'STRING' 
 	 + desplazamiento: 0 
+
+-------------------------------------
+TABLA FUNCION dia #2 : 
+* LEXEMA : 'd'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 0 
+
+* LEXEMA : 'resultado'
+	 ATRIBUTOS: 
+	 + tipo: 'STRING' 
+	 + desplazamiento: 2 
 
 -------------------------------------
