@@ -258,6 +258,8 @@ public class LexicalAnalizer {
 		}
 		
 		this.writeToFile.token(tablePR, token);
+		
+		//System.out.println(token);
 	
 		return token;
 	}

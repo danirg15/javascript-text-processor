@@ -62,7 +62,7 @@ public class TestSintacticAnalizer {
 		try {
 			sa.analize();
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.err.println("Ejecución detenida por errores, ver fichero errores.txt");
 		}
 		

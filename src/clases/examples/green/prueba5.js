@@ -21,12 +21,10 @@ function int factorialRecursivo (int n)
 }
 
 
-
-
 saludo()
 
 total = factorialRecursivo(4)
 
-x = "hola" && (total > 120) && (2 > 3)
+x = (total > 120) && (2 > 3) && (1 > 1)
 
 despedida()

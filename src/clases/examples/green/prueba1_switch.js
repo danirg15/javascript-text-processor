@@ -12,8 +12,6 @@ function chars dia(int d)
 		case 4: resultado = "jueves"; break
 		case 5: resultado = "viernes"; break
 	}
-	
-	
 	return resultado
 }
 

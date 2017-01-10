@@ -1,45 +1,123 @@
-TABLA FUNCION saludo #2 : 
--------------------------------------
-TABLA FUNCION despedida #3 : 
--------------------------------------
-TABLA FUNCION factorialRecursivo #4 : 
-* LEXEMA : 'n'
+TABLA GLOBAL #1 : 
+* LEXEMA : 'suma' (funcion)  
+	 ATRIBUTOS: 
+	 + tipoRetorno: 'INTEGER' 
+	 + parametros: 2 
+	 + tipoparam1: 'INTEGER' 
+	 + tipoparam2: 'INTEGER' 
+	 + idtabla: 5 
+
+* LEXEMA : 'a'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
 
--------------------------------------
-TABLA GLOBAL #1 : 
+* LEXEMA : 'print' (funcion)  
+	 ATRIBUTOS: 
+	 + tipoRetorno: 'VOID' 
+	 + parametros: 1 
+	 + tipoparam1: 'STRING' 
+	 + idtabla: 6 
+
+* LEXEMA : 'b'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 2 
+
 * LEXEMA : 'total'
 	 ATRIBUTOS: 
 	 + tipo: 'INTEGER' 
-	 + desplazamiento: 0 
+	 + desplazamiento: 4 
 
-* LEXEMA : 'despedida'
+* LEXEMA : 'adivina' (funcion)  
 	 ATRIBUTOS: 
-	 + desplazamiento: 0 
-	 + tipoRetorno: 'VOID' 
-	 + parametros: 0 
+	 + tipoRetorno: 'INTEGER' 
+	 + parametros: 5 
+	 + tipoparam1: 'INTEGER' 
+	 + tipoparam2: 'INTEGER' 
+	 + tipoparam3: 'INTEGER' 
+	 + tipoparam4: 'INTEGER' 
+	 + tipoparam5: 'INTEGER' 
 	 + idtabla: 3 
 
-* LEXEMA : 'factorialRecursivo'
+* LEXEMA : 'mayor' (funcion)  
 	 ATRIBUTOS: 
-	 + desplazamiento: 0 
 	 + tipoRetorno: 'INTEGER' 
+	 + parametros: 2 
+	 + tipoparam1: 'INTEGER' 
+	 + tipoparam2: 'INTEGER' 
+	 + idtabla: 2 
+
+* LEXEMA : 'hoyNoEsLunes' (funcion)  
+	 ATRIBUTOS: 
+	 + tipoRetorno: 'BOOLEAN' 
 	 + parametros: 1 
 	 + tipoparam1: 'INTEGER' 
 	 + idtabla: 4 
 
-* LEXEMA : 'saludo'
+-------------------------------------
+TABLA FUNCION mayor #2 : 
+* LEXEMA : 'a'
 	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
 	 + desplazamiento: 0 
-	 + tipoRetorno: 'VOID' 
-	 + parametros: 0 
-	 + idtabla: 2 
 
-* LEXEMA : 'x'
+* LEXEMA : 'b'
 	 ATRIBUTOS: 
-	 + tipo: 'BOOLEAN' 
+	 + tipo: 'INTEGER' 
 	 + desplazamiento: 2 
+
+* LEXEMA : 'resultado'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 4 
+
+-------------------------------------
+TABLA FUNCION adivina #3 : 
+* LEXEMA : 'res'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 6 
+
+* LEXEMA : 'i'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 0 
+
+* LEXEMA : 'j'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 2 
+
+* LEXEMA : 'k'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 4 
+
+-------------------------------------
+TABLA FUNCION hoyNoEsLunes #4 : 
+* LEXEMA : 'dia'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 0 
+
+-------------------------------------
+TABLA FUNCION suma #5 : 
+* LEXEMA : 'a'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 0 
+
+* LEXEMA : 'b'
+	 ATRIBUTOS: 
+	 + tipo: 'INTEGER' 
+	 + desplazamiento: 2 
+
+-------------------------------------
+TABLA FUNCION print #6 : 
+* LEXEMA : 'msg'
+	 ATRIBUTOS: 
+	 + tipo: 'STRING' 
+	 + desplazamiento: 0 
 
 -------------------------------------

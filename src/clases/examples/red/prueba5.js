@@ -9,6 +9,6 @@ var int b
 
 return
 
-max = ("hola" && (2 > 1) ) ? (a) : (b)
+max = ((2 > 1) && "hola" ) ? (a) : (b)
 
 

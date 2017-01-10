@@ -1,26 +1,225 @@
 <CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, mayor>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, a>
+<COMA, >
+<PR, 0> //int  
+<ID, b>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, resultado>
+<CR, >
+<CR, >
+<ID, resultado>
+<ASIGN, >
+<PARENT, 1>
+<ID, a>
+<MAYOR, >
+<ID, b>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<ID, a>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<ID, b>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, resultado>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, adivina>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, i>
+<COMA, >
+<PR, 0> //int  
+<ID, j>
+<COMA, >
+<PR, 0> //int  
+<ID, k>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, res>
+<CR, >
+<CR, >
+<ID, res>
+<ASIGN, >
+<PARENT, 1>
+<PARENT, 1>
+<ID, i>
+<MAYOR, >
+<ENT, 1>
+<PARENT, 2>
+<AND, >
+<PARENT, 1>
+<ID, j>
+<MAYOR, >
+<ENT, 10>
+<PARENT, 2>
+<PARENT, 2>
+<INTERR, >
+<PARENT, 1>
+<ENT, 4>
+<PARENT, 2>
+<DOS_PUNTOS, >
+<PARENT, 1>
+<ID, k>
+<PARENT, 2>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ID, res>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 9> //bool  
+<ID, hoyNoEsLunes>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, dia>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 10> //if  
+<PARENT, 1>
+<ID, dia>
+<MAYOR, >
+<ENT, 1>
+<PARENT, 2>
+<PR, 3> //return  
+<ENT, 2>
+<MAYOR, >
+<ENT, 1>
+<CR, >
+<CR, >
+<PR, 3> //return  
+<ENT, 1>
+<MAYOR, >
+<ENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 1> //function  
+<PR, 0> //int  
+<ID, suma>
+<PARENT, 1>
+<PR, 0> //int  
+<ID, a>
+<COMA, >
+<PR, 0> //int  
+<ID, b>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 3> //return  
+<ID, a>
+<MAS, >
+<ID, b>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<PR, 1> //function  
+<ID, print>
+<PARENT, 1>
+<PR, 4> //chars  
+<ID, msg>
+<PARENT, 2>
+<CR, >
+<LLAVE, 1>
+<CR, >
+<PR, 5> //write  
+<PARENT, 1>
+<ID, msg>
+<PARENT, 2>
+<CR, >
+<LLAVE, 2>
+<CR, >
+<CR, >
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, a>
+<CR, >
+<PR, 2> //var  
+<PR, 0> //int  
+<ID, b>
+<CR, >
 <PR, 2> //var  
 <PR, 0> //int  
 <ID, total>
 <CR, >
 <CR, >
-<ID, total>
+<ID, a>
 <ASIGN, >
-<ENT, 12333111>
+<ENT, 7>
+<CR, >
+<ID, b>
+<ASIGN, >
+<ENT, 3>
 <CR, >
 <CR, >
-<PR, 5> //write  
+<PR, 10> //if  
 <PARENT, 1>
-<ID, total>
-<PARENT, 2>
-<CR, >
-<CR, >
-<PR, 6> //prompt  
+<ID, mayor>
 <PARENT, 1>
 <ID, a>
+<COMA, >
+<ID, b>
+<PARENT, 2>
+<MAYOR, >
+<ENT, 20>
+<PARENT, 2>
+<PR, 5> //write  
+<PARENT, 1>
+<STRING, "El a es mayor">
 <PARENT, 2>
 <CR, >
 <CR, >
-<ID, total>
-<PARENT, 1>
 <CR, >
+<ID, total>
+<ASIGN, >
+<ID, suma>
+<PARENT, 1>
+<ENT, 2>
+<COMA, >
+<ENT, 3>
+<PARENT, 2>
+<CR, >
+<CR, >
+<CR, >
+<ID, print>
+<PARENT, 1>
+<STRING, "Hola Mundo">
+<PARENT, 2>
+<CR, >
+<$, >
